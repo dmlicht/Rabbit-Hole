@@ -5,7 +5,8 @@ from pygame.locals import *
 import os, random, copy
 import tiles, layout
 import settings
-import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, dragon
+import player, enemy, bullet, chronos, Boss1, Boss0, BossHands
+import wave, wave_element, wave_handler
 from settings import Font, FontSprite
 
 SCREEN_HEIGHT   = 600
@@ -17,21 +18,26 @@ MIN_FUEL        = 0
 FUEL_REGAIN     = .1
 
 class Level():
-    def __init__(self, game):
+    def __init__(self, game, level):
+        self.wave_builder = wave_handler.WaveHandler(level)
+        self.wave_builder.parse_level_file()
+        self.set_scheduler_waves()
 
-        self.fuel = MAX_FUEL
+        self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, self.wave_builder.layout_file_path)
+        self.background.initialize()
 
         self.state_stack = game.game_state
         self.game = game
 
         self.energy             = 100
         self.score              = 0
+        self.fuel               = MAX_FUEL
 
         #player
-        self.ship = player.Ship("3ship1", game.screen)
-        self.f_xy = []   
-        self.bullets = []
-        self.enemies = []
+        self.ship               = player.Ship("3ship1", game.screen)
+        self.f_xy               = []   
+        self.bullets            = []
+        self.enemies            = []
 
         #set UI
         self.text_score         = FontSprite(game.font, "Score: " + str(self.score))
@@ -49,6 +55,17 @@ class Level():
 
         self.back_time          = 0
     
+    def run(self, game):
+        self.done = False
+        self.game = game
+
+        while not self.done:
+            self.continue_level()
+            """
+            if pygame.time.get_ticks() > 100000:
+                self.done = True
+                self.state_stack.append("Cut Two")
+            """
 
     def continue_level(self):
             if pygame.time.get_ticks() - self.game.fps > 1000:
@@ -65,6 +82,8 @@ class Level():
             #Update
             self.update_game_settings()
             self.update_game_objects()
+            self.handle_collisions_between(self.ship, self.enemies)
+            self.handle_collisions_between(self.bullets, self.enemies)
 
             #Render
             self.render_game_objects()
@@ -201,3 +220,14 @@ class Level():
             return True
         else:
             return False
+
+    def set_scheduler_waves(self):
+        for time in self.wave_builder.get_wave_times():
+            print time
+            rabbyt.scheduler.add(time, self.build_wave)
+
+    def build_wave(self):
+        current_wave = self.wave_builder.get_next_wave()
+        for element in current_wave.elements:
+            new_enemy = element.enemy_type("7dragon", self.game.screen, element.startx)
+            self.enemies.append(new_enemy)

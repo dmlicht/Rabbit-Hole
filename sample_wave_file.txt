@@ -1,34 +1,29 @@
-background_layout_file_name
+layout:
+sample_tile_layout.txt
 
-time_when_wave_occurs_in_ms
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
+2
+Enemy      0       400     movpattern1
+aEnemy     100     400     movpatternx
+Enjnmy     200     400     movpattern1
+Enemy      300     400     movpattern1
+Enemy      400     400     movpatternx
+Enemy      500     400     movpattern1
 $end
 
-time_when_wave_occurs_in_ms
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
+5
+Enemy      0       400     movpattern1
+Enemy      -100    400     movpattern1
+Enemy      -200    400     movpattern1
+Enemy      -300    400     movpattern1
+Enemy      -400    400     movpattern1
+Enemy      -500    400     movpattern1
 $end
 
-time_when_wave_occurs_in_ms
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
-enemy_type  startx  starty  movement_pattern
+10
+Enemy      0      400      movpattern1
+Enemy      -400   400      movpattern1
+Enemy      -100   400      movpattern1
+Enemy      100    400      movpattern1
+Enemy      400    400      movpattern1
+Enemy      700    400      movpattern1
 $end
