@@ -1,0 +1,203 @@
+from __future__ import division
+import pygame, rabbyt, sys
+from pygame.locals import *
+
+import os, random, copy
+import tiles, layout
+import settings
+import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, dragon
+from settings import Font, FontSprite
+
+SCREEN_HEIGHT   = 600
+SCREEN_WIDTH    = 800
+
+MAX_FUEL        = 100.0
+FUEL_DRAIN      = 10.0
+MIN_FUEL        = 0	
+FUEL_REGAIN     = .1
+
+class Level():
+    def __init__(self, game):
+
+        self.fuel = MAX_FUEL
+
+        self.state_stack = game.game_state
+        self.game = game
+
+        self.energy             = 100
+        self.score              = 0
+
+        #player
+        self.ship = player.Ship("3ship1", game.screen)
+        self.f_xy = []   
+        self.bullets = []
+        self.enemies = []
+
+        #set UI
+        self.text_score         = FontSprite(game.font, "Score: " + str(self.score))
+        self.text_score.rgb     = (255,255,255)
+        self.text_score.xy      = (-380, -260)
+        self.text_boost         = FontSprite(game.font, "Boost Fuel: " + str(self.fuel))
+        self.text_boost.rgb     = (160,160,160)
+        self.text_boost.xy      = (-380, -240)
+        self.text_health        = FontSprite(game.font, "Health: " + str(self.ship.health))
+        self.text_health.rgb    = (255,255,255)
+        self.text_health.xy     = (234, -260)
+        self.text_chronos       = FontSprite(game.font, "Chronos: " + str(self.energy))
+        self.text_chronos.rgb   = (255,255,255)
+        self.text_chronos.xy    = (234, -240)
+
+        self.back_time          = 0
+    
+
+    def continue_level(self):
+            if pygame.time.get_ticks() - self.game.fps > 1000:
+                print "FPS: ", self.game.clock.get_fps()
+                self.game.fps = pygame.time.get_ticks()
+
+            self.handle_user_events()
+
+            #Timing
+            rabbyt.set_time(pygame.time.get_ticks()/1000.0 + self.back_time)
+            rabbyt.scheduler.pump()
+            rabbyt.clear()
+
+            #Update
+            self.update_game_settings()
+            self.update_game_objects()
+
+            #Render
+            self.render_game_objects()
+
+            self.game.clock.tick(40)
+            pygame.display.flip()
+
+    def handle_user_events(self):
+
+            #check for quitting
+            for event in pygame.event.get():
+                if event.type ==  QUIT:
+                    self.done = True
+                    fdata = open("RabbitHighScores", 'w')
+                    for i in range(5):
+                        fdata.write(self.game.highScoreNames[i] + " " + str(self.game.highScores[i]) + "\n")
+                elif event.type == KEYDOWN:
+                    if event.key == K_ESCAPE:
+                        self.done = True
+                        self.state_stack.append("Menu State")
+                elif event.type == KEYUP and event.key == K_SPACE:
+                    self.ship.has_fired= False    
+            pressed = pygame.key.get_pressed()
+
+            #ship boost
+            if pressed[K_d]:
+                self.ship.boosting = True
+            else: self.ship.boosting = False
+            self.text_boost.text = "Boost Fuel: " + str(self.ship.boost_fuel)
+
+	        #ship animation
+            if pressed[K_UP] != 0 or pressed[K_DOWN] != 0 or pressed[K_LEFT] != 0 or pressed[K_RIGHT] != 0:
+                self.ship.animate()
+
+	        #Vertical Movement
+            self.ship.acceleration_y = pressed[K_UP] - pressed[K_DOWN]
+            self.ship.check_vertical_bounds()
+
+	        #Horizontal Movement
+            self.ship.acceleration_x = pressed[K_RIGHT] - pressed[K_LEFT]
+            self.ship.check_horizontal_bounds()
+
+            #Firing
+            if pressed[K_SPACE]:
+                new_bullet = self.ship.attemptfire()
+                if new_bullet:
+                    self.bullets.append(new_bullet)
+            #tilt
+            self.ship.tilt = pressed[K_z] - pressed[K_x]
+
+    def update_game_settings(self):
+            self.text_health.text = "Health: " + str(self.ship.health)
+            if self.fuel < MAX_FUEL:
+                self.fuel += FUEL_REGAIN
+                self.text_boost.text = "Boost Fuel: " + str(self.fuel)
+            else:
+                self.fuel = 100.0
+                self.text_boost.text = "Boost Fuel: " + str(self.fuel)
+
+    def update_game_objects(self):
+            self.background.maintain_tile_rows()
+            self.ship.update()
+            self.remove_offmap(self.bullets)
+
+            for enemy in self.enemies:
+                enemy.animate()
+
+    def render_game_objects(self):
+            self.background.render()
+            rabbyt.render_unsorted(self.bullets)
+            rabbyt.render_unsorted(self.enemies)
+            #self.testenemy.render()
+            self.ship.render()
+            self.text_score.render()
+            self.text_boost.render()
+            self.text_health.render()
+            self.text_chronos.render()
+
+    def remove_offmap(self, objects_to_check):
+        for current in objects_to_check:
+            if current.isOffMap():
+                objects_to_check.remove(current)
+
+    def handle_collisions_between(self, set1, set2):
+
+        set_one_is_list = isinstance(set1, list)
+        set_two_is_list = isinstance(set2, list)
+
+        if set_one_is_list and set_two_is_list:
+            self.check_collisions_using(rabbyt.collisions.collide_groups, set1, set2)
+            self.check_collisions_using(rabbyt.collisions.collide_groups, set2, set1)
+
+        elif set_two_is_list:
+            collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set1, set2)
+            if collision_occured: set1.hit()
+
+        elif set_one_is_list:
+            collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set2, set1)
+            if collision_occured: set2.hit()
+
+        else: #wrap both singular objects into sets and then test
+            set1wrapper = []
+            set1wrapper.append(set1)
+
+            set2wrapper = []
+            set2wrapper.append(set2)
+
+            self.check_collisions_using(rabbyt.collisions.collide_groups, set1wrapper, set2wrapper)
+
+    #returns true if there are collisions. only calls hit on the second set. HIT MUST BE CALLED ON THE FIRST SET OUTSIDE THE FUNCTION
+    def check_collisions_using(self, collision_function, set1, set2):
+        collisions = collision_function(set1, set2)
+        if len(collisions) and isinstance(collisions[0], tuple): #check if groups collided
+            for objects_that_were_hit in collisions:
+
+                objects_that_were_hit[0].hit()
+                #to incorperate damage uncomment line below and comment out line above
+                #objects_that_were_hit[0].hit(objects_that_were_hit[1].damage)
+                if not objects_that_were_hit[0].health:
+                    set1.remove(objects_that_were_hit[0])
+
+                objects_that_were_hit[1].hit()
+                #to incorperate damage uncomment line below and comment out line above
+                #objects_that_were_hit[1].hit(objects_that_were_hit[0].damage)
+                if not objects_that_were_hit[1].health:
+                    set2.remove(objects_that_were_hit[1])
+
+        else:
+            for object_that_was_hit in collisions:
+                object_that_was_hit.hit()
+                if not object_that_was_hit.health > 0:
+                    set2.remove(object_that_was_hit)
+        if collisions:
+            return True
+        else:
+            return False

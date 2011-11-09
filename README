@@ -1,0 +1,56 @@
+Assignment 6 - First Level
+Rabbit Hole Studios - Katherine Wu, David Lichtenberg, Olivia Novik, Owen Whitmore
+Date: 10/20/2011
+
+===========
+How to Play
+===========
+
+Run: python main.py
+(Dependencies: rabbyt)
+
+================
+Purpose of Files
+================
+
+Sounds
+------
+game-motif-sad.mp3 - the background music
+Losing16bit.wav - the losing song
+winning16bit.wav - the winning song
+gem.wav - cute sound when picking up energy
+
+Pictures
+--------
+1deep-space.pngg - (temporary) background of game
+7dragon.png - spritesheet of enemy
+1DragonBoss.png - omg boss
+1energy.png - Chronal Energy Spark
+1rock_bullet.png - bullet
+3ship1.png - ship
+
+- Screens -
+   1bunny3.png - highscore image
+   8jumping_rabbit.png - title screen
+   1Menu_Screen1.png - menu screen
+   1cutscene.png - first part of cutscene
+   2cutscene.png - second part of cutscene
+
+Code
+-----
+player.py - player module (the aircraft)
+enemy.py - enemy module (the dragon skeletons)
+chronos.py - chronal energy spark module
+Boss1.py - boss moduleyer animation :) just need the graphics!)
+main.py - the game with the different states: menu, title, game
+settings.py - custom additions to rabbyt
+
+
+Miscellaneous Files
+-------------------
+RabbitHighScores - high score file
+
+===========
+Unowned Art
+===========
+1deep-space.png - (temporary) background of game (Source: http://www.wallconvert.com/converted/deep-space-104163.html)
