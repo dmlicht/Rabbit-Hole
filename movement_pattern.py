@@ -6,7 +6,7 @@ import random
 import os.path
 import settings
 
-def pattern1(startx, starty):
+def movpattern1(startx, starty):
     return rabbyt.chain( rabbyt.lerp(startx, startx+50, dt=1),
                          rabbyt.lerp(startx+50, startx, dt=1),
                          rabbyt.lerp(startx, startx-50, dt=1, extend="reverse"),)
