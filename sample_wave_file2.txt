@@ -1,28 +1,29 @@
-sample_tile_layout.txt
+layout:
+sample_tile_layout2.txt
 
 2
-dragon      0       400     movpattern1
-dragon      100     400     movpattern1
-dragon      200     400     movpattern1
-dragon      300     400     movpattern1
-dragon      400     400     movpattern1
-dragon      500     400     movpattern1
+Enemy      0       400     movpattern1
+aEnemy     100     400     movpatternx
+Enjnmy     200     400     movpattern1
+Enemy      300     400     movpattern1
+Enemy      400     400     movpatternx
+Enemy      500     400     movpattern1
 $end
 
 5
-dragon      0       400     movpattern1
-dragon      -100    400     movpattern1
-dragon      -200    400     movpattern1
-dragon      -300    400     movpattern1
-dragon      -400    400     movpattern1
-dragon      -500    400     movpattern1
+Enemy      0       400     movpattern1
+Enemy      -100    400     movpattern1
+Enemy      -200    400     movpattern1
+Enemy      -300    400     movpattern1
+Enemy      -400    400     movpattern1
+Enemy      -500    400     movpattern1
 $end
 
-5
-dragon      0      400      movpattern1
-dragon      -400   400      movpattern1
-dragon      -100   400      movpattern1
-dragon      100    400      movpattern1
-dragon      400    400      movpattern1
-dragon      700    400      movpattern1
+10
+Enemy      0      400      movpattern1
+Enemy      -400   400      movpattern1
+Enemy      -100   400      movpattern1
+Enemy      100    400      movpattern1
+Enemy      400    400      movpattern1
+Enemy      700    400      movpattern1
 $end

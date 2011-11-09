@@ -7,14 +7,14 @@ import tiles, layout
 import settings
 import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, dragon
 from settings import Font, FontSprite
-import level, wave, wave_element, wave_handler
+import wave, wave_element, wave_handler
 
 level_waves = wave_handler.WaveHandler("sample_wave_file2.txt")
 level_waves.parse_level_file()
 current_wave = level_waves.get_next_wave()
 while current_wave:
     print 'wave time: ', current_wave.time
-    for element in current_wave:
+    for element in current_wave.elements:
         print 'enemy type: ', element.enemy_type
         print 'start x position: ', element.startx
         print 'start y position: ', element.starty
