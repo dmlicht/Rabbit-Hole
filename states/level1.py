@@ -29,7 +29,6 @@ class Level1(level.Level):
 
         self.done = False
         dragons = []
-        #self.add_wave()
         self.set_scheduler()
         self.game = game
 
