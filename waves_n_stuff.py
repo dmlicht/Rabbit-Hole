@@ -17,14 +17,15 @@ def Set_Up_Level(levelname):
         level_file = open(levelname)
         next_line = level_file.readline()
         while not (next_line == ""):
-          if next_line[0] == 'a':
-              self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, next_line[2:] + ".txt")
-          elif next_line[0] == '0':    
-              time = int(nextline[2:])
-          elif next_line[0] == '1':
+          parts = next_line.split()
+          if parts[0] == "background":
+              self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, parts[1])
+          elif parts[0] == "time":    
+              time = int(parts[1])
+          elif parts[0] == "enemy":
               parts = next_line.split()
               enemies.append(wave_element(parts[1], parts[2], parts[3], parts[4]))
-          elif next_line[0] == '2':
+          elif parts[0] == "$":
               self.waves.append(time, enemies)
               time = 0
               for i in range(len(enemies)-1):
