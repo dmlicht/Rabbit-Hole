@@ -11,6 +11,7 @@ class WaveHandler():
     def __init__(self, levelname):
         self.waves = [] 
         self.levelname = levelname
+        self.wave_index = 0
 
     def parse_level_file(self):
         time = 0
@@ -34,9 +35,15 @@ class WaveHandler():
                     for i in range(len(enemies)-1):
                         enemies.pop()
 
-    def Set_Up_Wave(wave_n):
+    def Set_Up_Wave(self, wave_n):
         for i in wave_n.attackers:
             self.enemies.append(enemy(i.image, i.at_pat, 0, i.x_pos, i.y_pos))
+
+    def get_next_wave(self):
+        if self.wave_index < len(self.waves):
+            self.wave_index += 1
+            return self.waves[self.wave_index - 1]
+        else: return False
 """        
 class wave_element():
     def __init__(self, image, x_pos, y_pos, at_pat):
