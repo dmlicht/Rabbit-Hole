@@ -41,6 +41,7 @@ def load_and_size(filename, filter=True, mipmap=True):
      if os.path.exists(filename):
          img = pygame.image.load(filename)
      else:
+         data_directory = "data_directory"
          img = pygame.image.load(os.path.join(data_directory, filename))
      t = Tex()
      t.width,t.height = size = list(img.get_size())
