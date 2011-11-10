@@ -3,10 +3,10 @@ sample_tile_layout2.txt
 
 2
 Enemy      0       400     movpattern1
-aEnemy     100     400     movpatternx
-Enjnmy     200     400     movpattern1
+Enemy      100     400     movpattern1
+Enemy      200     400     movpattern1
 Enemy      300     400     movpattern1
-Enemy      400     400     movpatternx
+Enemy      400     400     movpattern1
 Enemy      500     400     movpattern1
 $end
 

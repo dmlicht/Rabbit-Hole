@@ -18,7 +18,7 @@ MIN_FUEL        = 0
 FUEL_REGAIN     = .1
 
 class Level():
-    def __init__(self, game, level):
+    def __init__(self, game, level, state_after=""):
         self.wave_builder = wave_handler.WaveHandler(level)
         self.wave_builder.parse_level_file()
         self.set_scheduler_waves()
@@ -28,6 +28,8 @@ class Level():
 
         self.state_stack = game.game_state
         self.game = game
+
+        self.state_after        = state_after
 
         self.energy             = 100
         self.score              = 0
@@ -61,12 +63,10 @@ class Level():
 
         while not self.done:
             self.continue_level()
-            """
-            if pygame.time.get_ticks() > 100000:
-                self.done = True
-                self.state_stack.append("Cut Two")
-            """
-
+            all_enemies_defeated = (self.wave_builder.all_waves_called() and len(self.enemies) == 0)
+            if all_enemies_defeated:
+                self.victory_end()
+            
     def continue_level(self):
             if pygame.time.get_ticks() - self.game.fps > 1000:
                 print "FPS: ", self.game.clock.get_fps()
@@ -80,7 +80,7 @@ class Level():
             rabbyt.clear()
 
             #Update
-            self.update_game_settings()
+            self.update_UI()
             self.update_game_objects()
             self.handle_collisions_between(self.ship, self.enemies)
             self.handle_collisions_between(self.bullets, self.enemies)
@@ -134,7 +134,7 @@ class Level():
             #tilt
             self.ship.tilt = pressed[K_z] - pressed[K_x]
 
-    def update_game_settings(self):
+    def update_UI(self):
             self.text_health.text = "Health: " + str(self.ship.health)
             if self.fuel < MAX_FUEL:
                 self.fuel += FUEL_REGAIN
@@ -153,10 +153,11 @@ class Level():
 
     def render_game_objects(self):
             self.background.render()
+            self.ship.render()
+
             rabbyt.render_unsorted(self.bullets)
             rabbyt.render_unsorted(self.enemies)
-            #self.testenemy.render()
-            self.ship.render()
+
             self.text_score.render()
             self.text_boost.render()
             self.text_health.render()
@@ -193,7 +194,7 @@ class Level():
 
             self.check_collisions_using(rabbyt.collisions.collide_groups, set1wrapper, set2wrapper)
 
-    #returns true if there are collisions. only calls hit on the second set. HIT MUST BE CALLED ON THE FIRST SET OUTSIDE THE FUNCTION
+    #returns true if there are collisions.
     def check_collisions_using(self, collision_function, set1, set2):
         collisions = collision_function(set1, set2)
         if len(collisions) and isinstance(collisions[0], tuple): #check if groups collided
@@ -228,6 +229,14 @@ class Level():
 
     def build_wave(self):
         current_wave = self.wave_builder.get_next_wave()
-        for element in current_wave.elements:
-            new_enemy = element.enemy_type("7dragon", self.game.screen, element.startx)
-            self.enemies.append(new_enemy)
+        if current_wave:
+            for element in current_wave.elements:
+                new_enemy = element.enemy_type("7dragon", self.game.screen, element.startx)
+                self.enemies.append(new_enemy)
+
+    def victory_end(self):
+        self.state_stack.append(self.state_after)
+        self.done = True
+
+    def failure_end(self):
+        self.done = True

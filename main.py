@@ -79,7 +79,7 @@ class Game:
             elif next_state == "High Screen":
               states.highscore.HighScreen(self, self.game_state)
             elif next_state == "Level One":
-                level = states.level1.Level1(self, "sample_wave_file.txt")
+                level = states.level.Level(self, "sample_wave_file.txt", "Cut Two")
                 level.run(self)
             elif next_state == "Cut Two":
                 states.cuttwo.CutTwo(self, self.game_state)

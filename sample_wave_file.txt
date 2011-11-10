@@ -3,27 +3,27 @@ sample_tile_layout.txt
 
 2
 Enemy      0       400     movpattern1
-aEnemy     100     400     movpatternx
-Enjnmy     200     400     movpattern1
+Enemy      100     400     movpattern1
+Enemy      200     400     movpattern1
 Enemy      300     400     movpattern1
-Enemy      400     400     movpatternx
-Enemy      500     400     movpattern1
+Enemy      250     400     movpattern1
+Enemy      120     400     movpattern1
 $end
 
 5
 Enemy      0       400     movpattern1
 Enemy      -100    400     movpattern1
+Enemy      -70     400     movpattern1
+Enemy      -50     400     movpattern1
+Enemy      -150    400     movpattern1
 Enemy      -200    400     movpattern1
-Enemy      -300    400     movpattern1
-Enemy      -400    400     movpattern1
-Enemy      -500    400     movpattern1
 $end
 
 10
 Enemy      0      400      movpattern1
-Enemy      -400   400      movpattern1
+Enemy      -300   400      movpattern1
 Enemy      -100   400      movpattern1
 Enemy      100    400      movpattern1
-Enemy      400    400      movpattern1
-Enemy      700    400      movpattern1
+Enemy      300    400      movpattern1
+Enemy      200    400      movpattern1
 $end
