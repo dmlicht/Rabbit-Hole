@@ -8,8 +8,9 @@ import settings
 import game_object
 
 class WaveElement():
-    def __init__(self, enemy_type, startx, starty, pattern):
+    def __init__(self, enemy_type, startx, starty, patternx, patterny):
         self.enemy_type = enemy_type
         self.startx = startx
         self.starty = starty
-        self.pattern = pattern
+        self.patternx = patternx
+        self.patterny = patterny

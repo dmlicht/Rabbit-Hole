@@ -6,15 +6,15 @@ import random
 import os.path
 import settings
 
-def movpattern1(startx, starty):
+def movpatternx(startx):
     return rabbyt.chain( rabbyt.lerp(startx, startx+50, dt=1),
                          rabbyt.lerp(startx+50, startx, dt=1),
-                         rabbyt.lerp(startx, startx-50, dt=1, extend="reverse"),)
+                         rabbyt.lerp(startx, startx-200, dt=1, extend="reverse"),)
 
-def pattern2(startx, starty):
-    return rabbyt.chain( rabbyt.lerp(startx, startx-50, dt=1),
-                         rabbyt.lerp(startx-50, startx, dt=1),
-                         rabbyt.lerp(startx, startx+50, dt=1, extend="reverse"),)
+def movpatterny(start):
+    return rabbyt.chain( rabbyt.ease(start, start-400, dt=1),
+                         rabbyt.ease(start-400, start-200, dt=2),
+                         rabbyt.ease(start-200, start-400, dt=1, extend="reverse"),)
 
 def pattern3(startx, starty):    
      return (rabbyt.chain( rabbyt.lerp(startx, startx+50, dt=3/2),

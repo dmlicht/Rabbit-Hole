@@ -8,8 +8,8 @@ import settings
 import game_object
 
 class Enemy(rabbyt.Sprite, game_object.GameObject):
-    def __init__(self, name, screen, specified_x_position=-1):
-        rabbyt.Sprite.__init__(self, name+'.png', (-91.7857143, 74, 91.7857143, -74))
+    def __init__(self, screen, image_file, startx, starty, patternx, patterny):
+        rabbyt.Sprite.__init__(self, image_file, (-91.7857143, 74, 91.7857143, -74))
         game_object.GameObject.__init__(self)
         self.screen = screen
         self.frame = 0
@@ -25,19 +25,12 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
                        ((0.3177083432674408,0.796875), (0.63541668653488159,0.796875), (0.63541668653488159,0.0), (0.3177083432674408,0.0)), \
                        ((0.63541668653488159,0.796875), (0.953125,0.796875), (0.953125,0.0), (0.63541668653488159,0.0))]
 
-        self.y = rabbyt.lerp(400, 0, dt=2, extend="reverse")
+        #self.y = rabbyt.lerp(400, 0, dt=2, extend="reverse")
         self.time_last = pygame.time.get_ticks() 
-
-        #data individual to an enemy
-        self.bounding_radius = 30
-        self.health = 1
-        self.damage = 1
+        self.x = patternx(startx)
+        self.y = patterny(starty)
 
         #self.offset = 74
-
-        if specified_x_position == -1:
-            self.x = random.randint(-300,300)
-        else: self.x = specified_x_position
    
     def animate(self):
         #animation
@@ -64,8 +57,13 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
     def render(self):
         rabbyt.Sprite.render(self)
 
-"""
 class Dragon(Enemy):
-    def __init__(self, name, screen, specified_x_position=-1):
-        Enemy.__init__(self, name, screen, specified_x_position)
-"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "7dragon.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 1
+        self.damage = 1
+
