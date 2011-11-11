@@ -25,6 +25,7 @@ class Game:
         self.game_state = [STARTING_SCREEN] ## A stack of game screens.
         self.done = False
 
+        self.temp_score = 0
         self.font = pygame.font.Font(None,24)
         self.clock = pygame.time.Clock()
         self.fps = 0
