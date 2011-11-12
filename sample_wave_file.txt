@@ -2,28 +2,28 @@ layout:
 sample_tile_layout.txt
 
 2
-Dragon      0       200     movpatternx     movpatterny
-Dragon      100     100     movpatternx     movpatterny
-Dragon      200     200     movpatternx     movpatterny
-Dragon      300     100     movpatternx     movpatterny
-Dragon      250     200     movpatternx     movpatterny
-Dragon      120     200     movpatternx     movpatterny
+Dragon      0       200     movpatternx1     movpatterny1
+Dragon      100     100     movpatternx1     movpatterny1
+Dragon      200     200     movpatternx1     movpatterny1
+Dragon      300     100     movpatternx1     movpatterny1
+Dragon      250     200     movpatternx1     movpatterny1
+Dragon      120     200     movpatternx1     movpatterny1
 $end
 
 5
-Dragon      0       100     movpatternx     movpatterny
-Dragon      -100    200     movpatternx     movpatterny
-Dragon      -70     200     movpatternx     movpatterny
-Dragon      -50     100     movpatternx     movpatterny
-Dragon      -150    0       movpatternx     movpatterny
-Dragon      -200    200     movpatternx     movpatterny
+Dragon      0       100     movpattern_circx     movpattern_circy
+Dragon      -100    200     movpattern_circx     movpattern_circy
+Dragon      -70     200     movpattern_circx     movpattern_circy
+Dragon      -50     100     movpattern_circx     movpattern_circy
+Dragon      -150    0       movpattern_circx     movpattern_circy
+Dragon      -200    200     movpattern_circx     movpattern_circy
 $end
 
 10
-Dragon      0      100      movpatternx     movpatterny
-Dragon      -300   200      movpatternx     movpatterny
-Dragon      -100   250      movpatternx     movpatterny
-Dragon      100    300      movpatternx     movpatterny
-Dragon      300    200      movpatternx     movpatterny
-Dragon      200    350      movpatternx     movpatterny
+Dragon      0      100      movpatternx2     movpatterny2
+Dragon      -300   200      movpatternx2     movpatterny2
+Dragon      -100   250      movpatternx2     movpatterny2
+Dragon      100    300      movpatternx2     movpatterny2
+Dragon      300    200      movpatternx2     movpatterny2
+Dragon      200    350      movpatternx2     movpatterny2
 $end
