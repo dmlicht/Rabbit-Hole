@@ -155,10 +155,13 @@ class Level():
             self.background.maintain_tile_rows()
             self.ship.update()
             self.remove_offmap(self.bullets)
-            self.remove_offmap(self.enemies)
 
             for enemy in self.enemies:
                 enemy.animate()
+                if enemy.checkBounds():
+                    self.game.user.score += 25
+                
+            self.remove_offmap(self.enemies)
 
     def render_game_objects(self):
             self.background.render()
