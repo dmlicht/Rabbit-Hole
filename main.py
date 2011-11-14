@@ -14,7 +14,7 @@ import states.level1, states.level2, states.cuttwo
 if not pygame.mixer: print 'Warning, sound disabled'
 
 SCREEN_SIZE = (800,600)
-STARTING_SCREEN = "Title Screen"
+STARTING_SCREEN = "Menu Screen"
 
 class Game:
     def __init__(self):
@@ -22,8 +22,7 @@ class Game:
         rabbyt.set_viewport(SCREEN_SIZE)
         rabbyt.set_default_attribs()
 
-        self.game_state = [STARTING_SCREEN] ## A stack of game screens.
-        self.done = False
+        #self.game_state = [STARTING_SCREEN] ## A stack of game screens.
 
         self.font = pygame.font.Font(None,24)
         self.clock = pygame.time.Clock()
@@ -62,13 +61,30 @@ class Game:
         #pygame.mixer.music.load('game-motif-sad.mp3')
         #pygame.mixer.music.play(-1, 0.0)
 
+        self.game_states = []
+        self.done = False
+        self.game_states.append(states.menu.Menu())
+        #self.game_states.append(states.cut.Cut())
+        #self.game_states.append(states.name.Name())
+
+    """
     def Go(self):
-        while True:
-            if not self.game_state:
+        keep_going = True
+        for current_states in self.game_states:
+            current_state.run(self, self.game_states)
+    """
+
+    
+    def Go(self):
+        keep_going = True
+        while keep_going:
+            if not self.game_states:
                 break
             
             #temporary loop to determine next state to call.
-            next_state = self.game_state.pop()
+            next_state = self.game_states.pop()
+            next_state.run(self, self.game_states)
+            """
             print "In state - "+next_state
             if next_state == "Menu Screen":
               states.menu.MenuScreen(self, self.game_state)
@@ -95,7 +111,9 @@ class Game:
                 function(self.game_state)
             #else:
             #    break
+            """
         print "Thanks for playing! :-)"
+    
 
     def animate(self, sprite, frames):
         #animation

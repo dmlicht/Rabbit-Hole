@@ -8,6 +8,7 @@ import settings
 import player, enemy, bullet, chronos, Boss1, Boss0, BossHands
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
+import state, states.menu
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -26,7 +27,7 @@ class Level():
         self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, self.wave_builder.layout_file_path)
         self.background.initialize()
 
-        self.state_stack = game.game_state
+        self.state_stack = game.game_states
         self.game = game
 
         self.state_after        = state_after
@@ -57,7 +58,7 @@ class Level():
 
         self.back_time          = 0
     
-    def run(self, game):
+    def run(self, game, state_stack):
         self.done = False
         self.game = game
 
@@ -103,7 +104,7 @@ class Level():
                 elif event.type == KEYDOWN:
                     if event.key == K_ESCAPE:
                         self.done = True
-                        self.state_stack.append("Menu State")
+                        self.state_stack.append(states.menu.Menu())
                 elif event.type == KEYUP and event.key == K_SPACE:
                     self.ship.has_fired= False    
             pressed = pygame.key.get_pressed()

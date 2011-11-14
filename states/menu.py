@@ -5,91 +5,113 @@ import os, random
 import settings
 from settings import Font, FontSprite
 import player, enemy, bullet, chronos, Boss1
+import state, states.cut
 
-def MenuScreen(game, state_stack):
-  if True:
-    backg = rabbyt.Sprite('1Menu_Screen1.png') 
-    menu_option = 0
-    text1 = FontSprite(game.font, "Start Game")
-    text2 = FontSprite(game.font, "Adjust Sound")
-    text3 = FontSprite(game.font, "Adjust Brightness")
-    text4 = FontSprite(game.font, "High Scores")
-    text5 = FontSprite(game.font, "Quit")
-    text1.xy = (-65, 100)
-    text2.xy = (-80,50)
-    text3.xy = (-110,0)
-    text4.xy = (-77,-50)
-    text5.xy = (-22,-100)
+RGB_UNSELECTED  = (255, 255, 255)
+RGB_SELECTED    = (0, 0, 0)
 
-    game.done = False
-    while not game.done:
-      rabbyt.clear()
-      backg.render()
-      text1.render()
-      text2.render()
-      text3.render()
-      text4.render()
-      text5.render()
+START           = 0
+SOUND           = 1
+BRIGHTNESS      = 2
+SCORE           = 3
+QUIT            = 4
 
-      for event in pygame.event.get():
-        if event.type == QUIT:
-          game.done = True
-          fdata = open("RabbitHighScores", 'w')
-          for i in range(5):
-            fdata.write(game.highScoreNames[i] + " " + str(game.highScores[i]) + "\n")
-        elif event.type == KEYDOWN:
-          if event.key == K_ESCAPE:
-            game.done = True
-            fdata = open("RabbitHighScores", 'w')
-            for i in range(5):
-              fdata.write(game.highScoreNames[i] + " " + str(game.highScores[i]) + "\n")
+#def MenuScreen(game, state_stack):
+class Menu(state.State):
+    def run(self, game, state_stack):
+        backg = rabbyt.Sprite('1Menu_Screen1.png') 
+        self.menu_option = 0
+        self.game = game
+        self.state_stack = state_stack
 
-        ## Some sample reaction to events.
-          elif event.key == K_SPACE:
-            if menu_option == 0:
-              game.done = True
-              state_stack.append("Cut Screen")
-            elif menu_option == 1:
-              game.done = False
-            elif menu_option == 2:
-              game.done = False
-            elif menu_option == 3:
-              game.done = True
-              state_stack.append("High Screen")
-            elif menu_option == 4:
-              game.done = True
-          elif event.key == K_DOWN:
-            if menu_option < 4:
-              menu_option += 1
-            else:
-              menu_option = 0
-          elif event.key == K_UP:
-            if menu_option > 0:
-              menu_option -= 1
-            else:
-              menu_option = 4        
+        text_start = FontSprite(game.font, "Start Game")
+        text_sound = FontSprite(game.font, "Adjust Sound")
+        text_brightness = FontSprite(game.font, "Adjust Brightness")
+        text_score = FontSprite(game.font, "High Scores")
+        text_quit = FontSprite(game.font, "Quit")
 
-      if menu_option == 0:
-        text5.rgb = (255,255,255)
-        text1.rgb = (0,0,0)
-        text2.rgb = (255,255,255)
-      elif menu_option == 1:
-        text1.rgb = (255,255,255)
-        text2.rgb = (0,0,0)
-        text3.rgb = (255,255,255)
-      elif menu_option == 2:
-        text2.rgb = (255,255,255)
-        text3.rgb = (0,0,0)
-        text4.rgb = (255,255,255)
-      elif menu_option == 3:
-        text3.rgb = (255,255,255)
-        text4.rgb = (0,0,0)
-        text5.rgb = (255,255,255)
-      elif menu_option == 4:
-        text4.rgb = (255,255,255)
-        text5.rgb = (0,0,0)
-        text1.rgb = (255,255,255)
+        #set menu item positions
+        text_start.xy = (-65, 100)
+        text_sound.xy = (-80,50)
+        text_brightness.xy = (-110,0)
+        text_score.xy = (-77,-50)
+        text_quit.xy = (-22,-100)        
 
-      pygame.display.flip()
-      game.clock.tick(40)
-      #game.done = False
+        self.menu_items = [text_start, text_sound, text_brightness, text_score, text_quit]
+        self.highlight()        
+
+        game.done = False
+
+        while not game.done:
+            pygame.event.pump()
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    pass
+                    #self.quit()
+                elif event.type == KEYDOWN:
+                    self.key_press(event.key)
+
+            rabbyt.clear()
+            backg.render()
+            text_start.render()
+            text_sound.render()
+            text_brightness.render()
+            text_score.render()
+            text_quit.render()
+
+            pygame.display.flip()
+            game.clock.tick(40)
+
+    def quit(self):
+        self.game.done = True
+        fdata = open("RabbitHighScores", 'w')
+        for i in range(5):
+            fdata.write(self.game.highScoreNames[i] + " " + str(self.game.highScores[i]) + "\n")
+
+    def key_press(self, key_pressed):
+        if key_pressed == K_ESCAPE:
+            self.esc_press()
+        elif key_pressed == K_SPACE:
+            self.space_press()
+        elif key_pressed == K_DOWN:
+            self.down_press()
+        elif key_pressed == K_UP:
+            self.up_press()
+        self.highlight()        
+
+    def esc_press(self):
+        self.game.done = True
+        fdata = open("RabbitHighScores", 'w')
+        for i in range(5):
+            fdata.write(self.game.highScoreNames[i] + " " + str(self.game.highScores[i]) + "\n")
+    
+    def space_press(self):
+        if self.menu_option == START:
+            self.game.done = True
+            self.state_stack.append(states.cut.Cut())
+        elif self.menu_option == SOUND:
+            self.game.done = False
+        elif self.menu_option == BRIGHTNESS:
+            self.game.done = False
+        elif self.menu_option == SCORE:
+            self.game.done = True
+            self.state_stack.append("High Screen")
+        elif self.menu_option == QUIT:
+            self.game.done = True
+    
+    def down_press(self):
+        if self.menu_option < 4:
+            self.menu_option += 1
+        else:
+            self.menu_option = 0
+
+    def up_press(self):
+        if self.menu_option > 0:
+            self.menu_option -= 1
+        else:
+            self.menu_option = 4
+
+    def highlight(self):
+        for current_item in self.menu_items:
+            current_item.rgb = RGB_UNSELECTED
+        self.menu_items[self.menu_option].rgb = RGB_SELECTED
