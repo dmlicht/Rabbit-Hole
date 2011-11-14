@@ -5,7 +5,7 @@ from pygame.locals import *
 import os, random, copy
 import tiles, layout
 import settings
-import player, enemy, bullet, chronos, Boss1, Boss0, BossHands
+import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, bar
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
 import state, states.menu
@@ -56,9 +56,7 @@ class Level():
         self.text_chronos.xy    = (200, -260)
 
         #health bar
-        self.bar                = rabbyt.Sprite(0, (0,20,200,0))
-        self.bar.rgb            = (34,139,34)
-        self.bar.xy             = (200, -240)
+        self.bar                = bar.Bar()
 
         self.back_time          = 0
     
@@ -190,9 +188,7 @@ class Level():
             collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set1, set2)
             if collision_occured: 
 		set1.hit()
-		if self.bar.shape[2][0] > 0:
-                    temp = self.bar.shape
-                    self.bar.shape = (0,temp[1][1],temp[2][0]-20,0)
+		self.bar.hit()
 	    
 
         elif set_one_is_list:
