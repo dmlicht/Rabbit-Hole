@@ -64,17 +64,18 @@ class Game:
         self.game_states = []
         self.done = False
         self.game_states.append(states.menu.Menu())
-        #self.game_states.append(states.cut.Cut())
-        #self.game_states.append(states.name.Name())
+        self.game_states.append(states.cut.Cut())
+        self.game_states.append(states.name.Name())
 
-    """
     def Go(self):
         keep_going = True
-        for current_states in self.game_states:
-            current_state.run(self, self.game_states)
-    """
+        while keep_going:
+            for current_state in self.game_states:
+                next_state = current_state.run(self, self.game_states)
+                if not next_state:
+                    break
 
-    
+    """
     def Go(self):
         keep_going = True
         while keep_going:
@@ -84,7 +85,6 @@ class Game:
             #temporary loop to determine next state to call.
             next_state = self.game_states.pop()
             next_state.run(self, self.game_states)
-            """
             print "In state - "+next_state
             if next_state == "Menu Screen":
               states.menu.MenuScreen(self, self.game_state)
@@ -111,8 +111,8 @@ class Game:
                 function(self.game_state)
             #else:
             #    break
-            """
         print "Thanks for playing! :-)"
+    """
     
 
     def animate(self, sprite, frames):
