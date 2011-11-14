@@ -50,10 +50,15 @@ class Level():
         self.text_boost.xy      = (-380, -240)
         self.text_health        = FontSprite(game.font, "Health: " + str(self.ship.health))
         self.text_health.rgb    = (255,255,255)
-        self.text_health.xy     = (234, -260)
+        self.text_health.xy     = (200, -240)
         self.text_chronos       = FontSprite(game.font, "Chronos: " + str(self.energy))
         self.text_chronos.rgb   = (255,255,255)
-        self.text_chronos.xy    = (234, -240)
+        self.text_chronos.xy    = (200, -260)
+
+	#health bar
+	self.bar                     = rabbyt.Sprite(0, (0,20,200,0))
+	self.bar.rgb                 = (34,139,34)
+	self.bar.xy                  = (200, -240)
 
         self.back_time          = 0
     
@@ -165,6 +170,8 @@ class Level():
             self.text_health.render()
             self.text_chronos.render()
 
+	    self.bar.render()
+
     def remove_offmap(self, objects_to_check):
         for current in objects_to_check:
             if current.isOffMap():
@@ -181,7 +188,12 @@ class Level():
 
         elif set_two_is_list:
             collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set1, set2)
-            if collision_occured: set1.hit()
+            if collision_occured: 
+		set1.hit()
+		if self.bar.shape[2][0] > 0:
+                    temp = self.bar.shape
+                    self.bar.shape = (0,temp[1][1],temp[2][0]-20,0)
+	    
 
         elif set_one_is_list:
             collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set2, set1)
