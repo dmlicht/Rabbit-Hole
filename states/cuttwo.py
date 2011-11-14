@@ -86,4 +86,4 @@ class CutTwo(state.State):
         pygame.display.flip()
 
   def set_next_state(self):
-    self.state_stack.append(states.level.Level(self.game, "sample_wave_file2.txt", states.highscore.High()))
+    self.state_stack.append(states.level.Level(self.game, "level2.txt", states.highscore.High()))

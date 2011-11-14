@@ -6,6 +6,39 @@ import random
 import os.path
 import settings
 
+def straight_down(start, time=4):
+    return rabbyt.ease(start, start-800, dt=time)
+
+def straight_down1(start):
+    return straight_down(start, 3.5)
+
+def straight_down2(start):
+    return straight_down(start, 3.0)
+
+def straight_down3(start):
+    return straight_down(start, 2.75)
+
+def straight_down4(start):
+    return straight_down(start, 2.5)
+
+def straight_down5(start):
+    return straight_down(start, 2.25)
+
+def straight_down6(start):
+    return straight_down(start, 2.0)
+
+def straight_down7(start):
+    return straight_down(start, 1.75)
+
+def straight_down8(start):
+    return straight_down(start, 1.5)
+
+def straight_down9(start):
+    return straight_down(start, 1.25)
+
+def do_nothing(start):
+    return rabbyt.lerp(start, start, dt=1)
+
 def movpatternx(startx):
     return rabbyt.chain( rabbyt.lerp(startx, startx+50, dt=1),
                          rabbyt.lerp(startx+50, startx, dt=1),

@@ -20,7 +20,7 @@ TILT_SPEED = .1
 
 BULLET_VELOCITY = 2
 
-STARTING_HEALTH = 10
+STARTING_HEALTH = 5
 
 
 class Ship(rabbyt.Sprite, game_object.GameObject):
