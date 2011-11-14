@@ -62,7 +62,7 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
         rabbyt.Sprite.render(self)
         
     def isOffMap(self):
-        if self.y <= -350:
+        if self.y <= -350 or self.x >= 450 or self.x <= -450:
             return True
         else:
             return False
