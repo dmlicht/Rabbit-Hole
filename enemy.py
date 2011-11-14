@@ -13,6 +13,7 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
         game_object.GameObject.__init__(self)
         self.screen = screen
         self.frame = 0
+        """
         self.enemy_tex = [((0.0, 0.578125), (0.0896344855427742, 0.578125), (0.0896344855427742, 0.0), (0.0, 0.0)), \
                       ((0.0896344855427742, 0.578125), (0.17926897189710855484, 0.578125), (0.17926897189710855484, 0.0), (0.0896344855427742, 0.0)), \
                       ((0.17926897189710855484, 0.578125), (0.2689034630789032, 0.578125), (0.268903463078903, 0.0), (0.17926897189710855484, 0.0)), \
@@ -24,6 +25,9 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
         self.tex_shapes = [((0.0,0.796875), (0.3177083432674408,0.796875), (0.3177083432674408,0.0), (0.0,0.0)), \
                        ((0.3177083432674408,0.796875), (0.63541668653488159,0.796875), (0.63541668653488159,0.0), (0.3177083432674408,0.0)), \
                        ((0.63541668653488159,0.796875), (0.953125,0.796875), (0.953125,0.0), (0.63541668653488159,0.0))]
+        """
+
+        self.enemy_tex = settings.get_tex_shapes(self.tex_shape, int(image_file[:1]))
 
         #self.y = rabbyt.lerp(400, 0, dt=2, extend="reverse")
         self.time_last = pygame.time.get_ticks() 
@@ -67,3 +71,32 @@ class Dragon(Enemy):
         self.health = 1
         self.damage = 1
 
+class Dinosaur(Enemy):
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "5dino.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 3
+        self.damage = 1
+
+class Plane(Enemy):
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "3ww2.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 4
+        self.damage = 1
+
+class Boss3(Enemy):
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "2boss3.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 100
+        self.damage = 1

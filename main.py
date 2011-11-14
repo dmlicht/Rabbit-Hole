@@ -14,7 +14,7 @@ import states.level1, states.level2, states.cuttwo
 if not pygame.mixer: print 'Warning, sound disabled'
 
 SCREEN_SIZE = (800,600)
-STARTING_SCREEN = "Title Screen"
+STARTING_SCREEN = "Menu Screen"
 
 class Game:
     def __init__(self):
