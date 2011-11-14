@@ -253,8 +253,11 @@ class Level():
 
     def victory_end(self):
         self.state_stack.append(self.state_after)
+        if isinstance(self.state_after, states.highscore.High):
+            self.game.update_scores()
         self.done = True
 
     def failure_end(self):
         self.state_stack.append(states.highscore.High())
+        self.game.update_scores()
         self.done = True
