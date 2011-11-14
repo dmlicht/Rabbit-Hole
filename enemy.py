@@ -51,7 +51,7 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
             self.time_last = now 
 
     def checkBounds(self):
-        if self.x >= 350 or self.y >= 450 or self.x <= -350 or self.y <= -450:
+        if self.x >= 450 or self.y <= -350 or self.x <= -450:
             return True
         return False
 
