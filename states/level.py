@@ -8,6 +8,7 @@ import settings
 import player, enemy, bullet, chronos, Boss1, Boss0, BossHands
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
+import state, states.menu
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -26,13 +27,12 @@ class Level():
         self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, self.wave_builder.layout_file_path)
         self.background.initialize()
 
-        self.state_stack = game.game_state
+        self.state_stack = game.game_states
         self.game = game
 
         self.state_after        = state_after
 
         self.energy             = 100
-        self.score              = game.temp_score
         self.fuel               = MAX_FUEL
 
         #player
@@ -42,7 +42,7 @@ class Level():
         self.enemies            = []
 
         #set UI
-        self.text_score         = FontSprite(game.font, "Score: " + str(self.score))
+        self.text_score         = FontSprite(game.font, "Score: " + str(self.game.user.score))
         self.text_score.rgb     = (255,255,255)
         self.text_score.xy      = (-380, -260)
         self.text_boost         = FontSprite(game.font, "Boost Fuel: " + str(self.fuel))
@@ -57,7 +57,7 @@ class Level():
 
         self.back_time          = 0
     
-    def run(self, game):
+    def run(self, game, state_stack):
         self.done = False
         self.game = game
 
@@ -104,7 +104,7 @@ class Level():
                 elif event.type == KEYDOWN:
                     if event.key == K_ESCAPE:
                         self.done = True
-                        self.state_stack.append("Menu State")
+                        self.state_stack.append(states.menu.Menu())
                 elif event.type == KEYUP and event.key == K_SPACE:
                     self.ship.has_fired= False    
             pressed = pygame.key.get_pressed()
@@ -137,6 +137,7 @@ class Level():
 
     def update_UI(self):
             self.text_health.text = "Health: " + str(self.ship.health)
+            self.text_score.text = "Score: " + str(self.game.user.score)
             if self.fuel < MAX_FUEL:
                 self.fuel += FUEL_REGAIN
                 self.text_boost.text = "Boost Fuel: " + str(self.fuel)
@@ -208,13 +209,15 @@ class Level():
                 objects_that_were_hit[0].hit()
                 #to incorperate damage uncomment line below and comment out line above
                 #objects_that_were_hit[0].hit(objects_that_were_hit[1].damage)
-                if not objects_that_were_hit[0].health:
+                if objects_that_were_hit[0].health <= 0:
+                    self.game.user.score += objects_that_were_hit[0].die()
                     set1.remove(objects_that_were_hit[0])
 
                 objects_that_were_hit[1].hit()
                 #to incorperate damage uncomment line below and comment out line above
                 #objects_that_were_hit[1].hit(objects_that_were_hit[0].damage)
-                if not objects_that_were_hit[1].health:
+                if objects_that_were_hit[1].health <= 0:
+                    self.game.user.score += objects_that_were_hit[1].die()
                     set2.remove(objects_that_were_hit[1])
                     self.score += 100
 

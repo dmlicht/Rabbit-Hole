@@ -66,4 +66,5 @@ class Dragon(Enemy):
         self.bounding_radius = 30
         self.health = 1
         self.damage = 1
+        self.point_value = 50
 

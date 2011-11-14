@@ -6,9 +6,12 @@ import os, random
 import settings
 import player, enemy, bullet, chronos, Boss1
 from settings import Font, FontSprite
+import state
+import states.name
 
-
-def CutScreen(game, state_stack):
+#def CutScreen(game, state_stack):
+class Cut(state.State):
+  def run(self, game, state_stack):
     scene = rabbyt.Sprite("1cutscene.png")
     scene.scale = 0.95
     scene.y = -60
@@ -34,7 +37,7 @@ def CutScreen(game, state_stack):
             scene2.render()
         if ticks >= 14:
             game.done = True
-            state_stack.append("Name Screen")
+            state_stack.append(states.name.Name())
         words.render()
 
         for event in pygame.event.get():
@@ -44,7 +47,7 @@ def CutScreen(game, state_stack):
                 for i in range(5):
                     fdata.write(game.highScoreNames[i] + " " + str(game.highScores[i]) + "\n")
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE or event.key == K_SPACE:
+                if event.key == K_ESCAPE:
                     game.done = True
-                    state_stack.append("Name Screen")
+                    state_stack.append(states.name.Name())
         pygame.display.flip()

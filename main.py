@@ -2,7 +2,7 @@ from __future__ import division
 import pygame, rabbyt, sys
 from pygame.locals import *
 import states.menu, states.cut, states.name, states.highscore, states.play, states.title
-
+import user_data
 import os, random
 #rabbyt.data_directory = os.path.dirname(__file__)
 #os.environ["SDL_VIDEO_CENTERED"] = "1"
@@ -14,7 +14,7 @@ import states.level1, states.level2, states.cuttwo
 if not pygame.mixer: print 'Warning, sound disabled'
 
 SCREEN_SIZE = (800,600)
-STARTING_SCREEN = "Title Screen"
+STARTING_SCREEN = "Menu Screen"
 
 class Game:
     def __init__(self):
@@ -22,8 +22,7 @@ class Game:
         rabbyt.set_viewport(SCREEN_SIZE)
         rabbyt.set_default_attribs()
 
-        self.game_state = [STARTING_SCREEN] ## A stack of game screens.
-        self.done = False
+        #self.game_state = [STARTING_SCREEN] ## A stack of game screens.
 
         self.temp_score = 0
         self.font = pygame.font.Font(None,24)
@@ -41,6 +40,9 @@ class Game:
         self.winner_name = ""
         self.highScores = []
         self.highScoreNames = []
+
+        self.user = user_data.User()
+
 	if not os.path.isfile("RabbitHighScores"):
             self.highScores = ['0','0','0','0','0']
             self.highScoreNames = ["OKW","KRW", "ON", "DL", "AAA"] 
@@ -63,42 +65,19 @@ class Game:
         #pygame.mixer.music.load('game-motif-sad.mp3')
         #pygame.mixer.music.play(-1, 0.0)
 
+        self.game_states = []
+        self.done = False
+        self.game_states.append(states.menu.Menu())
+
     def Go(self):
-        while True:
-            if not self.game_state:
+        keep_going = True
+        while keep_going:
+            if not self.game_states:
                 break
             
             #temporary loop to determine next state to call.
-            next_state = self.game_state.pop()
-            print "In state - "+next_state
-            if next_state == "Menu Screen":
-              states.menu.MenuScreen(self, self.game_state)
-            elif next_state == "Cut Screen":
-              states.cut.CutScreen(self, self.game_state)
-            elif next_state == "Name Screen":
-              states.name.NameScreen(self, self.game_state)
-            elif next_state == "High Screen":
-              states.highscore.HighScreen(self, self.game_state)
-            elif next_state == "Level One":
-                if not self.temp_score == 0:
-                    self.temp_score == 0
-                level = states.level.Level(self, "sample_wave_file.txt", "Cut Two")
-                level.run(self)
-            elif next_state == "Cut Two":
-                states.cuttwo.CutTwo(self, self.game_state)
-            elif next_state == "Level Two":
-                level = states.level.Level(self, "sample_wave_file2.txt", "Cut Two")
-                level.run(self)
-            elif next_state == "Title Screen":
-              states.title.TitleScreen(self, self.game_state)
-            else:
-              function_name = next_state.replace(" ","") ## Naming convention
-              if hasattr(self,function_name):
-                function = getattr(self,function_name)
-                function(self.game_state)
-            #else:
-            #    break
-        print "Thanks for playing! :-)"
+            next_state = self.game_states.pop()
+            next_state.run(self, self.game_states)
 
     def animate(self, sprite, frames):
         #animation

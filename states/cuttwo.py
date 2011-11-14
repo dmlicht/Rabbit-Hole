@@ -5,11 +5,14 @@ from pygame.locals import *
 import os, random
 import settings
 import player, enemy, bullet, chronos, Boss1
+import state, states.level
 from settings import Font, FontSprite
 
-
-def CutTwo(game, state_stack):
+#def CutTwo(game, state_stack):
+class CutTwo(state.State):
+  def run(self, game, state_stack):
     clock = pygame.time.Clock()
+    self.game = game
     scene = rabbyt.Sprite("1space.png")
     scene.scale = 2.0
     scene.x = 400
@@ -67,7 +70,7 @@ def CutTwo(game, state_stack):
            scene.alpha = rabbyt.lerp(1.0, 0.0, startt=29, endt=33)
         if ticks >= 33:
             game.done = True
-            state_stack.append("Level Two")
+            state_stack.append(states.level.Level(self.game, "sample_wave_file2.txt", states.cuttwo.CutTwo()))
 
         for event in pygame.event.get():
             if event.type ==  QUIT:
@@ -76,7 +79,7 @@ def CutTwo(game, state_stack):
                 for i in range(5):
                     fdata.write(game.highScoreNames[i] + " " + str(game.highScores[i]) + "\n")
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE or event.key == K_SPACE:
+                if event.key == K_ESCAPE:
                     game.done = True
-                    state_stack.append("Name Screen")
+                    state_stack.append(states.level.Level(self.game, "sample_wave_file2.txt", states.cuttwo.CutTwo()))
         pygame.display.flip()
