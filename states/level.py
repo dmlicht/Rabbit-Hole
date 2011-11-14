@@ -55,10 +55,10 @@ class Level():
         self.text_chronos.rgb   = (255,255,255)
         self.text_chronos.xy    = (200, -260)
 
-	#health bar
-	self.bar                     = rabbyt.Sprite(0, (0,20,200,0))
-	self.bar.rgb                 = (34,139,34)
-	self.bar.xy                  = (200, -240)
+        #health bar
+        self.bar                = rabbyt.Sprite(0, (0,20,200,0))
+        self.bar.rgb            = (34,139,34)
+        self.bar.xy             = (200, -240)
 
         self.back_time          = 0
     
