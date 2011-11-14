@@ -144,7 +144,6 @@ class Level():
             else:
                 self.fuel = 100.0
                 self.text_boost.text = "Boost Fuel: " + str(self.fuel)
-            self.text_score.text =  "Score: " + str(self.score)    
 
     def update_game_objects(self):
             self.background.maintain_tile_rows()
@@ -153,9 +152,6 @@ class Level():
 
             for enemy in self.enemies:
                 enemy.animate()
-                if enemy.checkBounds():
-                    self.enemies.remove(enemy)
-                    self.score += 50
 
     def render_game_objects(self):
             self.background.render()
@@ -219,7 +215,6 @@ class Level():
                 if objects_that_were_hit[1].health <= 0:
                     self.game.user.score += objects_that_were_hit[1].die()
                     set2.remove(objects_that_were_hit[1])
-                    self.score += 100
 
         else:
             for object_that_was_hit in collisions:
