@@ -70,7 +70,6 @@ class Level():
             self.continue_level()
             all_enemies_defeated = (self.wave_builder.all_waves_called() and len(self.enemies) == 0)
             if all_enemies_defeated:
-                game.temp_score = self.score
                 self.victory_end()
             
     def continue_level(self):
@@ -154,7 +153,7 @@ class Level():
             self.background.maintain_tile_rows()
             self.ship.update()
             self.remove_offmap(self.bullets)
-            #self.remove_offmap(self.enemies)
+            self.remove_offmap(self.enemies)
 
             for enemy in self.enemies:
                 enemy.animate()

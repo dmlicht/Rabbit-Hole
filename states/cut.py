@@ -47,7 +47,7 @@ class Cut(state.State):
                 for i in range(5):
                     fdata.write(game.highScoreNames[i] + " " + str(game.highScores[i]) + "\n")
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
+                if event.key == K_ESCAPE or event.key == K_RETURN:
                     game.done = True
                     state_stack.append(states.name.Name())
         pygame.display.flip()

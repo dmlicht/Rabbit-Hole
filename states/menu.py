@@ -71,7 +71,7 @@ class Menu(state.State):
     def key_press(self, key_pressed):
         if key_pressed == K_ESCAPE:
             self.esc_press()
-        elif key_pressed == K_SPACE:
+        elif key_pressed == K_SPACE or key_pressed == K_RETURN:
             self.space_press()
         elif key_pressed == K_DOWN:
             self.down_press()

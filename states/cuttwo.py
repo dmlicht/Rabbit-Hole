@@ -17,6 +17,7 @@ class CutTwo(state.State):
     scene.scale = 2.0
     scene.x = 400
     rabbit = rabbyt.Sprite("1rabbit.png")
+    self.state_stack = state_stack
     #scene.alpha = rabbyt.lerp(0.0, 0.8, startt=1, endt=30)
     #scene.x = rabbyt.lerp(-20, 60, startt=1, endt=6)
 
@@ -70,7 +71,7 @@ class CutTwo(state.State):
            scene.alpha = rabbyt.lerp(1.0, 0.0, startt=29, endt=33)
         if ticks >= 33:
             game.done = True
-            state_stack.append(states.level.Level(self.game, "sample_wave_file2.txt", states.cuttwo.CutTwo()))
+            self.set_next_state()
 
         for event in pygame.event.get():
             if event.type ==  QUIT:
@@ -79,7 +80,10 @@ class CutTwo(state.State):
                 for i in range(5):
                     fdata.write(game.highScoreNames[i] + " " + str(game.highScores[i]) + "\n")
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
+                if event.key == K_ESCAPE or event.key == K_RETURN:
                     game.done = True
-                    state_stack.append(states.level.Level(self.game, "sample_wave_file2.txt", states.cuttwo.CutTwo()))
+                    self.set_next_state()
         pygame.display.flip()
+
+  def set_next_state(self):
+    self.state_stack.append(states.level.Level(self.game, "sample_wave_file2.txt", states.cuttwo.CutTwo()))
