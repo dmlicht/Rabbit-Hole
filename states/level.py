@@ -154,6 +154,7 @@ class Level():
             self.background.maintain_tile_rows()
             self.ship.update()
             self.remove_offmap(self.bullets)
+            #self.remove_offmap(self.enemies)
 
             for enemy in self.enemies:
                 enemy.animate()

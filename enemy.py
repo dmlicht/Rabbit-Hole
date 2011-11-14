@@ -81,6 +81,7 @@ class Dinosaur(Enemy):
         self.bounding_radius = 30
         self.health = 3
         self.damage = 1
+        self.point_value = 5000
 
 class Plane(Enemy):
     def __init__(self, screen, startx, starty, patternx, patterny):
@@ -91,6 +92,7 @@ class Plane(Enemy):
         self.bounding_radius = 30
         self.health = 4
         self.damage = 1
+        self.point_value = 150
 
 class Boss3(Enemy):
     def __init__(self, screen, startx, starty, patternx, patterny):
@@ -101,3 +103,4 @@ class Boss3(Enemy):
         self.bounding_radius = 30
         self.health = 100
         self.damage = 1
+        self.point_value = 5000
