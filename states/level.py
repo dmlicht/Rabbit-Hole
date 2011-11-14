@@ -251,7 +251,7 @@ class Level():
         if current_wave:
             for element in current_wave.elements:
                 new_enemy = element.enemy_type(self.game.screen, element.startx, element.starty, element.patternx, element.patterny)
-                self.enemies.append(new_enemy)
+                self.enemies.append(new_enemy)    
 
     def victory_end(self):
         self.state_stack.append(self.state_after)
