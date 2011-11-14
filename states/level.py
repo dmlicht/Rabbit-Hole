@@ -5,10 +5,10 @@ from pygame.locals import *
 import os, random, copy
 import tiles, layout
 import settings
-import player, enemy, bullet, chronos, Boss1, Boss0, BossHands
+import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, bar
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
-import state, states.menu
+import state, states.menu, states.highscore
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -56,9 +56,7 @@ class Level():
         self.text_chronos.xy    = (200, -260)
 
         #health bar
-        self.bar                = rabbyt.Sprite(0, (0,20,200,0))
-        self.bar.rgb            = (34,139,34)
-        self.bar.xy             = (200, -240)
+        self.bar                = bar.Bar()
 
         self.back_time          = 0
     
@@ -71,6 +69,8 @@ class Level():
             all_enemies_defeated = (self.wave_builder.all_waves_called() and len(self.enemies) == 0)
             if all_enemies_defeated:
                 self.victory_end()
+            if self.ship.health <= 0:
+                self.failure_end()
             
     def continue_level(self):
             if pygame.time.get_ticks() - self.game.fps > 1000:
@@ -173,7 +173,7 @@ class Level():
             self.text_health.render()
             self.text_chronos.render()
 
-	    self.bar.render()
+            self.bar.render()
 
     def remove_offmap(self, objects_to_check):
         for current in objects_to_check:
@@ -187,16 +187,13 @@ class Level():
 
         if set_one_is_list and set_two_is_list:
             self.check_collisions_using(rabbyt.collisions.collide_groups, set1, set2)
-            self.check_collisions_using(rabbyt.collisions.collide_groups, set2, set1)
+            #self.check_collisions_using(rabbyt.collisions.collide_groups, set2, set1)
 
         elif set_two_is_list:
             collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set1, set2)
             if collision_occured: 
-		set1.hit()
-		if self.bar.shape[2][0] > 0:
-                    temp = self.bar.shape
-                    self.bar.shape = (0,temp[1][1],temp[2][0]-20,0)
-	    
+                set1.hit()
+		self.bar.hit()    
 
         elif set_one_is_list:
             collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set2, set1)
@@ -222,7 +219,8 @@ class Level():
                 #objects_that_were_hit[0].hit(objects_that_were_hit[1].damage)
                 if objects_that_were_hit[0].health <= 0:
                     self.game.user.score += objects_that_were_hit[0].die()
-                    set1.remove(objects_that_were_hit[0])
+                    if set1.count(objects_that_were_hit[0]) > 0:
+                        set1.remove(objects_that_were_hit[0])
 
                 objects_that_were_hit[1].hit()
                 #to incorperate damage uncomment line below and comment out line above
@@ -258,4 +256,5 @@ class Level():
         self.done = True
 
     def failure_end(self):
+        self.state_stack.append(states.highscore.High())
         self.done = True

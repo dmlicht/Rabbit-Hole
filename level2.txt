@@ -1,5 +1,5 @@
 layout:
-sample_tile_layout2.txt
+level2_layout.txt
 
 2
 Dragon      0       400     movpatternx	movpatterny

@@ -1,0 +1,63 @@
+layout:
+level1_layout.txt
+
+1
+Dragon      0      310      movpatternx2     movpatterny2
+Dragon      -300   310      movpatternx2     movpatterny2
+Dragon      -100   310      movpatternx2     movpatterny2
+Dragon      100    310      movpatternx2     movpatterny2
+Dragon      300    310      movpatternx2     movpatterny2
+Dragon      200    310      movpatternx2     movpatterny2
+$end
+
+3
+Dragon      -400    350    do_nothing  straight_down4 
+Dragon      -300    350    do_nothing  straight_down5
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100    350    do_nothing  straight_down7 
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down9 
+$end
+
+4
+Dragon      -100    350    do_nothing  straight_down9 
+Dragon      000    	350    do_nothing  straight_down8
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
+Dragon      300    	350    do_nothing  straight_down5 
+Dragon      400    	350    do_nothing  straight_down4 
+$end
+
+6
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+7
+Dragon      -200    350    do_nothing  straight_down9
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down7 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down9 
+$end
+
+8
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+
+10
+Dragon      0      310      movpatternx2     movpatterny2
+Dragon      -300   310      movpatternx2     movpatterny2
+Dragon      -100   310      movpatternx2     movpatterny2
+Dragon      100    310      movpatternx2     movpatterny2
+Dragon      300    310      movpatternx2     movpatterny2
+Dragon      200    310      movpatternx2     movpatterny2
+$end
