@@ -60,6 +60,12 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
     
     def render(self):
         rabbyt.Sprite.render(self)
+        
+    def isOffMap(self):
+        if self.y <= -350:
+            return True
+        else:
+            return False
 
 class Dragon(Enemy):
     def __init__(self, screen, startx, starty, patternx, patterny):
