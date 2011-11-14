@@ -37,7 +37,7 @@ class Cut(state.State):
             scene2.render()
         if ticks >= 14:
             game.done = True
-            #state_stack.append(states.name.Name())
+            state_stack.append(states.name.Name())
         words.render()
 
         for event in pygame.event.get():
@@ -47,7 +47,7 @@ class Cut(state.State):
                 for i in range(5):
                     fdata.write(game.highScoreNames[i] + " " + str(game.highScores[i]) + "\n")
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE or event.key == K_SPACE:
+                if event.key == K_ESCAPE:
                     game.done = True
-                    #state_stack.append(states.name.Name())
+                    state_stack.append(states.name.Name())
         pygame.display.flip()

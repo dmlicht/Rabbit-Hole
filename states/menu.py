@@ -88,7 +88,7 @@ class Menu(state.State):
     def space_press(self):
         if self.menu_option == START:
             self.game.done = True
-            #self.state_stack.append(states.cut.Cut())
+            self.state_stack.append(states.cut.Cut())
         elif self.menu_option == SOUND:
             self.game.done = False
         elif self.menu_option == BRIGHTNESS:

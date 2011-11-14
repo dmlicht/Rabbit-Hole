@@ -37,7 +37,7 @@ class Name(state.State):
             elif event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     game.done = True
-                    #state_stack.append(states.menu.Menu())
+                    state_stack.append(states.menu.Menu())
 
                 elif event.key == K_RETURN:
                     if(enter_name.text == ""):
@@ -45,7 +45,7 @@ class Name(state.State):
                     else:
 		        game.winner_name = enter_name.text
                     game.done = True
-                    #state_stack.append(states.level.Level(self.game, "sample_wave_file.txt", states.cuttwo.CutTwo()))
+                    state_stack.append(states.level.Level(self.game, "sample_wave_file.txt", states.cuttwo.CutTwo()))
 
                 elif event.key == K_BACKSPACE:
                     enter_name.text = enter_name.text[:-1]

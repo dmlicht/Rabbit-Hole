@@ -33,7 +33,6 @@ class Level():
         self.state_after        = state_after
 
         self.energy             = 100
-        self.score              = 0
         self.fuel               = MAX_FUEL
 
         #player
@@ -43,7 +42,7 @@ class Level():
         self.enemies            = []
 
         #set UI
-        self.text_score         = FontSprite(game.font, "Score: " + str(self.score))
+        self.text_score         = FontSprite(game.font, "Score: " + str(self.game.user.score))
         self.text_score.rgb     = (255,255,255)
         self.text_score.xy      = (-380, -260)
         self.text_boost         = FontSprite(game.font, "Boost Fuel: " + str(self.fuel))
@@ -137,6 +136,7 @@ class Level():
 
     def update_UI(self):
             self.text_health.text = "Health: " + str(self.ship.health)
+            self.text_score.text = "Score: " + str(self.game.user.score)
             if self.fuel < MAX_FUEL:
                 self.fuel += FUEL_REGAIN
                 self.text_boost.text = "Boost Fuel: " + str(self.fuel)
@@ -204,13 +204,15 @@ class Level():
                 objects_that_were_hit[0].hit()
                 #to incorperate damage uncomment line below and comment out line above
                 #objects_that_were_hit[0].hit(objects_that_were_hit[1].damage)
-                if not objects_that_were_hit[0].health:
+                if objects_that_were_hit[0].health <= 0:
+                    self.game.user.score += objects_that_were_hit[0].die()
                     set1.remove(objects_that_were_hit[0])
 
                 objects_that_were_hit[1].hit()
                 #to incorperate damage uncomment line below and comment out line above
                 #objects_that_were_hit[1].hit(objects_that_were_hit[0].damage)
-                if not objects_that_were_hit[1].health:
+                if objects_that_were_hit[1].health <= 0:
+                    self.game.user.score += objects_that_were_hit[1].die()
                     set2.remove(objects_that_were_hit[1])
 
         else:
