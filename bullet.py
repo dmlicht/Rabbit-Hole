@@ -23,7 +23,7 @@ class Bullet(rabbyt.Sprite, game_object.GameObject):
         self.rot = angle
         self.speed = speed
         self.bounding_radius = 16
-        self.health = 3
+        self.health = 1
         self.damage = 1
 
         x_end_position = cos(radians(self.rot+90)) * 1000 + start[0]

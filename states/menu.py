@@ -95,7 +95,7 @@ class Menu(state.State):
             self.game.done = False
         elif self.menu_option == SCORE:
             self.game.done = True
-            self.state_stack.append("High Screen")
+            self.state_stack.append(states.highscore.High())
         elif self.menu_option == QUIT:
             self.game.done = True
     
