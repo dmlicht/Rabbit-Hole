@@ -1,3 +1,6 @@
+"""
+Handles customization of the Sprites
+"""
 from __future__ import division
 import pygame, rabbyt
 from rabbyt._rabbyt import load_texture
@@ -6,7 +9,6 @@ import os.path
 #rabbyt.data_directory = os.path.dirname(__file__)
 #rabbyt.set_default_attribs()
 
-import copy
 from copy import deepcopy
 
 default_alphabet = ("0123456789"
@@ -15,48 +17,48 @@ default_alphabet = ("0123456789"
                     "{}()[]<>!?.,:;'\"*&%$@#\/|+=-_~`")
 
 def next_pow2( n ):
- """
- Find the next power of two.
- """
- n  = int(n) - 1
- n = n | (n >> 1)
- n = n | (n >> 2)
- n = n | (n >> 4)
- n = n | (n >> 8)
- n = n | (n >> 16) 
- n += 1
- return n
+    """ Find the next power of two. """
+    n  = int(n) - 1
+    n = n | (n >> 1)
+    n = n | (n >> 2)
+    n = n | (n >> 4)
+    n = n | (n >> 8)
+    n = n | (n >> 16) 
+    n += 1
+    return n
 
 class Tex:
- def __init__(self):
-     self.id = 0
-     self.width = 0
-     self.height = 0
-     self.tex_coords = (0,0,0,0)
+    """Texture class"""
+    def __init__(self):
+        self.id = 0
+        self.width = 0
+        self.height = 0
+        self.tex_coords = (0, 0, 0, 0)
 
 _texture_cache = {}
 def load_and_size(filename, filter=True, mipmap=True):
- if filename not in _texture_cache:
-     pygame = __import__("pygame", {},{},[])
-     if os.path.exists(filename):
-         img = pygame.image.load(filename)
-     else:
-         data_directory = "data_directory"
-         img = pygame.image.load(os.path.join(data_directory, filename))
-     t = Tex()
-     t.width,t.height = size = list(img.get_size())
-     temp = t.width/float(filename[:1])     
-     size[0] = next_pow2(size[0])
-     size[1] = next_pow2(size[1])
-     t.tex_coords = (0,t.height/size[1],temp/size[0],0)
+    """Custom loading to prevent blurring of images"""
+    if filename not in _texture_cache:
+        pygame = __import__("pygame", {}, {}, [])
+        if os.path.exists(filename):
+            img = pygame.image.load(filename)
+        else:
+            data_directory = "data_directory"
+            img = pygame.image.load(os.path.join(data_directory, filename))
+        t = Tex()
+        t.width, t.height = size = list(img.get_size())
+        temp = t.width/float(filename[:1])     
+        size[0] = next_pow2(size[0])
+        size[1] = next_pow2(size[1])
+        t.tex_coords = (0, t.height/size[1], temp/size[0], 0)
       
-     n = pygame.Surface(size, pygame.SRCALPHA|pygame.HWSURFACE, img)
-     n.blit(img, (0,size[1]-t.height))
+        n = pygame.Surface(size, pygame.SRCALPHA|pygame.HWSURFACE, img)
+        n.blit(img, (0, size[1]-t.height))
   
-     data = pygame.image.tostring(n, 'RGBA', True)
-     t.id = load_texture(data, size, "RGBA", filter, mipmap)
-     _texture_cache[filename] = t
- return _texture_cache[filename]
+        data = pygame.image.tostring(n, 'RGBA', True)
+        t.id = load_texture(data, size, "RGBA", filter, mipmap)
+        _texture_cache[filename] = t
+    return _texture_cache[filename]
 
 rabbyt.set_load_texture_file_hook(load_and_size)
 
@@ -93,8 +95,8 @@ class Font(object):
         surface = pygame.Surface((sw, sh), pygame.SRCALPHA, 32)
 
         self.coords = {}
-        x=0
-        y=0
+        x = 0
+        y = 0
         for char in alphabet:
             w = self.pygame_font.size(char)[0]
             self.coords[char] = (x/sw, 1-y/sh, (x+w)/sw, 1-(y+height)/sh)
@@ -142,19 +144,7 @@ class Font(object):
             rabbyt.unload_texture(self.texture_id)
 
 class FontSprite(rabbyt.BaseSprite):
-    """
-    ``FontSprite(font, text, ...)``
-
-    A sprite that displays text from a ``Font``.
-
-    ``font`` should be a ``rabbyt.fonts.Font`` instance to be used.
-
-    ``text`` is the string to be displayed!  (It can be changed later with
-    the text property.)
-
-    This inherits from ``BaseSprite``, so you can use all of the
-    transformation and color properties.
-    """
+    """ FontSprite(font, text, ...) """
     def __init__(self, font, text, **kwargs):
         rabbyt.BaseSprite.__init__(self, **kwargs)
         self.font = font
@@ -162,8 +152,10 @@ class FontSprite(rabbyt.BaseSprite):
         self.text = text
 
     def _get_text(self):
+        """gets the text"""
         return self._text
     def _set_text(self, text):
+        """sets the text"""
         self._text = text
         h = self.font.height
         x = 0
@@ -182,9 +174,11 @@ class FontSprite(rabbyt.BaseSprite):
     text = property(_get_text, _set_text, doc="the text to be displayed")
 
     def render_after_transform(self):
+        """rabbyt render method"""
         rabbyt.render_unsorted(self.char_sprites)
 
 def get_tex_shapes(initial, num):
+    """gets the custom tex_shapes"""
     tex = list(initial)
     for i, tup in zip(range(4), tex):
         tex[i] = list(tup)
@@ -193,7 +187,7 @@ def get_tex_shapes(initial, num):
     result = []
     result.append(tex)
         
-    for i in range(2,num):
+    for i in range(2, num):
         tex[0][0] = tex[1][0]
         tex[3][0] = tex[1][0]
         tex[1][0] = constant*i

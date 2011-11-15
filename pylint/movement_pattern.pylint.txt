@@ -1,0 +1,111 @@
+************* Module movement_pattern
+C: 45,0: Line too long (82/80)
+C: 50,0: Line too long (84/80)
+C: 54,0: Line too long (81/80)
+C: 59,0: Line too long (84/80)
+C: 63,0: Line too long (84/80)
+W: 80,0: Bad indentation. Found 5 spaces, expected 4
+C: 82,0: Line too long (89/80)
+C: 87,0: Line too long (90/80)
+C:  1,0: Missing docstring
+C:  9,0:straight_down: Missing docstring
+C: 12,0:straight_down1: Missing docstring
+C: 15,0:straight_down2: Missing docstring
+C: 18,0:straight_down3: Missing docstring
+C: 21,0:straight_down4: Missing docstring
+C: 24,0:straight_down5: Missing docstring
+C: 27,0:straight_down6: Missing docstring
+C: 30,0:straight_down7: Missing docstring
+C: 33,0:straight_down8: Missing docstring
+C: 36,0:straight_down9: Missing docstring
+C: 39,0:do_nothing: Missing docstring
+C: 42,0:movpatternx: Missing docstring
+C: 47,0:movpatterny: Missing docstring
+C: 51,0:movpatternx1: Missing docstring
+C: 56,0:movpatterny1: Missing docstring
+C: 60,0:movpatternx2: Missing docstring
+C: 65,0:movpatterny2: Missing docstring
+C: 69,0:movpattern_circx: Missing docstring
+C: 74,0:movpattern_circy: Missing docstring
+C: 79,0:pattern3: Missing docstring
+E: 83,54:pattern3: Undefined variable 'self'
+E: 83,62:pattern3: Undefined variable 'self'
+E: 84,39:pattern3: Undefined variable 'self'
+E: 84,51:pattern3: Undefined variable 'self'
+E: 85,39:pattern3: Undefined variable 'self'
+E: 85,51:pattern3: Undefined variable 'self'
+E: 86,39:pattern3: Undefined variable 'self'
+E: 86,51:pattern3: Undefined variable 'self'
+E: 87,39:pattern3: Undefined variable 'self'
+E: 87,51:pattern3: Undefined variable 'self'
+W: 79,21:pattern3: Unused argument 'starty'
+W:  5,0: Unused import random
+W:  3,0: Unused import sys
+W:  4,0: Unused import cos
+W:  7,0: Unused import settings
+W:  4,0: Unused import radians
+W:  4,0: Unused import sqrt
+W:  3,0: Unused import pygame
+W:  6,0: Unused import os
+W:  4,0: Unused import sin
+
+Report======47 statements analysed.Messages by category--------------------
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |28     |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |11     |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |10     |NC       |NC         |
++-----------+-------+---------+-----------+
+Messages--------
++-----------+------------+
+|message id |occurrences |
++===========+============+
+|C0111      |21          |
++-----------+------------+
+|E0602      |10          |
++-----------+------------+
+|W0611      |9           |
++-----------+------------+
+|C0301      |7           |
++-----------+------------+
+|W0613      |1           |
++-----------+------------+
+|W0311      |1           |
++-----------+------------+
+Global evaluation-----------------Your code has been rated at -8.94/10Statistics by type------------------
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |20     |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+Raw metrics-----------
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |68     |97.14 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |0      |0.00  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |1      |1.43  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |1      |1.43  |NC       |NC         |
++----------+-------+------+---------+-----------+
+Duplication-----------
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
