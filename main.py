@@ -7,7 +7,7 @@ import states.menu, states.cut, states.name, states.highscore
 import user_data
 import os
 from settings import Font
-import states.level, states.cuttwo
+import states.cuttwo
 if not pygame.mixer: 
     print 'Warning, sound disabled'
 
@@ -34,26 +34,26 @@ class Game:
 
         #title state
         self.backg = pygame.Surface(self.screen.get_size()).convert()
-        self.numCalled = 0
+        #self.numCalled = 0
 
         #high scores
         self.winner_name = ""
-        self.highScores = []
-        self.highScoreNames = []
+        self.high_scores = []
+        self.high_score_names = []
 
         self.user = user_data.User()
 
         if not os.path.isfile("RabbitHighScores"):
-            self.highScores = ['0', '0', '0', '0', '0']
-            self.highScoreNames = ["OKW", "KRW", "ON", "DL", "AAA"] 
+            self.high_scores = ['0', '0', '0', '0', '0']
+            self.high_score_names = ["OKW", "KRW", "ON", "DL", "AAA"] 
             fdata = open("RabbitHighScores", 'w')
             fdata.write("OKW 0\nKRW 0\nON 0\nDL 0\nAAA 0")
         else:
             fdata = open("RabbitHighScores")
             for line in fdata.readlines():
                 temp = line.split()
-                self.highScores.append(int(temp[1]))
-                self.highScoreNames.append(temp[0])
+                self.high_scores.append(int(temp[1]))
+                self.high_score_names.append(temp[0])
 
         #music
         pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
@@ -73,7 +73,7 @@ class Game:
         self.time_offset = 0.0
 
 
-    def Start(self):
+    def start(self):
         """ Starts the game """
         keep_going = True
         while keep_going:
@@ -88,24 +88,24 @@ class Game:
         """Updates the high scores"""
         def calculate_high_score():
             """Calculates the high scores"""
-            for i in range(len(self.highScores)-1):
-                if self.highScores[i] >= self.user.score and \
-		    self.user.score >= self.highScores[i+1]:
+            for i in range(len(self.high_scores)-1):
+                if self.high_scores[i] >= self.user.score and \
+		    self.user.score >= self.high_scores[i+1]:
                     return i
 
         index = calculate_high_score()
 
         if index == None:
-            if self.highScores[0] <= self.user.score:
-                self.highScores.insert(0, self.user.score)
-                self.highScoreNames.insert(0, self.winner_name)
-            del self.highScores[5]
-            del self.highScoreNames[5]
+            if self.high_scores[0] <= self.user.score:
+                self.high_scores.insert(0, self.user.score)
+                self.high_score_names.insert(0, self.winner_name)
+            del self.high_scores[5]
+            del self.high_score_names[5]
         else:
-            self.highScores.insert(index+1, self.user.score)
-            self.highScoreNames.insert(index+1, self.winner_name)
-            del self.highScores[5]
-            del self.highScoreNames[5]
+            self.high_scores.insert(index+1, self.user.score)
+            self.high_score_names.insert(index+1, self.winner_name)
+            del self.high_scores[5]
+            del self.high_score_names[5]
 
 
     def set_state_time(self):
@@ -120,4 +120,4 @@ class Game:
 ## Run the demo.
 pygame.init()
 GAME = Game()
-GAME.Start()
+GAME.start()
