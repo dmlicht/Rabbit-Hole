@@ -1,14 +1,12 @@
+"""
+State class
+"""
 from __future__ import division
-import pygame, rabbyt, sys
-from pygame.locals import *
-
-import os, random
-import settings
-import player, enemy, bullet, chronos
-from settings import Font, FontSprite
 
 class State:
+    """State class"""
     def __init__(self):
         pass
-    def run():
+    def run(self):
+        """Allows state to run"""
         pass

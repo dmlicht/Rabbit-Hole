@@ -1,0 +1,104 @@
+************* Module player
+C: 51,0: Line too long (114/80)
+C: 52,0: Line too long (127/80)
+C: 53,0: Line too long (105/80)
+C: 72,0: Line too long (85/80)
+W: 83,0: Found indentation with tabs instead of spaces
+W:124,0: Unnecessary semicolon
+C:  1,0: Missing docstring
+R: 26,0:Ship: Too many ancestors (8/7)
+R: 26,0:Ship: Too many instance attributes (25/7)
+C: 71,8:Ship.update: Invalid name "y" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 70,8:Ship.update: Invalid name "x" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 26,0:Ship: Missing docstring
+C: 51,8:Ship.__init__: Comma not followed by a space
+        self.tex_shapes = (((0.0,0.796875), (0.3177083432674408,0.796875), (0.3177083432674408,0.0), (0.0,0.0)), \                                ^^        ((0.3177083432674408,0.796875), (0.63541668653488159,0.796875), (0.63541668653488159,0.0), (0.3177083432674408,0.0)), \        ((0.63541668653488159,0.796875), (0.953125,0.796875), (0.953125,0.0), (0.63541668653488159,0.0)))
+C: 61,4:Ship.update: Missing docstring
+C: 63,26:Ship.update: More than one statement on a single line
+E: 66,27:Ship.update: Instance of 'Ship' has no 'acceleration_x' member
+E: 67,27:Ship.update: Instance of 'Ship' has no 'acceleration_y' member
+C: 74,4:Ship.animate: Missing docstring
+C: 88,4:Ship.check_horizontal_bounds: Missing docstring
+C: 97,4:Ship.check_vertical_bounds: Missing docstring
+C:106,4:Ship.acceleration_boost: Missing docstring
+E:110,12:Ship.acceleration_boost: Instance of 'Ship' has no 'acceleration_x' member
+E:111,12:Ship.acceleration_boost: Instance of 'Ship' has no 'acceleration_y' member
+C:116,4:Ship.attemptfire: Missing docstring
+C:122,4:Ship.fire: Missing docstring
+W:  5,0: Unused import random
+W:  4,0: Unused import cos
+W:  7,0: Unused import settings
+W:  4,0: Unused import radians
+W:  6,0: Unused import os
+W:  4,0: Unused import sin
+
+Report======95 statements analysed.Messages by category--------------------
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |17     |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |2      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |8      |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |4      |NC       |NC         |
++-----------+-------+---------+-----------+
+Messages--------
++-----------+------------+
+|message id |occurrences |
++===========+============+
+|C0111      |9           |
++-----------+------------+
+|W0611      |6           |
++-----------+------------+
+|E1101      |4           |
++-----------+------------+
+|C0301      |4           |
++-----------+------------+
+|C0103      |2           |
++-----------+------------+
+|W0312      |1           |
++-----------+------------+
+|W0301      |1           |
++-----------+------------+
+|R0902      |1           |
++-----------+------------+
+|R0901      |1           |
++-----------+------------+
+|C0324      |1           |
++-----------+------------+
+|C0321      |1           |
++-----------+------------+
+Global evaluation-----------------Your code has been rated at 5.05/10Statistics by type------------------
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |9      |NC         |NC         |22.22       |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+Raw metrics-----------
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |98     |92.45 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |0      |0.00  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |5      |4.72  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |3      |2.83  |NC       |NC         |
++----------+-------+------+---------+-----------+
+Duplication-----------
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+

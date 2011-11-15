@@ -5,7 +5,8 @@ from pygame.locals import *
 import os, random, copy
 import tiles, layout
 import settings
-import player, enemy, bullet, chronos, bar
+
+import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, healthbar
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
 import state, states.menu, states.highscore
@@ -57,7 +58,7 @@ class Level():
         self.text_chronos.xy    = (200, -260)
 
         #health bar
-        self.bar                = bar.Bar()
+        self.healthbar                = healthbar.HealthBar()
     
     def run(self, game, state_stack):
         rabbyt.set_time(self.game.get_ticks()/1000.0)
@@ -174,7 +175,7 @@ class Level():
             self.text_health.render()
             self.text_chronos.render()
 
-            self.bar.render()
+            self.healthbar.render()
 
     def remove_offmap(self, objects_to_check):
         for current in objects_to_check:
@@ -194,7 +195,7 @@ class Level():
             collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set1, set2)
             if collision_occured: 
                 set1.hit()
-		self.bar.hit()    
+		self.healthbar.hit()    
 
         elif set_one_is_list:
             collision_occured = self.check_collisions_using(rabbyt.collisions.collide_single, set2, set1)

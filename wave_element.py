@@ -1,13 +1,12 @@
+"""
+Wave Element class
+"""
+
 ## beginning of import
 from __future__ import division
-import pygame, rabbyt, sys
-from math import cos, sin, radians, sqrt
-import random
-import os.path
-import settings
-import game_object
 
 class WaveElement():
+    """Wave Element class"""
     def __init__(self, enemy_type, startx, starty, patternx, patterny):
         self.enemy_type = enemy_type
         self.startx = startx
