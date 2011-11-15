@@ -113,6 +113,12 @@ class Game:
             del self.highScores[5]
             del self.highScoreNames[5]
 
+    def set_state_time(self):
+        self.time_offset = pygame.time.get_ticks()
+
+    def get_ticks(self):
+        return pygame.time.get_ticks() - self.time_offset
+
 ## Run the demo.
 pygame.init()
 g = Game()

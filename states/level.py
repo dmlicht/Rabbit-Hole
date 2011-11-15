@@ -57,12 +57,11 @@ class Level():
 
         #health bar
         self.bar                = bar.Bar()
-
-        self.back_time          = 0
     
     def run(self, game, state_stack):
         self.done = False
         self.game = game
+        self.game.set_state_time()
 
         while not self.done:
             self.continue_level()
@@ -73,14 +72,14 @@ class Level():
                 self.failure_end()
             
     def continue_level(self):
-            if pygame.time.get_ticks() - self.game.fps > 1000:
+            if self.game.get_ticks() - self.game.fps > 1000:
                 print "FPS: ", self.game.clock.get_fps()
-                self.game.fps = pygame.time.get_ticks()
+                self.game.fps = self.game.get_ticks()
 
             self.handle_user_events()
 
             #Timing
-            rabbyt.set_time(pygame.time.get_ticks()/1000.0 + self.back_time)
+            rabbyt.set_time(self.game.get_ticks()/1000.0)
             rabbyt.scheduler.pump()
             rabbyt.clear()
 

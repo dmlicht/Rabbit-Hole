@@ -12,6 +12,7 @@ import states.name
 #def CutScreen(game, state_stack):
 class Cut(state.State):
   def run(self, game, state_stack):
+    game.set_state_time()
     scene = rabbyt.Sprite("1cutscene.png")
     scene.scale = 0.95
     scene.y = -60
@@ -29,8 +30,8 @@ class Cut(state.State):
     game.done = False
     while not game.done:
         rabbyt.clear()
-        rabbyt.set_time(pygame.time.get_ticks()/1000.0)
-        ticks = pygame.time.get_ticks()/1000.0
+        rabbyt.set_time(game.get_ticks()/1000.0)
+        ticks = game.get_ticks()/1000.0
         if ticks < 6:
             scene.render()
         if ticks >= 6:

@@ -225,3 +225,19 @@ Dragon      0    	350    do_nothing  straight_down7
 Dragon      100    	350    do_nothing  straight_down8 
 Dragon      200    	350    do_nothing  straight_down9 
 $end
+
+38
+Dragon      -200    350    do_nothing  straight_down9
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down7 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down9 
+$end
+
+39
+Dragon      -200    350    do_nothing  straight_down9
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down7 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down9 
+$end

@@ -43,7 +43,7 @@ class Name(state.State):
                     if(enter_name.text == ""):
                         game.winner_name = "Rabbit"
                     else:
-		        game.winner_name = enter_name.text
+                        game.winner_name = enter_name.text
                     game.done = True
                     state_stack.append(states.level.Level(self.game, "level1.txt", states.cuttwo.CutTwo()))
 

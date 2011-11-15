@@ -13,6 +13,7 @@ class CutTwo(state.State):
   def run(self, game, state_stack):
     clock = pygame.time.Clock()
     self.game = game
+    game.set_state_time()
     scene = rabbyt.Sprite("1space.png")
     scene.scale = 2.0
     scene.x = 400
@@ -34,9 +35,9 @@ class CutTwo(state.State):
     while not game.done:
         clock.tick(40)
         rabbyt.clear()
-	scene.render()
-        rabbyt.set_time(pygame.time.get_ticks()/1000.0)
-        ticks = pygame.time.get_ticks()/1000.0
+        scene.render()
+        rabbyt.set_time(game.get_ticks()/1000.0)
+        ticks = game.get_ticks()/1000.0
         if ticks >= 3:
            words.render()
            rabbit.render()

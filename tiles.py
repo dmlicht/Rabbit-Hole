@@ -31,7 +31,7 @@ class Background():
 
     def initialize(self):
         for i in range(int(self.number_of_rows_onscreen)):
-            row_y_position = (i * self.tile_height) + (self.tile_height / 2) - (self.screen_height / 2)
+            row_y_position = (i * self.tile_height) + (self.tile_height / 2) - (self.screen_height / 2) - 100
             print 'row ', i, 'y_pos: ', row_y_position
             self.tile_rows.append(self.build_independent_row(row_y_position, self.tile_layout.get_next_row()))
             self.ticks_during_last_add = pygame.time.get_ticks()
