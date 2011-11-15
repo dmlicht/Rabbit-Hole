@@ -1,12 +1,12 @@
+"""
+Bullet class
+"""
 ## beginning of import
 from __future__ import division
-import pygame, rabbyt, sys
+import rabbyt
 
 from math import cos, sin, radians
-import random
-import os.path
 import game_object
-import settings
 
 #rabbyt.data_directory = os.path.dirname(__file__)
 #rabbyt.set_default_attribs()
@@ -16,6 +16,7 @@ import settings
 #rabbyt.set_viewport((800,600))
 
 class Bullet(rabbyt.Sprite, game_object.GameObject): 
+    """Bullet class"""
     def __init__(self, start, angle, speed):
         rabbyt.Sprite.__init__(self, '1rock_bullet.png')
         game_object.GameObject.__init__(self)
@@ -32,10 +33,12 @@ class Bullet(rabbyt.Sprite, game_object.GameObject):
 
 
     def update(self): 
+        """update method"""
         self.x += cos(radians(self.rot+90))*self.speed
         self.y += sin(radians(self.rot+90))*self.speed
 
     def isOffMap(self):
+        """Checks bounds"""
         if self.x >= 500 or self.y >= 450 or self.x <= -500 or self.y <= -450:
             return True
         return False

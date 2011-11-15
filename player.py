@@ -1,9 +1,9 @@
+"""
+Player class
+"""
 ## Imports ##
 from __future__ import division
 import pygame, rabbyt
-from math import cos, sin, radians
-import random
-import os.path
 import settings
 import bullet
 import game_object
@@ -24,14 +24,15 @@ STARTING_HEALTH = 5
 
 
 class Ship(rabbyt.Sprite, game_object.GameObject):
+    """Ship Class"""
     def __init__(self, name, screen):
         game_object.GameObject.__init__(self)
         rabbyt.Sprite.__init__(self, name+'.png', (-244/6.0, 51, 244/6.0, -51))
         self.screen = screen
         self.time_last = pygame.time.get_ticks() 
 
-        self.accelerating_x = 0
-        self.accelerating_y = 0
+        self.acceleration_x = 0
+        self.acceleration_y = 0
         self.velocity_x = 0
         self.velocity_y = 0
         self.tilt = 0
@@ -48,9 +49,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.has_fired = False
 
         self.frame = 0
-        self.tex_shapes = (((0.0,0.796875), (0.3177083432674408,0.796875), (0.3177083432674408,0.0), (0.0,0.0)), \
-        ((0.3177083432674408,0.796875), (0.63541668653488159,0.796875), (0.63541668653488159,0.0), (0.3177083432674408,0.0)), \
-        ((0.63541668653488159,0.796875), (0.953125,0.796875), (0.953125,0.0), (0.63541668653488159,0.0)))
+        self.tex_shapes = settings.get_tex_shapes(self.tex_shape, int(name[:1]))
 
         #self.xy = (0,self.offsety*7)
         #self.velocity = [0,0]
@@ -59,8 +58,10 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.bounding_radius = 30
 
     def update(self):
+        """Update method"""
         #if setting_teleport_position: set_teleport_position()
-        if self.boosting: self.acceleration_boost()
+        if self.boosting: 
+            self.acceleration_boost()
         if self.boost_fuel < MAXIMUM_BOOST_FUEL:
             self.boost_fuel += BOOST_REGENERATION_RATE
         self.velocity_x += self.acceleration_x
@@ -69,10 +70,11 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.velocity_y *= .9
         self.x += self.velocity_x
         self.y += self.velocity_y
-        self.rot = rabbyt.lerp(self.rot, (self.tilt * TILT_MAGNITUDE), dt=TILT_SPEED)
+        self.rot = rabbyt.lerp(self.rot, (self.tilt * TILT_MAGNITUDE), \
+                               dt=TILT_SPEED)
 
     def animate(self):
-        #animation
+        """animates the ship"""
         now = pygame.time.get_ticks() 
         delta = now - self.time_last
         constant = 10
@@ -80,12 +82,13 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         if delta > constant: 
             if self.frame < len(self.tex_shapes) - 1: 
                 self.frame += 1 
-		self.tex_shape = self.tex_shapes[self.frame]
+                self.tex_shape = self.tex_shapes[self.frame]
             else:
                 self.frame = 0 
             self.time_last = now 
 
     def check_horizontal_bounds(self): 
+        """Locks ship in horizontal bounds of screen"""
         if self.x > self.screen.get_width()/2 + self.offsetx:
             self.x = self.screen.get_width()/2 + self.offsetx
             return True
@@ -95,6 +98,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         return False
 
     def check_vertical_bounds(self): 
+        """Locks ship in vertical bounds of screen"""
         if self.y > 300 + self.offsety - 15:
             self.y = 300 + self.offsety - 15
             return True
@@ -104,6 +108,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         return False
 
     def acceleration_boost(self):
+        """Boosts ship"""
         self.boosting = False
         if self.boost_fuel > BOOST_FUEL_COST:
             self.boost_fuel -= BOOST_FUEL_COST
@@ -111,15 +116,18 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
             self.acceleration_y *= BOOST_MAGNITUDE
 
     def render(self):
+        """Render method for rabbyt"""
         rabbyt.Sprite.render(self)
 
     def attemptfire(self):
+        """Able to fire? (can't hold down shots)"""
         if self.has_fired:
             return False
         else:
             return self.fire()
 
     def fire(self):
+        """Yay you can now fire"""
         new_bullet = bullet.Bullet(self.xy, self.rot, BULLET_VELOCITY)
-        self.has_fired = True;
+        self.has_fired = True
         return new_bullet

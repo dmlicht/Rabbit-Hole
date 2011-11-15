@@ -1,31 +1,32 @@
+"""
+Game State for Rabbit Hole
+"""
 from __future__ import division
-import pygame, rabbyt, sys
-from pygame.locals import *
-import states.menu, states.cut, states.name, states.highscore, states.play, states.title
+import pygame, rabbyt
+import states.menu, states.cut, states.name, states.highscore, states.play
 import user_data
-import os, random
-#rabbyt.data_directory = os.path.dirname(__file__)
-#os.environ["SDL_VIDEO_CENTERED"] = "1"
-import settings
-import player, enemy, bullet, chronos, Boss1
-from settings import Font, FontSprite
+import os
+from settings import Font
 import states.level1, states.level2, states.cuttwo
 
-if not pygame.mixer: print 'Warning, sound disabled'
+if not pygame.mixer: 
+    print 'Warning, sound disabled'
 
-SCREEN_SIZE = (800,600)
+SCREEN_SIZE = (800, 600)
 STARTING_SCREEN = "Menu Screen"
 
 class Game:
+    """ Game class acts as motherboard for game """
     def __init__(self):
-        self.screen = pygame.display.set_mode(SCREEN_SIZE, pygame.OPENGLBLIT | pygame.DOUBLEBUF)
+        self.screen = pygame.display.set_mode(SCREEN_SIZE, \
+		              pygame.OPENGLBLIT | pygame.DOUBLEBUF)
         rabbyt.set_viewport(SCREEN_SIZE)
         rabbyt.set_default_attribs()
 
         #self.game_state = [STARTING_SCREEN] ## A stack of game screens.
 
         self.temp_score = 0
-        self.font = pygame.font.Font(None,24)
+        self.font = pygame.font.Font(None, 24)
         self.clock = pygame.time.Clock()
         self.fps = 0
         self.previous_tick_count = pygame.time.get_ticks()
@@ -43,9 +44,9 @@ class Game:
 
         self.user = user_data.User()
 
-	if not os.path.isfile("RabbitHighScores"):
-            self.highScores = ['0','0','0','0','0']
-            self.highScoreNames = ["OKW","KRW", "ON", "DL", "AAA"] 
+        if not os.path.isfile("RabbitHighScores"):
+            self.highScores = ['0', '0', '0', '0', '0']
+            self.highScoreNames = ["OKW", "KRW", "ON", "DL", "AAA"] 
             fdata = open("RabbitHighScores", 'w')
             fdata.write("OKW 0\nKRW 0\nON 0\nDL 0\nAAA 0")
         else:
@@ -69,7 +70,12 @@ class Game:
         self.done = False
         self.game_states.append(states.menu.Menu())
 
-    def Go(self):
+        #time
+        self.time_offset = 0.0
+
+
+    def Start(self):
+        """ Starts the game """
         keep_going = True
         while keep_going:
             if not self.game_states:
@@ -79,47 +85,39 @@ class Game:
             next_state = self.game_states.pop()
             next_state.run(self, self.game_states)
 
-    def animate(self, sprite, frames):
-        #animation
-        current_tick_count = pygame.time.get_ticks() 
-        clock_ticks_since_check = current_tick_count - self.previous_tick_count
-        constant = 150
-
-        if clock_ticks_since_last_check > constant: 
-            if self.frame < len(frames) - 1: 
-                self.frame += 1 
-                sprite.tex_shape = frames[self.frame]
-            else:
-                self.frame = 0 
-            self.previous_tick_count = now 
-
     def update_scores(self):
+        """Updates the high scores"""
         def calculate_high_score():
+            """Calculates the high scores"""
             for i in range(len(self.highScores)-1):
-                if self.highScores[i] >= self.score and self.score >= self.highScores[i+1]:
+                if self.highScores[i] >= self.user.score and \
+		    self.user.score >= self.highScores[i+1]:
                     return i
 
         index = calculate_high_score()
 
         if index == None:
-            if self.highScores[0] <= self.score:
-                self.highScores.insert(0, self.score)
+            if self.highScores[0] <= self.user.score:
+                self.highScores.insert(0, self.user.score)
                 self.highScoreNames.insert(0, self.winner_name)
-	        del self.highScores[5]
-	        del self.highScoreNames[5]
+            del self.highScores[5]
+            del self.highScoreNames[5]
         else:
-            self.highScores.insert(index+1, self.score)
+            self.highScores.insert(index+1, self.user.score)
             self.highScoreNames.insert(index+1, self.winner_name)
             del self.highScores[5]
             del self.highScoreNames[5]
 
+
     def set_state_time(self):
+        """Resets the time"""
         self.time_offset = pygame.time.get_ticks()
 
     def get_ticks(self):
+        """Reimplementation of pygame.time.get_ticks()"""
         return pygame.time.get_ticks() - self.time_offset
 
 ## Run the demo.
 pygame.init()
-g = Game()
-g.Go()
+GAME = Game()
+GAME.Start()
