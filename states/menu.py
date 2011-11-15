@@ -24,6 +24,7 @@ class Menu(state.State):
         self.game = game
         self.state_stack = state_stack
 
+        self.game.user.score = 0
         text_start = FontSprite(game.font, "Start Game")
         text_sound = FontSprite(game.font, "Adjust Sound")
         text_brightness = FontSprite(game.font, "Adjust Brightness")
