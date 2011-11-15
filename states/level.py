@@ -5,7 +5,7 @@ from pygame.locals import *
 import os, random, copy
 import tiles, layout
 import settings
-import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, bar
+import player, enemy, bullet, chronos, bar
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
 import state, states.menu, states.highscore
@@ -24,7 +24,8 @@ class Level():
         self.wave_builder.parse_level_file()
         self.set_scheduler_waves()
 
-        self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, self.wave_builder.layout_file_path)
+        game.set_state_time()
+        self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, self.wave_builder.layout_file_path, game)
         self.background.initialize()
 
         self.state_stack = game.game_states
@@ -57,12 +58,12 @@ class Level():
 
         #health bar
         self.bar                = bar.Bar()
-
-        self.back_time          = 0
     
     def run(self, game, state_stack):
+        rabbyt.set_time(self.game.get_ticks()/1000.0)
         self.done = False
         self.game = game
+        #rabbyt.scheduler.add((game.get_ticks() + self.background.row_update_time)/1000, self.update_tiles_loop)
 
         while not self.done:
             self.continue_level()
@@ -73,14 +74,14 @@ class Level():
                 self.failure_end()
             
     def continue_level(self):
-            if pygame.time.get_ticks() - self.game.fps > 1000:
+            if self.game.get_ticks() - self.game.fps > 1000:
                 print "FPS: ", self.game.clock.get_fps()
-                self.game.fps = pygame.time.get_ticks()
+                self.game.fps = self.game.get_ticks()
 
             self.handle_user_events()
 
             #Timing
-            rabbyt.set_time(pygame.time.get_ticks()/1000.0 + self.back_time)
+            rabbyt.set_time(self.game.get_ticks()/1000.0)
             rabbyt.scheduler.pump()
             rabbyt.clear()
 
@@ -261,3 +262,10 @@ class Level():
         self.game.update_scores()
         self.state_stack.append(states.highscore.High())
         self.done = True
+
+    """
+    def update_tiles_loop(self):
+        print 'called update_tiles_loop'
+        self.background.maintain_tile_rows()
+        rabbyt.scheduler.add((self.game.get_ticks() + self.background.row_update_time)/1000.0, self.update_tiles_loop)
+    """

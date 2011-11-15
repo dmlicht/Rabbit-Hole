@@ -4,7 +4,7 @@ from pygame.locals import *
 import os
 import tiles, layout
 import settings
-import player, enemy, Boss1, Boss0, BossHands
+import player, enemy
 import wave, wave_element, movement_pattern
 
 SCREEN_HEIGHT = 600
