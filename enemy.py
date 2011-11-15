@@ -106,7 +106,7 @@ class Boss1(Enemy):
         Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
 
         #data individual to an enemy
-        self.bounding_radius = 30
+        self.bounding_radius = 80
         self.health = 50
         self.damage = 1
         self.point_value = 5000
@@ -118,7 +118,7 @@ class BossHands(Enemy):
 
         #data individual to an enemy
         self.bounding_radius = 30
-        self.health = 100
+        self.health = 10
         self.damage = 1
         self.point_value = 5000
 
@@ -128,8 +128,8 @@ class Boss2(Enemy):
         Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
 
         #data individual to an enemy
-        self.bounding_radius = 30
-        self.health = 50
+        self.bounding_radius = 75
+        self.health = 75
         self.damage = 1
         self.point_value = 5000
         

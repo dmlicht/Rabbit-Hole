@@ -225,3 +225,9 @@ Dragon      0    	350    do_nothing  straight_down7
 Dragon      100    	350    do_nothing  straight_down8 
 Dragon      200    	350    do_nothing  straight_down9 
 $end
+
+38
+BossHands      -100   	350     movpatternx2     movpatterny2
+Boss1           0    	350     movpatternx2     movpatterny2
+BossHands      100    	350     movpatternx2     movpatterny2
+$end
