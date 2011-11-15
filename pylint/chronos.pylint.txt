@@ -1,0 +1,88 @@
+************* Module chronos
+W: 20,0: Bad indentation. Found 3 spaces, expected 4
+W: 21,0: Bad indentation. Found 6 spaces, expected 8
+W: 23,0: Bad indentation. Found 6 spaces, expected 8
+W: 24,0: Bad indentation. Found 6 spaces, expected 8
+W: 25,0: Bad indentation. Found 6 spaces, expected 8
+W: 27,0: Bad indentation. Found 6 spaces, expected 8
+W: 28,0: Bad indentation. Found 6 spaces, expected 8
+W: 30,0: Bad indentation. Found 3 spaces, expected 4
+W: 31,0: Bad indentation. Found 7 spaces, expected 8
+W: 32,0: Bad indentation. Found 7 spaces, expected 8
+W: 34,0: Bad indentation. Found 3 spaces, expected 4
+W: 35,0: Bad indentation. Found 7 spaces, expected 8
+W: 36,0: Bad indentation. Found 11 spaces, expected 12
+W: 37,0: Bad indentation. Found 7 spaces, expected 8
+C:  1,0: Missing docstring
+C: 24,6:Spark.__init__: Invalid name "xy" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 31,7:Spark.update: Invalid name "y" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 18,0:Spark: Missing docstring
+C: 20,3:Spark.__init__: Invalid name "xy" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 20,30:Spark.__init__: Invalid name "xy" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 30,3:Spark.update: Missing docstring
+C: 34,3:Spark.checkBounds: Invalid name "checkBounds" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 34,3:Spark.checkBounds: Missing docstring
+W:  5,0: Unused import cos
+W:  9,0: Unused import settings
+W:  6,0: Unused import random
+W:  5,0: Unused import radians
+W:  3,0: Unused import sys
+W:  7,0: Unused import os
+W:  5,0: Unused import sin
+
+Report======22 statements analysed.Messages by category--------------------
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |9      |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |21     |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+Messages--------
++-----------+------------+
+|message id |occurrences |
++===========+============+
+|W0311      |14          |
++-----------+------------+
+|W0611      |7           |
++-----------+------------+
+|C0103      |5           |
++-----------+------------+
+|C0111      |4           |
++-----------+------------+
+Global evaluation-----------------Your code has been rated at -3.64/10Statistics by type------------------
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |3      |NC         |NC         |33.33       |33.33    |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+Raw metrics-----------
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |22     |73.33 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |0      |0.00  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |5      |16.67 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |3      |10.00 |NC       |NC         |
++----------+-------+------+---------+-----------+
+Duplication-----------
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
