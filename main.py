@@ -115,6 +115,7 @@ class Game:
 
     def set_state_time(self):
         self.time_offset = pygame.time.get_ticks()
+        print "new time_offset: ", self.time_offset
 
     def get_ticks(self):
         return pygame.time.get_ticks() - self.time_offset

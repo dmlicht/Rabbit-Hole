@@ -10,7 +10,7 @@ import layout
 SECOND_TO_TICK_CONVERSION = 1000
 
 class Background():
-    def __init__(self, screen_width, screen_height, layout_file_name):
+    def __init__(self, screen_width, screen_height, layout_file_name, game):
 
         self.tile_rows                  = []
         self.tile_layout                = layout.Layout(layout_file_name)
@@ -29,12 +29,14 @@ class Background():
         self.ticks_during_last_add      = 0
         self.sample_tile_names          = ["1dirt_patch_tile1.png", "1dirt_patch_tile2.png", "1dirt_patch_tile3.png", "1dirt_patch_tile4.png"]
 
+        self.game                       = game
+
     def initialize(self):
         for i in range(int(self.number_of_rows_onscreen)):
             row_y_position = (i * self.tile_height) + (self.tile_height / 2) - (self.screen_height / 2) - 100
             print 'row ', i, 'y_pos: ', row_y_position
             self.tile_rows.append(self.build_independent_row(row_y_position, self.tile_layout.get_next_row()))
-            self.ticks_during_last_add = pygame.time.get_ticks()
+            self.ticks_during_last_add = self.game.get_ticks()
 
     def build_independent_row(self, y_start_position, row_layout=[]):
         current_row = []
@@ -50,7 +52,8 @@ class Background():
             new_tile = rabbyt.Sprite(row_layout[i])
             new_tile.x = leftmost_tile_x_position + (self.tile_width * i)
             if i == 0:
-                new_tile.y = rabbyt.lerp(y_start_position, (y_start_position - maximum_y_travel_distance), dt=self.background_scroll_time, extend="extrapolate")
+                new_tile.y = self.set_motion(y_start_position)
+                #new_tile.y = rabbyt.lerp(y_start_position, (y_start_position - maximum_y_travel_distance), dt=self.background_scroll_time, extend="extrapolate")
             else:
                 new_tile.y = current_row[0].attrgetter('y')
             current_row.append(new_tile)
@@ -58,7 +61,7 @@ class Background():
 
     def maintain_tile_rows(self):
         #row_y_position = (-1 * i * self.tile_height) + (self.tile_height / 2) + (self.screen_height / 2)
-        current_time = pygame.time.get_ticks()
+        current_time = self.game.get_ticks()
         if ((current_time - self.ticks_during_last_add) > self.row_update_time):
             highest_current_row = self.tile_rows[-1]
             highest_y_tile_position = highest_current_row[0].convert_offset((0, 0))[1]
@@ -70,3 +73,6 @@ class Background():
     def render(self):
         for row in self.tile_rows:
             rabbyt.render_unsorted(row)
+
+    def set_motion(self, y_start_position):
+        return rabbyt.lerp(y_start_position, (y_start_position - self.screen_height - self.tile_height), dt = self.background_scroll_time, extend="extrapolate")
