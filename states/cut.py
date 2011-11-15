@@ -2,7 +2,8 @@
 The First Cutscene
 """
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 from pygame.locals import QUIT, KEYDOWN, K_RETURN, K_ESCAPE
 
 from settings import FontSprite
@@ -48,8 +49,8 @@ class Cut(state.State):
                     game.done = True
                     fdata = open("RabbitHighScores", 'w')
                     for i in range(5):
-                        fdata.write(game.highScoreNames[i] + " " \
-                                    + str(game.highScores[i]) + "\n")
+                        fdata.write(game.high_score_names[i] + " " \
+                                    + str(game.high_scores[i]) + "\n")
                 if event.type == KEYDOWN:
                     if event.key == K_ESCAPE or event.key == K_RETURN:
                         game.done = True

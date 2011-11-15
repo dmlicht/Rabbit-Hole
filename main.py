@@ -2,8 +2,14 @@
 Game State for Rabbit Hole
 """
 from __future__ import division
-import pygame, rabbyt
-import states.menu, states.cut, states.name, states.highscore
+import pygame
+import rabbyt
+
+import states.menu
+import states.cut
+import states.name
+import states.highscore
+
 import user_data
 import os
 from settings import Font
@@ -54,7 +60,6 @@ class Game:
                 temp = line.split()
                 self.high_scores.append(int(temp[1]))
                 self.high_score_names.append(temp[0])
-
         #music
         pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
         #self.crash = pygame.mixer.Sound('Crash1.wav')
@@ -62,8 +67,8 @@ class Game:
         self.lose_sound = pygame.mixer.Sound('losing16bit.wav')
         self.gem_pickup_sound = pygame.mixer.Sound('gem.wav')
 
-        #pygame.mixer.music.load('game-motif-sad.mp3')
-        #pygame.mixer.music.play(-1, 0.0)
+        pygame.mixer.music.load('game-motif-sad.mp3')
+        pygame.mixer.music.play(-1, 0.0)
 
         self.game_states = []
         self.done = False

@@ -1,6 +1,6 @@
-Assignment 6 - First Level
+Assignment 8 - Polishing Up
 Rabbit Hole Studios - Katherine Wu, David Lichtenberg, Olivia Novik, Owen Whitmore
-Date: 10/20/2011
+Date: 11/14/2011
 
 ===========
 How to Play
@@ -8,6 +8,42 @@ How to Play
 
 Run: python main.py
 (Dependencies: rabbyt)
+
+Hacks:
+Press 'n' to skip to the second level
+Press 'ESC' to quit out of certain scenes
+
+========================================
+10 Things to Fix (and how we fixed them)
+========================================
+
+1: Each new level had to be hard-coded. We fixed this by creating classes that create waves of enemies by reading a text file (Most of our work went into this one and the seventh one). The text file specifies a time and a number of enemies, along with their movement patterns and their starting position. It then adds the time and the enemies to a scheduler, which spawns the enemies at the given time.
+2: Two of the songs were pretty short, so David made them longer.
+3. We wanted to have more visuals with the UI. We improved the hud by changing the health from just a number to a visible bar on screen.
+4. We were having problems where sprites would spawn at the incorrect time because the timing was off. We fixed this by resetting the time whenever we moved to a new screen.
+5. When we switched to the new wave loading system, our scoring system no longer worked. We re-formulated the scoring based on the new wave loading system and changed it so that you don’t get points for letting enemies go by.
+6. We were lacking a fair bit of art. We hope that it was okay that we consulted outside sources for a few pieces of included art - one of which we included to test our new enemy system. It is working really well, and it's very simple to switch between enemies (only need to change self.shape to fit the size of the images). You can look at it in enemy.py.
+7. Our code was pretty convoluted and complex. We fixed this by deleting excess code and splitting the more convoluted sections into separate, simpler classes.
+8. Our enemy attack patterns weren’t very varied, so we improved some of the patterns and varied them (usually by using speed) to make the game somewhat more interesting.
+9. Our first boss was pretty hard to beat, so we changed it’s behavior (admittedly, we had to change it anyway, but it solved the problem). We do still have plans to make it more difficult (because now it’s much too easy), but we haven’t made those changes yet.
+10. Our enemies all had one health and weren’t very difficult to beat, so we modified them so that each enemy can have a different amount of health, however, the spawn system made it so that having more health would make the levels very difficult, so we haven’t used that ability to its fullest yet.
+
+======
+PyLint
+======
+
+Most of the errors we received that we didn't fix were due to variable names (isOffMap was bad apparently :/). Additionally, since we were still testing the way modules were working together, we had some files that did not have much code in them, as well as methods and classes that accepted 'too many' parameters; all of which pylint did not like.
+Another error was commented out code, since pylint did not see any use for our hanging strings in the code.
+Other than that, we tried our best to conform to pylint's standards: removing 'from pygame.locals *' and replacing and adding the 'pygame.' suffix to all of its imports, creating new variable names to conform to its naming rules, ending lines when they were too long, and cutting variable names to help with the length of lines.
+
+You can find our *hard work* in the pylint directory, which contains the before and after pylint output of the modules.
+
+================================
+Summary of Improvement of Assets
+================================
+
+Perhaps our toughest challenge was to create a sustaining system for multiple levels to come. This included flexibility for new enemies, movement patterns, background patterns, and level length. We were successful in created the scripts level.py among other modules to create a central system for our game. The time spent to tidy up these pieces of code were tedious and experimental, but well worth it in the end. Beyond that, because we have a more concrete framework to build upon, we can better work on our time traveling function in the next assignment, develop a solid story line for our game, and better make use of our time planning our game as opposed to exponentially increasing the number of files we have through coding.
+Other asset improvements include a health bar, enemy movements, enemy and tiling patterns, correct tiling system, and correct timing for cut scenes.
 
 ================
 Purpose of Files
@@ -22,12 +58,20 @@ gem.wav - cute sound when picking up energy
 
 Pictures
 --------
-1deep-space.pngg - (temporary) background of game
+1space.png - next screen background
+1dirt_patch_tile#.png - dirt tile
+1grasstile2.png - grass tile
+1lava.png - lava tile
 7dragon.png - spritesheet of enemy
 1DragonBoss.png - omg boss
 1energy.png - Chronal Energy Spark
 1rock_bullet.png - bullet
 3ship1.png - ship
+
+-new enemies-
+5dino.png - cute dinosaur enemy (but beware, 3 health!)
+3ww2.png - WWII airplane
+2boss3.png - level III boss
 
 - Screens -
    1bunny3.png - highscore image
@@ -44,13 +88,20 @@ chronos.py - chronal energy spark module
 Boss1.py - boss moduleyer animation :) just need the graphics!)
 main.py - the game with the different states: menu, title, game
 settings.py - custom additions to rabbyt
+layout.py - interprets text files to build layouts
+tiles.py - makes scrolling background tile layouts
+level.py - base class for creating levels
 
+movement_pattern.py - movement patterns for enemies
+
+wave.py
+wave_element.py
+wave_handler.py -- handles the waves of enemies
+
+healthbar.py - a simple health bar for the game
+
+game_object.py - categorizes objects of the game
 
 Miscellaneous Files
 -------------------
 RabbitHighScores - high score file
-
-===========
-Unowned Art
-===========
-1deep-space.png - (temporary) background of game (Source: http://www.wallconvert.com/converted/deep-space-104163.html)

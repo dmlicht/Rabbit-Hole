@@ -2,7 +2,8 @@
 Handles customization of the Sprites
 """
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 from rabbyt._rabbyt import load_texture
 
 import os.path

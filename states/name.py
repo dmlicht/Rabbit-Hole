@@ -2,10 +2,12 @@
 Name State
 """
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 
 from settings import FontSprite
-import state, states.menu
+import state
+import states.menu
 
 class Name(state.State):
     """Name State"""
@@ -31,8 +33,8 @@ class Name(state.State):
                     self.game.done = True
                     fdata = open("RabbitHighScores", 'w')
                     for i in range(5):
-                        fdata.write(self.game.highScoreNames[i] + " " + \
-                        str(self.game.highScores[i]) + "\n")
+                        fdata.write(self.game.high_score_names[i] + " " + \
+                        str(self.game.high_scores[i]) + "\n")
 
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:

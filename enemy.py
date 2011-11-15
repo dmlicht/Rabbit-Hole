@@ -3,7 +3,8 @@ Define ALL the enemies!
 """
 ## beginning of import
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 import settings
 import game_object
 
@@ -15,6 +16,9 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
         game_object.GameObject.__init__(self)
         self.screen = screen
         self.frame = 0
+
+        if image_file == "5dino.png":
+            self.shape = (-29.7, 26.5, 29.7, -26.5) 
 
         self.enemy_tex = settings.get_tex_shapes(self.tex_shape, \
                                                  int(image_file[:1]))
@@ -105,7 +109,7 @@ class Boss1(Enemy):
 
         #data individual to an enemy
         self.bounding_radius = 80
-        self.health = 50
+        self.health = 25
         self.damage = 1
         self.point_value = 5000
 
@@ -129,7 +133,7 @@ class Boss2(Enemy):
 
         #data individual to an enemy
         self.bounding_radius = 75
-        self.health = 75
+        self.health = 30
         self.damage = 1
         self.point_value = 5000
         

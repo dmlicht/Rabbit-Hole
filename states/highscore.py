@@ -2,9 +2,11 @@
 High scores
 """
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 
-import state, states.menu
+import state
+import states.menu
 from settings import Font, FontSprite
 
 class High(state.State):
@@ -16,8 +18,8 @@ class High(state.State):
         score_list = []
 
         for i in range(5):
-            temp = FontSprite(font, str(game.highScoreNames[i]))
-            temp2 = FontSprite(font, str(game.highScores[i]))
+            temp = FontSprite(font, str(game.high_score_names[i]))
+            temp2 = FontSprite(font, str(game.high_scores[i]))
             temp.rgb = (255, 255, 255)
             temp2.rgb = (255, 255, 255)
             temp.xy = (-220, 87 - 55*i)
@@ -39,8 +41,8 @@ class High(state.State):
                     game.done = True
                     fdata = open("RabbitHighScores", 'w')
                     for i in range(5):
-                        fdata.write(game.highScoreNames[i] + " " + \
-                        str(game.highScores[i]) + "\n")
+                        fdata.write(game.high_score_names[i] + " " + \
+                        str(game.high_scores[i]) + "\n")
 
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE or event.key == \

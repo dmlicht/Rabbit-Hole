@@ -3,12 +3,19 @@ Handles ALL the levels
 """
 
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 import tiles
-import player, healthbar
+import player
+import healthbar
+import chronos
 import wave_handler
 from settings import FontSprite
-import states.menu, states.highscore
+import states.menu
+import states.highscore
+
+import random
+
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
 
@@ -27,7 +34,6 @@ class Level():
         game.set_state_time()
         self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, \
                           self.wave_builder.layout_file_path, game)
-        self.background.initialize()
 
         self.state_stack = game.game_states
         self.game = game
@@ -42,6 +48,7 @@ class Level():
         self.f_xy               = []   
         self.bullets            = []
         self.enemies            = []
+        self.sparks             = []
 
         #set UI
         self.text_score         = FontSprite(game.font, "Score: " + \
@@ -75,6 +82,8 @@ class Level():
         #rabbyt.scheduler.add((game.get_ticks() + \ 
         #self.background.row_update_time)/1000, self.update_tiles_loop)
 
+        self.background.initialize()
+
         while not self.done:
             self.continue_level()
             all_enemies_defeated = (self.wave_builder.all_waves_called() and \
@@ -102,6 +111,15 @@ class Level():
         self.update_game_objects()
         self.handle_collisions_between(self.ship, self.enemies)
         self.handle_collisions_between(self.bullets, self.enemies)
+
+        gems = rabbyt.collisions.collide_single(self.ship, self.sparks)
+        for gem in gems:
+            if gem in self.sparks:
+                self.sparks.remove(gem)
+                self.energy += 100
+                self.game.gem_pickup_sound.play()
+                self.text_chronos.text = "Chronos: " + str(self.energy)
+
         #Render
         self.render_game_objects()
 
@@ -116,12 +134,15 @@ class Level():
                 self.done = True
                 fdata = open("RabbitHighScores", 'w')
                 for i in range(5):
-                    fdata.write(self.game.highScoreNames[i] + " " + \
-                                str(self.game.highScores[i]) + "\n")
+                    fdata.write(self.game.high_score_names[i] + " " + \
+                                str(self.game.high_scores[i]) + "\n")
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.done = True
                     self.state_stack.append(states.menu.Menu())
+                elif event.key == pygame.K_n:
+                    self.done = True
+                    self.state_stack.append(self.state_after)
             elif event.type == pygame.KEYUP and event.key == pygame.K_SPACE:
                 self.ship.has_fired = False    
         pressed = pygame.key.get_pressed()
@@ -170,6 +191,9 @@ class Level():
         self.ship.update()
         self.remove_offmap(self.bullets)
 
+        for gem in self.sparks:
+            gem.update()
+
         for enemy in self.enemies:
             enemy.animate()
             """if enemy.checkBounds():
@@ -184,6 +208,7 @@ class Level():
 
         rabbyt.render_unsorted(self.bullets)
         rabbyt.render_unsorted(self.enemies)
+        rabbyt.render_unsorted(self.sparks)
 
         self.text_score.render()
         self.text_boost.render()
@@ -245,6 +270,13 @@ class Level():
                         set1.remove(objects_that_were_hit[0])
 
                 objects_that_were_hit[1].hit()
+                xy = objects_that_were_hit[1].xy
+
+                ran = random.randint(0, 5)
+                if ran == 0:
+                    bob = chronos.Spark(self.game.screen, xy)
+                    self.sparks.append(bob)
+
                 #to add damage uncomment line below and comment out line above
                 #objects_that_were_hit[1].hit(objects_that_were_hit[0].damage)
                 if objects_that_were_hit[1].health <= 0:

@@ -2,7 +2,8 @@
 The Title Screen
 """
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 from pygame.locals import QUIT, KEYDOWN, K_SPACE, K_ESCAPE
 
 def TitleScreen(self, state_stack):

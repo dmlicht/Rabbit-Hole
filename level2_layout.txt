@@ -5,9 +5,9 @@ SCROLL_TIME     4
 $end
 
 tiles:
-R               1red_placeholder_tile.png
-G               1blue_placeholder_tile.png
-B               1purple_placeholder_tile.png
+R               1lava.png
+G               1concrete.png
+B               1stone.png
 $end
 
 layout:

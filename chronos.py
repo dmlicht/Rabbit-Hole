@@ -3,7 +3,8 @@ Chronos energy
 """
 ## beginning of import
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 
 class Spark(rabbyt.Sprite):
     """Chronos Energy"""

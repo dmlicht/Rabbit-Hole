@@ -4,7 +4,9 @@ Handles the waves of enemies
 
 import enemy
 import os
-import wave, wave_element, movement_pattern
+import wave
+import wave_element
+import movement_pattern
 
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 800

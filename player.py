@@ -3,7 +3,8 @@ Player class
 """
 ## Imports ##
 from __future__ import division
-import pygame, rabbyt
+import pygame
+import rabbyt
 import settings
 import bullet
 import game_object
