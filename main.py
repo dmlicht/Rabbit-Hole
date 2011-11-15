@@ -8,7 +8,6 @@ import user_data
 import os
 from settings import Font
 import states.level1, states.level2, states.cuttwo
-
 if not pygame.mixer: 
     print 'Warning, sound disabled'
 
@@ -112,6 +111,7 @@ class Game:
     def set_state_time(self):
         """Resets the time"""
         self.time_offset = pygame.time.get_ticks()
+        print "new time_offset: ", self.time_offset
 
     def get_ticks(self):
         """Reimplementation of pygame.time.get_ticks()"""

@@ -5,6 +5,7 @@ from pygame.locals import *
 import os, random, copy
 import tiles, layout
 import settings
+
 import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, healthbar
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
@@ -24,7 +25,8 @@ class Level():
         self.wave_builder.parse_level_file()
         self.set_scheduler_waves()
 
-        self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, self.wave_builder.layout_file_path)
+        game.set_state_time()
+        self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, self.wave_builder.layout_file_path, game)
         self.background.initialize()
 
         self.state_stack = game.game_states
@@ -59,9 +61,10 @@ class Level():
         self.healthbar                = healthbar.HealthBar()
     
     def run(self, game, state_stack):
+        rabbyt.set_time(self.game.get_ticks()/1000.0)
         self.done = False
         self.game = game
-        self.game.set_state_time()
+        #rabbyt.scheduler.add((game.get_ticks() + self.background.row_update_time)/1000, self.update_tiles_loop)
 
         while not self.done:
             self.continue_level()
@@ -260,3 +263,10 @@ class Level():
         self.game.update_scores()
         self.state_stack.append(states.highscore.High())
         self.done = True
+
+    """
+    def update_tiles_loop(self):
+        print 'called update_tiles_loop'
+        self.background.maintain_tile_rows()
+        rabbyt.scheduler.add((self.game.get_ticks() + self.background.row_update_time)/1000.0, self.update_tiles_loop)
+    """

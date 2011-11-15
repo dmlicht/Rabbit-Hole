@@ -11,8 +11,7 @@ SECOND_TO_TICK_CONVERSION = 1000
 
 class Background():
     """background class"""
-    def __init__(self, screen_width, screen_height, layout_file_name):
-
+    def __init__(self, screen_width, screen_height, layout_file_name, game):
         self.tile_rows = []
         self.tile_layout = layout.Layout(layout_file_name)
 
@@ -33,6 +32,8 @@ class Background():
         self.sample_tile_names = ["1dirt_patch_tile1.png", \
                          "1dirt_patch_tile2.png", "1dirt_patch_tile3.png", \
                          "1dirt_patch_tile4.png"]
+
+        self.game = game
 
     def initialize(self):
         """initializes the background"""
@@ -85,3 +86,6 @@ class Background():
         """rabbyt render method"""
         for row in self.tile_rows:
             rabbyt.render_unsorted(row)
+
+    def set_motion(self, y_start_position):
+        return rabbyt.lerp(y_start_position, (y_start_position - self.screen_height - self.tile_height), dt = self.background_scroll_time, extend="extrapolate")
