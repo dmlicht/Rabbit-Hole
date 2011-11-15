@@ -100,6 +100,39 @@ class Plane(Enemy):
         self.damage = 1
         self.point_value = 150
 
+class Boss1(Enemy):
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "1DragonBoss.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 80
+        self.health = 50
+        self.damage = 1
+        self.point_value = 5000
+
+class BossHands(Enemy):
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "7Dragon.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 10
+        self.damage = 1
+        self.point_value = 5000
+
+class Boss2(Enemy):
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "1DragonBoss.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 75
+        self.health = 75
+        self.damage = 1
+        self.point_value = 5000
+        
 class Boss3(Enemy):
     def __init__(self, screen, startx, starty, patternx, patterny):
         image = "2boss3.png"

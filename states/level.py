@@ -155,8 +155,8 @@ class Level():
 
             for enemy in self.enemies:
                 enemy.animate()
-                if enemy.checkBounds():
-                    self.game.user.score += 25
+                """if enemy.checkBounds():
+                    self.game.user.score += 25"""
                 
             self.remove_offmap(self.enemies)
 
@@ -248,12 +248,15 @@ class Level():
         if current_wave:
             for element in current_wave.elements:
                 new_enemy = element.enemy_type(self.game.screen, element.startx, element.starty, element.patternx, element.patterny)
-                self.enemies.append(new_enemy)
+                self.enemies.append(new_enemy)    
 
     def victory_end(self):
+        if isinstance(self.state_after, states.highscore.High):
+            self.game.update_scores()
         self.state_stack.append(self.state_after)
         self.done = True
 
     def failure_end(self):
+        self.game.update_scores()
         self.state_stack.append(states.highscore.High())
         self.done = True

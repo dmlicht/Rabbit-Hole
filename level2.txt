@@ -1,29 +1,231 @@
 layout:
 level2_layout.txt
 
-2
-Dragon      0       400     movpatternx	movpatterny
-Dragon      100     400     movpatternx	movpatterny
-Dragon      200     400     movpatternx	movpatterny
-Dragon      300     400     movpatternx	movpatterny
-Dragon      400     400     movpatternx	movpatterny
-Dragon      500     400     movpatternx	movpatterny
+1
+Dragon      0      310      movpatternx2     straight_down4
+Dragon      -300   310      movpatternx2     straight_down5
+Dragon      -100   310      movpatternx2     straight_down6
+Dragon      100    310      movpatternx2     straight_down7
+Dragon      300    310      movpatternx2     straight_down8
+Dragon      200    310      movpatternx2     straight_down9
 $end
 
-5
-Dragon      0       400     movpatternx	movpatterny
-Dragon      -100    400     movpatternx	movpatterny
-Dragon      -200    400     movpatternx	movpatterny
-Dragon      -300    400     movpatternx	movpatterny
-Dragon      -400    400     movpatternx	movpatterny
-Dragon      -500    400     movpatternx	movpatterny
+3
+Dragon      -400    350    movpatternx2  movpatterny2
+Dragon      -300    350    movpatternx2  movpatterny2
+Dragon      -200    350    movpatternx2  movpatterny2 
+Dragon      -100    350    movpatternx2  movpatterny2
+Dragon      0    	350    movpatternx2  movpatterny2 
+Dragon      100    	350    movpatternx2  movpatterny2 
 $end
+
+4
+Dragon      -100    350    movpattern_circx  straight_down9 
+Dragon      000    	350    movpattern_circx  straight_down8
+Dragon      100    	350    movpattern_circx  straight_down7 
+Dragon      200    	350    movpattern_circx  straight_down6 
+Dragon      300    	350    movpattern_circx  straight_down5 
+Dragon      400    	350    movpattern_circx  straight_down4 
+$end
+
+6
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+7
+Dragon      -200    350    do_nothing  straight_down9
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down7 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down9 
+$end
+
+8
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
 
 10
-Dragon      0      400      movpatternx	movepatterny
-Dragon      -400   400      movpatternx	movepatterny
-Dragon      -100   400      movpatternx	movepatterny
-Dragon      100    400      movpatternx	movepatterny
-Dragon      400    400      movpatternx	movepatterny
-Dragon      700    400      movpatternx	movepatterny
+Dragon      0      310      movpatternx2     movpatterny2
+Dragon      -300   310      movpatternx2     movpatterny2
+Dragon      -100   310      movpatternx2     movpatterny2
+Dragon      100    310      movpatternx2     movpatterny2
+Dragon      300    310      movpatternx2     movpatterny2
+Dragon      200    310      movpatternx2     movpatterny2
+$end
+
+12
+Dragon      0      310      movpatternx2     straight_down4
+Dragon      -300   310      movpatternx2     straight_down4
+Dragon      -100   310      movpatternx2     straight_down4
+Dragon      100    310      movpatternx2     straight_down4
+Dragon      300    310      movpatternx2     straight_down4
+Dragon      200    310      movpatternx2     straight_down4
+$end
+
+13
+Dragon      -400    350    do_nothing  straight_down4 
+Dragon      -300    350    do_nothing  straight_down5
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100    350    do_nothing  straight_down7 
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down9 
+$end
+
+14
+Dragon      -100    350    do_nothing  straight_down9 
+Dragon      000    	350    do_nothing  straight_down8
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
+Dragon      300    	350    do_nothing  straight_down5 
+Dragon      400    	350    do_nothing  straight_down4 
+$end
+
+16
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+17
+Dragon      -200    350    do_nothing  straight_down9
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down7 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down9 
+$end
+
+18
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+
+20
+Dragon      0      310      movpatternx2     movpatterny2
+Dragon      -300   310      movpatternx2     movpatterny2
+Dragon      -100   310      movpatternx2     movpatterny2
+Dragon      100    310      movpatternx2     movpatterny2
+Dragon      300    310      movpatternx2     movpatterny2
+Dragon      200    310      movpatternx2     movpatterny2
+$end
+
+21
+Dragon      0      310      movpatternx2     movpatterny2
+Dragon      -300   310      movpatternx2     movpatterny2
+Dragon      -100   310      movpatternx2     movpatterny2
+Dragon      100    310      movpatternx2     movpatterny2
+Dragon      300    310      movpatternx2     movpatterny2
+Dragon      200    310      movpatternx2     movpatterny2
+$end
+
+23
+Dragon      -400    350    movpattern_circx  straight_down4 
+Dragon      -300    350    movpattern_circx straight_down5
+Dragon      -200    350    movpattern_circx  straight_down6 
+Dragon      -100    350    movpattern_circx  straight_down7 
+Dragon      0    	350    movpattern_circx  straight_down8 
+Dragon      100    	350    movpattern_circx  straight_down9 
+$end
+
+24
+Dragon      -100    350    do_nothing  straight_down9 
+Dragon      000    	350    do_nothing  straight_down8
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
+Dragon      300    	350    do_nothing  straight_down5 
+Dragon      400    	350    do_nothing  straight_down4 
+$end
+
+26
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+27
+Dragon      -200    350    do_nothing  straight_down9
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down7 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down9 
+$end
+
+28
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+30
+Dragon      0      310      movpatternx2     movpatterny2
+Dragon      -300   310      movpatternx2     movpatterny2
+Dragon      -100   310      movpatternx2     movpatterny2
+Dragon      100    310      movpatternx2     movpatterny2
+Dragon      300    310      movpatternx2     movpatterny2
+Dragon      200    310      movpatternx2     movpatterny2
+$end
+
+32
+Dragon      0      310      movpatternx2     movpatterny2
+Dragon      -300   310      movpatternx2     movpatterny2
+Dragon      -100   310      movpatternx2     movpatterny2
+Dragon      100    310      movpatternx2     movpatterny2
+Dragon      300    310      movpatternx2     movpatterny2
+Dragon      200    310      movpatternx2     movpatterny2
+$end
+
+33
+Dragon      -400    350    do_nothing  straight_down4 
+Dragon      -300    350    do_nothing  straight_down5
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100    350    do_nothing  straight_down7 
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down9 
+$end
+
+34
+Dragon      -100    350    do_nothing  straight_down9 
+Dragon      000    	350    do_nothing  straight_down8
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
+Dragon      300    	350    do_nothing  straight_down5 
+Dragon      400    	350    do_nothing  straight_down4 
+$end
+
+36
+Dragon      -200    350    do_nothing  straight_down7 
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down9 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down7 
+$end
+
+37
+Dragon      -200    350    do_nothing  straight_down9
+Dragon      -100   	350    do_nothing  straight_down8
+Dragon      0    	350    do_nothing  straight_down7 
+Dragon      100    	350    do_nothing  straight_down8 
+Dragon      200    	350    do_nothing  straight_down9 
+$end
+
+38
+Boss2           0    	350     movpattern_circx     movpatterny2
 $end
