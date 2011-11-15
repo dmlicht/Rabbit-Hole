@@ -116,7 +116,7 @@ class Boss1(Enemy):
 class BossHands(Enemy):
     """Boss Hands"""
     def __init__(self, screen, startx, starty, patternx, patterny):
-        image = "7Dragon.png"
+        image = "7dragon.png"
         Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
 
         #data individual to an enemy
