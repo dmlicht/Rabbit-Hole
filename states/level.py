@@ -9,7 +9,6 @@ import player, healthbar
 import wave_handler
 from settings import FontSprite
 import states.menu, states.highscore
-
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
 

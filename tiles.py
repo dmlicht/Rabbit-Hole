@@ -74,12 +74,15 @@ class Background():
         current_time = pygame.time.get_ticks()
         if ((current_time - self.ticks_during_last_add) > self.row_update_time):
             highest_current_row = self.tile_rows[-1]
+
+
             highest_y_tile_position = \
             highest_current_row[0].convert_offset((0, 0))[1]
+            print highest_y_tile_position
             self.tile_rows.append( self.build_independent_row( \
             highest_y_tile_position + 100, self.tile_layout.get_next_row()))
             self.ticks_during_last_add = current_time
-            #print "number of rows: ", len(self.tile_rows)
+            print "number of rows: ", len(self.tile_rows)
             del self.tile_rows[0]
 
     def render(self):
