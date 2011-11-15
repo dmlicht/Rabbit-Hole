@@ -4,7 +4,7 @@ from pygame.locals import *
 
 import os, random
 import settings
-import player, enemy, bullet, chronos, Boss1
+import player, enemy, bullet, chronos
 from settings import Font, FontSprite
 import state, states.menu
 

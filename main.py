@@ -1,15 +1,15 @@
 from __future__ import division
 import pygame, rabbyt, sys
 from pygame.locals import *
-import states.menu, states.cut, states.name, states.highscore, states.play, states.title
+import states.menu, states.cut, states.name, states.highscore, states.title
 import user_data
 import os, random
 #rabbyt.data_directory = os.path.dirname(__file__)
 #os.environ["SDL_VIDEO_CENTERED"] = "1"
 import settings
-import player, enemy, bullet, chronos, Boss1
+import player, enemy, bullet, chronos
 from settings import Font, FontSprite
-import states.level1, states.level2, states.cuttwo
+import states.cuttwo
 
 if not pygame.mixer: print 'Warning, sound disabled'
 

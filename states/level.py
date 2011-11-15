@@ -5,7 +5,7 @@ from pygame.locals import *
 import os, random, copy
 import tiles, layout
 import settings
-import player, enemy, bullet, chronos, Boss1, Boss0, BossHands, bar
+import player, enemy, bullet, chronos, bar
 import wave, wave_element, wave_handler
 from settings import Font, FontSprite
 import state, states.menu, states.highscore
