@@ -96,19 +96,19 @@ class Game:
     def update_scores(self):
         def calculate_high_score():
             for i in range(len(self.highScores)-1):
-                if self.highScores[i] >= self.score and self.score >= self.highScores[i+1]:
+                if self.highScores[i] >= self.user.score and self.user.score >= self.highScores[i+1]:
                     return i
 
         index = calculate_high_score()
 
         if index == None:
-            if self.highScores[0] <= self.score:
-                self.highScores.insert(0, self.score)
+            if self.highScores[0] <= self.user.score:
+                self.highScores.insert(0, self.user.score)
                 self.highScoreNames.insert(0, self.winner_name)
 	        del self.highScores[5]
 	        del self.highScoreNames[5]
         else:
-            self.highScores.insert(index+1, self.score)
+            self.highScores.insert(index+1, self.user.score)
             self.highScoreNames.insert(index+1, self.winner_name)
             del self.highScores[5]
             del self.highScoreNames[5]
