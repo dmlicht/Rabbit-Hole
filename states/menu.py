@@ -1,10 +1,10 @@
+"""menu state for rabbit hole"""
 from __future__ import division
-import pygame, rabbyt, sys
-from pygame.locals import *
-import os, random
-import settings
-from settings import Font, FontSprite
-import player, enemy, bullet, chronos
+import pygame, rabbyt
+#from pygame.locals import *
+from pygame.locals import K_SPACE, K_ESCAPE, K_RETURN, \
+                            K_UP, K_DOWN, KEYDOWN, QUIT
+from settings import FontSprite
 import state, states.cut
 
 RGB_UNSELECTED  = (255, 255, 255)
@@ -18,11 +18,15 @@ QUIT            = 4
 
 #def MenuScreen(game, state_stack):
 class Menu(state.State):
+    """manages state choices"""
+    def __init__(self):
+        pass
     def run(self, game, state_stack):
+        """starts the menu state"""
         backg = rabbyt.Sprite('1Menu_Screen1.png') 
-        self.menu_option = 0
         self.game = game
         self.state_stack = state_stack
+        self.menu_option = 0
 
         self.game.user.score = 0
         text_start = FontSprite(game.font, "Start Game")
@@ -33,12 +37,16 @@ class Menu(state.State):
 
         #set menu item positions
         text_start.xy = (-65, 100)
-        text_sound.xy = (-80,50)
-        text_brightness.xy = (-110,0)
-        text_score.xy = (-77,-50)
-        text_quit.xy = (-22,-100)        
+        text_sound.xy = (-80, 50)
+        text_brightness.xy = (-110, 0)
+        text_score.xy = (-77, -50)
+        text_quit.xy = (-22, -100)        
 
-        self.menu_items = [text_start, text_sound, text_brightness, text_score, text_quit]
+        self.menu_items = [ text_start, \
+                            text_sound, \
+                            text_brightness, \
+                            text_score, \
+                            text_quit]
         self.highlight()        
 
         game.done = False
@@ -64,12 +72,16 @@ class Menu(state.State):
             game.clock.tick(40)
 
     def quit(self):
+        """has user exit game"""
         self.game.done = True
         fdata = open("RabbitHighScores", 'w')
         for i in range(5):
-            fdata.write(self.game.high_score_names[i] + " " + str(self.game.high_scores[i]) + "\n")
+            fdata.write(self.game.high_score_names[i] + " " + \
+                    str(self.game.high_scores[i]) + "\n")
 
     def key_press(self, key_pressed):
+        """delegates key presses to specific key functions
+        then highlights currently selected option"""
         if key_pressed == K_ESCAPE:
             self.esc_press()
         elif key_pressed == K_SPACE or key_pressed == K_RETURN:
@@ -81,12 +93,15 @@ class Menu(state.State):
         self.highlight()        
 
     def esc_press(self):
+        """handles pressing escape key"""
         self.game.done = True
         fdata = open("RabbitHighScores", 'w')
         for i in range(5):
-            fdata.write(self.game.high_score_names[i] + " " + str(self.game.high_scores[i]) + "\n")
+            fdata.write(self.game.high_score_names[i] + " " + \
+                    str(self.game.high_scores[i]) + "\n")
     
     def space_press(self):
+        """handles pressing space key"""
         if self.menu_option == START:
             self.game.done = True
             self.state_stack.append(states.cut.Cut())
@@ -101,18 +116,21 @@ class Menu(state.State):
             self.game.done = True
     
     def down_press(self):
+        """handles presssing down key"""
         if self.menu_option < 4:
             self.menu_option += 1
         else:
             self.menu_option = 0
-
+    
     def up_press(self):
+        """handles pressing up key"""
         if self.menu_option > 0:
             self.menu_option -= 1
         else:
             self.menu_option = 4
 
     def highlight(self):
+        """colors currently selected menu item"""
         for current_item in self.menu_items:
             current_item.rgb = RGB_UNSELECTED
         self.menu_items[self.menu_option].rgb = RGB_SELECTED
