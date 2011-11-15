@@ -1,0 +1,372 @@
+************* Module name
+W: 15,0: Bad indentation. Found 2 spaces, expected 4
+W: 16,0: Bad indentation. Found 2 spaces, expected 4
+W: 17,0: Bad indentation. Found 4 spaces, expected 8
+W: 18,0: Bad indentation. Found 4 spaces, expected 8
+W: 19,0: Bad indentation. Found 4 spaces, expected 8
+W: 20,0: Bad indentation. Found 4 spaces, expected 8
+W: 21,0: Bad indentation. Found 4 spaces, expected 8
+W: 22,0: Bad indentation. Found 4 spaces, expected 8
+W: 24,0: Bad indentation. Found 4 spaces, expected 8
+W: 25,0: Bad indentation. Found 4 spaces, expected 8
+W: 26,0: Bad indentation. Found 8 spaces, expected 12
+W: 27,0: Bad indentation. Found 8 spaces, expected 12
+W: 28,0: Bad indentation. Found 8 spaces, expected 12
+W: 29,0: Bad indentation. Found 8 spaces, expected 12
+W: 31,0: Bad indentation. Found 8 spaces, expected 12
+W: 33,0: Bad indentation. Found 8 spaces, expected 12
+W: 34,0: Bad indentation. Found 12 spaces, expected 16
+W: 35,0: Bad indentation. Found 16 spaces, expected 20
+W: 36,0: Bad indentation. Found 16 spaces, expected 20
+W: 37,0: Bad indentation. Found 16 spaces, expected 20
+W: 38,0: Bad indentation. Found 20 spaces, expected 24
+W: 41,0: Bad indentation. Found 12 spaces, expected 16
+W: 42,0: Bad indentation. Found 16 spaces, expected 20
+W: 43,0: Bad indentation. Found 20 spaces, expected 24
+W: 44,0: Bad indentation. Found 20 spaces, expected 24
+W: 46,0: Bad indentation. Found 16 spaces, expected 20
+W: 47,0: Bad indentation. Found 20 spaces, expected 24
+W: 48,0: Bad indentation. Found 24 spaces, expected 28
+W: 49,0: Bad indentation. Found 20 spaces, expected 24
+W: 50,0: Bad indentation. Found 24 spaces, expected 28
+W: 51,0: Bad indentation. Found 20 spaces, expected 24
+W: 52,0: Bad indentation. Found 20 spaces, expected 24
+W: 55,0: Bad indentation. Found 16 spaces, expected 20
+W: 56,0: Bad indentation. Found 20 spaces, expected 24
+W: 57,0: Bad indentation. Found 20 spaces, expected 24
+W: 59,0: Bad indentation. Found 16 spaces, expected 20
+W: 60,0: Bad indentation. Found 20 spaces, expected 24
+W: 61,0: Bad indentation. Found 20 spaces, expected 24
+W: 63,0: Bad indentation. Found 8 spaces, expected 12
+W:  6,0: Wildcard import pygame.locals
+W: 16,2:Name.run: Arguments number differs from overridden method
+C: 20,4:Name.run: Comma not followed by a space
+    enter_name.rgb = (0,0,0)                       ^^
+W: 22,4:Name.run: Attribute 'game' defined outside __init__
+R: 14,0:Name: Too few public methods (1/2)
+W:  6,0: Unused import K_F1 from wildcard import
+W:  6,0: Unused import SCRAP_PPM from wildcard import
+W:  6,0: Unused import K_F3 from wildcard import
+W:  6,0: Unused import K_F4 from wildcard import
+W:  6,0: Unused import K_F5 from wildcard import
+W:  6,0: Unused import K_F6 from wildcard import
+W:  6,0: Unused import K_F7 from wildcard import
+W:  6,0: Unused import K_F8 from wildcard import
+W:  6,0: Unused import K_F9 from wildcard import
+W:  8,0: Unused import random
+W:  6,0: Unused import K_RSHIFT from wildcard import
+W:  6,0: Unused import K_F2 from wildcard import
+W:  6,0: Unused import BLEND_RGBA_MAX from wildcard import
+W:  6,0: Unused import KMOD_RALT from wildcard import
+W:  6,0: Unused import KMOD_LALT from wildcard import
+W:  6,0: Unused import KMOD_NONE from wildcard import
+W:  6,0: Unused import K_AMPERSAND from wildcard import
+W:  6,0: Unused import KMOD_LCTRL from wildcard import
+W:  6,0: Unused import K_CLEAR from wildcard import
+W:  6,0: Unused import K_KP_PLUS from wildcard import
+W:  6,0: Unused import K_KP_EQUALS from wildcard import
+W:  6,0: Unused import AUDIO_U8 from wildcard import
+W:  6,0: Unused import GL_BUFFER_SIZE from wildcard import
+W:  6,0: Unused import SRCALPHA from wildcard import
+W:  6,0: Unused import GL_STEREO from wildcard import
+W:  6,0: Unused import K_INSERT from wildcard import
+W:  6,0: Unused import GL_ACCUM_GREEN_SIZE from wildcard import
+W:  6,0: Unused import OPENGLBLIT from wildcard import
+W:  6,0: Unused import K_LSUPER from wildcard import
+W:  6,0: Unused import BLEND_RGB_MAX from wildcard import
+W:  6,0: Unused import HWACCEL from wildcard import
+W: 10,0: Unused import enemy
+W:  6,0: Unused import HAT_DOWN from wildcard import
+W:  6,0: Unused import K_RALT from wildcard import
+W:  6,0: Unused import K_KP_PERIOD from wildcard import
+W:  6,0: Unused import K_LSHIFT from wildcard import
+W:  6,0: Unused import JOYBALLMOTION from wildcard import
+W:  6,0: Unused import K_LAST from wildcard import
+W:  6,0: Unused import K_HASH from wildcard import
+W:  6,0: Unused import K_DOWN from wildcard import
+W:  6,0: Unused import JOYAXISMOTION from wildcard import
+W:  6,0: Unused import K_RSUPER from wildcard import
+W:  6,0: Unused import K_ASTERISK from wildcard import
+W:  6,0: Unused import AUDIO_S8 from wildcard import
+W:  6,0: Unused import AUDIO_U16LSB from wildcard import
+W:  6,0: Unused import SWSURFACE from wildcard import
+W:  6,0: Unused import K_EXCLAIM from wildcard import
+W:  6,0: Unused import K_HELP from wildcard import
+W:  6,0: Unused import NOEVENT from wildcard import
+W:  6,0: Unused import K_MENU from wildcard import
+W:  6,0: Unused import K_UNDERSCORE from wildcard import
+W:  6,0: Unused import FULLSCREEN from wildcard import
+W:  6,0: Unused import K_COLON from wildcard import
+W:  6,0: Unused import KMOD_LMETA from wildcard import
+W:  6,0: Unused import GL_DOUBLEBUFFER from wildcard import
+W:  6,0: Unused import HAT_LEFTDOWN from wildcard import
+W:  6,0: Unused import K_LALT from wildcard import
+W:  6,0: Unused import K_NUMLOCK from wildcard import
+W:  6,0: Unused import K_RMETA from wildcard import
+W:  6,0: Unused import AUDIO_S16 from wildcard import
+W:  6,0: Unused import HWSURFACE from wildcard import
+W:  6,0: Unused import K_QUESTION from wildcard import
+W:  6,0: Unused import HAT_CENTERED from wildcard import
+W:  6,0: Unused import GL_MULTISAMPLESAMPLES from wildcard import
+W:  6,0: Unused import BLEND_RGBA_ADD from wildcard import
+W:  6,0: Unused import MOUSEBUTTONUP from wildcard import
+W:  6,0: Unused import GL_ACCUM_ALPHA_SIZE from wildcard import
+W:  6,0: Unused import BLEND_MIN from wildcard import
+W:  6,0: Unused import JOYBUTTONUP from wildcard import
+W:  6,0: Unused import USEREVENT from wildcard import
+W:  6,0: Unused import BLEND_RGBA_MULT from wildcard import
+W:  6,0: Unused import BIG_ENDIAN from wildcard import
+W:  6,0: Unused import K_LMETA from wildcard import
+W: 10,0: Unused import player
+W:  6,0: Unused import K_SLASH from wildcard import
+W:  6,0: Unused import Rect from wildcard import
+W:  6,0: Unused import SCRAP_BMP from wildcard import
+W:  6,0: Unused import K_y from wildcard import
+W:  6,0: Unused import K_x from wildcard import
+W:  6,0: Unused import K_z from wildcard import
+W:  6,0: Unused import K_o from wildcard import
+W:  6,0: Unused import K_q from wildcard import
+W:  6,0: Unused import K_p from wildcard import
+W:  6,0: Unused import K_s from wildcard import
+W:  6,0: Unused import K_r from wildcard import
+W:  6,0: Unused import K_u from wildcard import
+W:  6,0: Unused import K_t from wildcard import
+W:  6,0: Unused import K_w from wildcard import
+W:  6,0: Unused import K_v from wildcard import
+W:  6,0: Unused import K_i from wildcard import
+W:  6,0: Unused import K_h from wildcard import
+W:  6,0: Unused import K_k from wildcard import
+W:  6,0: Unused import K_j from wildcard import
+W:  6,0: Unused import K_m from wildcard import
+W:  6,0: Unused import K_l from wildcard import
+W:  6,0: Unused import IYUV_OVERLAY from wildcard import
+W:  6,0: Unused import K_n from wildcard import
+W:  6,0: Unused import K_a from wildcard import
+W:  6,0: Unused import K_c from wildcard import
+W:  6,0: Unused import K_b from wildcard import
+W:  6,0: Unused import K_e from wildcard import
+W:  6,0: Unused import K_d from wildcard import
+W:  6,0: Unused import K_g from wildcard import
+W:  6,0: Unused import K_f from wildcard import
+W:  6,0: Unused import BUTTON_X2 from wildcard import
+W:  6,0: Unused import K_AT from wildcard import
+W:  6,0: Unused import BUTTON_X1 from wildcard import
+W:  6,0: Unused import YVYU_OVERLAY from wildcard import
+W:  6,0: Unused import K_LESS from wildcard import
+W:  6,0: Unused import AUDIO_U16SYS from wildcard import
+W:  6,0: Unused import ACTIVEEVENT from wildcard import
+W:  6,0: Unused import K_9 from wildcard import
+W:  6,0: Unused import K_8 from wildcard import
+W:  6,0: Unused import K_1 from wildcard import
+W:  6,0: Unused import RLEACCELOK from wildcard import
+W:  6,0: Unused import K_3 from wildcard import
+W:  6,0: Unused import K_2 from wildcard import
+W:  6,0: Unused import K_5 from wildcard import
+W:  6,0: Unused import K_4 from wildcard import
+W:  6,0: Unused import K_7 from wildcard import
+W:  6,0: Unused import K_6 from wildcard import
+W:  5,0: Unused import sys
+W:  6,0: Unused import YUY2_OVERLAY from wildcard import
+W:  6,0: Unused import K_PLUS from wildcard import
+W:  6,0: Unused import K_RIGHTPAREN from wildcard import
+W:  6,0: Unused import MOUSEBUTTONDOWN from wildcard import
+W:  6,0: Unused import NOFRAME from wildcard import
+W:  6,0: Unused import SCRAP_TEXT from wildcard import
+W:  6,0: Unused import JOYBUTTONDOWN from wildcard import
+W:  6,0: Unused import K_RCTRL from wildcard import
+W:  6,0: Unused import K_SYSREQ from wildcard import
+W:  6,0: Unused import K_KP_MINUS from wildcard import
+W:  6,0: Unused import K_PAUSE from wildcard import
+W:  6,0: Unused import BLEND_MULT from wildcard import
+W:  6,0: Unused import YV12_OVERLAY from wildcard import
+W:  6,0: Unused import RLEACCEL from wildcard import
+W:  6,0: Unused import BLEND_RGBA_MIN from wildcard import
+W:  6,0: Unused import GL_GREEN_SIZE from wildcard import
+W:  6,0: Unused import HAT_LEFTUP from wildcard import
+W:  6,0: Unused import KMOD_META from wildcard import
+W:  6,0: Unused import TIMER_RESOLUTION from wildcard import
+W:  6,0: Unused import HWPALETTE from wildcard import
+W:  6,0: Unused import KMOD_CAPS from wildcard import
+W:  6,0: Unused import SCRAP_CLIPBOARD from wildcard import
+W:  6,0: Unused import AUDIO_U16 from wildcard import
+W:  6,0: Unused import BLEND_RGB_MULT from wildcard import
+W:  6,0: Unused import MOUSEMOTION from wildcard import
+W:  6,0: Unused import K_HOME from wildcard import
+W:  6,0: Unused import GL_ACCUM_RED_SIZE from wildcard import
+W:  6,0: Unused import BLEND_RGB_MIN from wildcard import
+W:  6,0: Unused import K_RIGHT from wildcard import
+W:  6,0: Unused import GL_RED_SIZE from wildcard import
+W:  6,0: Unused import HAT_RIGHT from wildcard import
+W:  6,0: Unused import color from wildcard import
+W:  6,0: Unused import K_GREATER from wildcard import
+W:  6,0: Unused import K_FIRST from wildcard import
+W:  9,0: Unused import settings
+W:  6,0: Unused import K_LEFTBRACKET from wildcard import
+W:  6,0: Unused import K_RIGHTBRACKET from wildcard import
+W:  6,0: Unused import K_LEFTPAREN from wildcard import
+W: 11,0: Unused import Font
+W:  6,0: Unused import BLEND_RGBA_SUB from wildcard import
+W:  6,0: Unused import K_KP_ENTER from wildcard import
+W:  6,0: Unused import NUMEVENTS from wildcard import
+W:  6,0: Unused import K_END from wildcard import
+W:  6,0: Unused import K_UP from wildcard import
+W:  6,0: Unused import GL_DEPTH_SIZE from wildcard import
+W:  6,0: Unused import RESIZABLE from wildcard import
+W:  6,0: Unused import OPENGL from wildcard import
+W:  6,0: Unused import K_LCTRL from wildcard import
+W:  6,0: Unused import K_BACKSLASH from wildcard import
+W:  6,0: Unused import K_MINUS from wildcard import
+W:  6,0: Unused import K_0 from wildcard import
+W:  6,0: Unused import SYSWMEVENT from wildcard import
+W:  6,0: Unused import KMOD_LSHIFT from wildcard import
+W:  6,0: Unused import BLEND_ADD from wildcard import
+W:  6,0: Unused import JOYHATMOTION from wildcard import
+W:  6,0: Unused import K_QUOTEDBL from wildcard import
+W:  6,0: Unused import SRCCOLORKEY from wildcard import
+W:  6,0: Unused import GL_SWAP_CONTROL from wildcard import
+W:  6,0: Unused import KMOD_MODE from wildcard import
+W:  6,0: Unused import ASYNCBLIT from wildcard import
+W:  8,0: Unused import os
+W:  6,0: Unused import K_KP_DIVIDE from wildcard import
+W:  6,0: Unused import K_LEFT from wildcard import
+W:  6,0: Unused import SCRAP_SELECTION from wildcard import
+W:  6,0: Unused import GL_ALPHA_SIZE from wildcard import
+W:  6,0: Unused import K_EQUALS from wildcard import
+W:  6,0: Unused import AUDIO_S16LSB from wildcard import
+W:  6,0: Unused import K_SEMICOLON from wildcard import
+W:  6,0: Unused import KMOD_ALT from wildcard import
+W:  6,0: Unused import KMOD_RMETA from wildcard import
+W:  6,0: Unused import HAT_RIGHTDOWN from wildcard import
+W:  6,0: Unused import K_UNKNOWN from wildcard import
+W:  6,0: Unused import KMOD_NUM from wildcard import
+W:  6,0: Unused import BLEND_RGB_ADD from wildcard import
+W:  6,0: Unused import GL_BLUE_SIZE from wildcard import
+W:  6,0: Unused import GL_ACCELERATED_VISUAL from wildcard import
+W:  6,0: Unused import K_EURO from wildcard import
+W:  6,0: Unused import KMOD_CTRL from wildcard import
+W:  6,0: Unused import K_PERIOD from wildcard import
+W:  6,0: Unused import BLEND_SUB from wildcard import
+W:  6,0: Unused import K_KP_MULTIPLY from wildcard import
+W:  6,0: Unused import K_DELETE from wildcard import
+W:  6,0: Unused import K_CARET from wildcard import
+W:  6,0: Unused import LIL_ENDIAN from wildcard import
+W:  6,0: Unused import KMOD_SHIFT from wildcard import
+W:  6,0: Unused import KMOD_RSHIFT from wildcard import
+W:  6,0: Unused import GL_MULTISAMPLEBUFFERS from wildcard import
+W:  6,0: Unused import HAT_RIGHTUP from wildcard import
+W: 10,0: Unused import bullet
+W:  6,0: Unused import K_TAB from wildcard import
+W: 10,0: Unused import chronos
+W:  6,0: Unused import GL_ACCUM_BLUE_SIZE from wildcard import
+W:  6,0: Unused import K_MODE from wildcard import
+W:  6,0: Unused import PREALLOC from wildcard import
+W:  6,0: Unused import K_F12 from wildcard import
+W:  6,0: Unused import K_F13 from wildcard import
+W:  6,0: Unused import K_F10 from wildcard import
+W:  6,0: Unused import K_F11 from wildcard import
+W:  6,0: Unused import K_F14 from wildcard import
+W:  6,0: Unused import K_F15 from wildcard import
+W:  6,0: Unused import KEYUP from wildcard import
+W:  6,0: Unused import UYVY_OVERLAY from wildcard import
+W:  6,0: Unused import AUDIO_S16MSB from wildcard import
+W:  6,0: Unused import K_COMMA from wildcard import
+W:  6,0: Unused import KMOD_RCTRL from wildcard import
+W:  6,0: Unused import GL_STENCIL_SIZE from wildcard import
+W:  6,0: Unused import HAT_LEFT from wildcard import
+W:  6,0: Unused import ANYFORMAT from wildcard import
+W:  6,0: Unused import BLEND_RGB_SUB from wildcard import
+W:  6,0: Unused import K_PAGEUP from wildcard import
+W:  6,0: Unused import K_CAPSLOCK from wildcard import
+W:  6,0: Unused import DOUBLEBUF from wildcard import
+W:  6,0: Unused import K_PRINT from wildcard import
+W:  6,0: Unused import SCRAP_PBM from wildcard import
+W:  6,0: Unused import K_SCROLLOCK from wildcard import
+W:  6,0: Unused import VIDEOEXPOSE from wildcard import
+W:  6,0: Unused import K_DOLLAR from wildcard import
+W:  6,0: Unused import K_PAGEDOWN from wildcard import
+W:  6,0: Unused import VIDEORESIZE from wildcard import
+W:  6,0: Unused import AUDIO_U16MSB from wildcard import
+W:  6,0: Unused import K_BREAK from wildcard import
+W:  6,0: Unused import K_POWER from wildcard import
+W:  6,0: Unused import K_BACKQUOTE from wildcard import
+W:  6,0: Unused import K_QUOTE from wildcard import
+W:  6,0: Unused import Color from wildcard import
+W:  6,0: Unused import BLEND_MAX from wildcard import
+W:  6,0: Unused import AUDIO_S16SYS from wildcard import
+W:  6,0: Unused import HAT_UP from wildcard import
+W:  6,0: Unused import K_KP8 from wildcard import
+W:  6,0: Unused import K_KP9 from wildcard import
+W:  6,0: Unused import K_KP4 from wildcard import
+W:  6,0: Unused import K_KP5 from wildcard import
+W:  6,0: Unused import K_KP6 from wildcard import
+W:  6,0: Unused import K_KP7 from wildcard import
+W:  6,0: Unused import K_KP0 from wildcard import
+W:  6,0: Unused import K_KP1 from wildcard import
+W:  6,0: Unused import K_KP2 from wildcard import
+W:  6,0: Unused import K_KP3 from wildcard import
+
+Report======47 statements analysed.Messages by category--------------------
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |1      |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |1      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |302    |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+Messages--------
++-----------+------------+
+|message id |occurrences |
++===========+============+
+|W0614      |251         |
++-----------+------------+
+|W0311      |39          |
++-----------+------------+
+|W0611      |9           |
++-----------+------------+
+|W0401      |1           |
++-----------+------------+
+|W0221      |1           |
++-----------+------------+
+|W0201      |1           |
++-----------+------------+
+|R0903      |1           |
++-----------+------------+
+|C0324      |1           |
++-----------+------------+
+Global evaluation-----------------Your code has been rated at -54.68/10Statistics by type------------------
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |1      |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+Raw metrics-----------
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |49     |89.09 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |5      |9.09  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |0      |0.00  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |1      |1.82  |NC       |NC         |
++----------+-------+------+---------+-----------+
+External dependencies---------------------::
+    bullet (name)    chronos (name)    enemy (name)    os (name)    player (name)    pygame (name)    rabbyt (name)    random (name)    settings (name)      \-Font (name)      \-FontSprite (name)    state (name)Duplication-----------
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
