@@ -3,11 +3,11 @@ Game State for Rabbit Hole
 """
 from __future__ import division
 import pygame, rabbyt
-import states.menu, states.cut, states.name, states.highscore, states.play
+import states.menu, states.cut, states.name, states.highscore
 import user_data
 import os
 from settings import Font
-import states.level1, states.level2, states.cuttwo
+import states.level, states.cuttwo
 if not pygame.mixer: 
     print 'Warning, sound disabled'
 
@@ -90,7 +90,7 @@ class Game:
             """Calculates the high scores"""
             for i in range(len(self.highScores)-1):
                 if self.highScores[i] >= self.user.score and \
-		    self.user.score >= self.highScores[i+1
+		    self.user.score >= self.highScores[i+1]:
                     return i
 
         index = calculate_high_score()

@@ -10,8 +10,8 @@ class GameObject():
     def die(self):
         return self.point_value
 
-	def isOffMap(self):
-		if self.y <= -350:
-			return True
-		else:
-			return False
+    def isOffMap(self):
+        if self.y <= -350:
+            return True
+        else:
+            return False
