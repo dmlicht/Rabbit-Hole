@@ -1,0 +1,112 @@
+************* Module enemy
+C: 12,0: Line too long (84/80)
+C: 17,0: Line too long (85/80)
+W: 35,0: Found indentation with tabs instead of spaces
+C:  1,0: Missing docstring
+R: 10,0:Enemy: Too many ancestors (8/7)
+R: 10,0:Enemy: Too many instance attributes (8/7)
+C: 46,8:Enemy.freeze_Up: Invalid name "xy" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 22,8:Enemy.__init__: Invalid name "y" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 21,8:Enemy.__init__: Invalid name "x" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 10,0:Enemy: Missing docstring
+R: 11,4:Enemy.__init__: Too many arguments (7/5)
+C: 26,4:Enemy.animate: Missing docstring
+C: 40,4:Enemy.checkBounds: Invalid name "checkBounds" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 40,4:Enemy.checkBounds: Missing docstring
+C: 45,4:Enemy.freeze_Up: Invalid name "freeze_Up" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 45,4:Enemy.freeze_Up: Missing docstring
+C: 51,4:Enemy.isOffMap: Invalid name "isOffMap" (should match [a-z_][a-z0-9_]{2,30}$)
+C: 51,4:Enemy.isOffMap: Missing docstring
+R: 57,0:Dragon: Too many ancestors (9/7)
+C: 57,0:Dragon: Missing docstring
+R: 58,4:Dragon.__init__: Too many arguments (6/5)
+R: 68,0:Dinosaur: Too many ancestors (9/7)
+C: 68,0:Dinosaur: Missing docstring
+R: 69,4:Dinosaur.__init__: Too many arguments (6/5)
+R: 79,0:Plane: Too many ancestors (9/7)
+C: 79,0:Plane: Missing docstring
+R: 80,4:Plane.__init__: Too many arguments (6/5)
+R: 90,0:Boss1: Too many ancestors (9/7)
+C: 90,0:Boss1: Missing docstring
+R: 91,4:Boss1.__init__: Too many arguments (6/5)
+R:101,0:BossHands: Too many ancestors (9/7)
+C:101,0:BossHands: Missing docstring
+R:102,4:BossHands.__init__: Too many arguments (6/5)
+R:112,0:Boss2: Too many ancestors (9/7)
+C:112,0:Boss2: Missing docstring
+R:113,4:Boss2.__init__: Too many arguments (6/5)
+R:123,0:Boss3: Too many ancestors (9/7)
+C:123,0:Boss3: Missing docstring
+R:124,4:Boss3.__init__: Too many arguments (6/5)
+W:  5,0: Unused import random
+W:  3,0: Unused import sys
+W:  4,0: Unused import cos
+W:  4,0: Unused import radians
+W:  4,0: Unused import sqrt
+W:  6,0: Unused import os
+W:  4,0: Unused import sin
+
+Report======96 statements analysed.Messages by category--------------------
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |21     |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |17     |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |8      |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+Messages--------
++-----------+------------+
+|message id |occurrences |
++===========+============+
+|C0111      |13          |
++-----------+------------+
+|R0913      |8           |
++-----------+------------+
+|R0901      |8           |
++-----------+------------+
+|W0611      |7           |
++-----------+------------+
+|C0103      |6           |
++-----------+------------+
+|C0301      |2           |
++-----------+------------+
+|W0312      |1           |
++-----------+------------+
+|R0902      |1           |
++-----------+------------+
+Global evaluation-----------------Your code has been rated at 5.21/10Statistics by type------------------
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |8      |NC         |NC         |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |13     |NC         |NC         |69.23       |23.08    |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+Duplication-----------
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
+Raw metrics-----------
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |98     |89.09 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |0      |0.00  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |10     |9.09  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |2      |1.82  |NC       |NC         |
++----------+-------+------+---------+-----------+

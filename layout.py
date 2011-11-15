@@ -1,12 +1,12 @@
+"""
+Determines the layout
+"""
 ## beginning of import
 from __future__ import division
-import pygame, rabbyt, sys
-from math import cos, sin, radians
-import random
 import os.path
-import settings
 
 class Layout():
+    """Layout class"""
     def __init__(self, layout_file_path):
         self.dimensions = {}
         self.tile_map = {}
@@ -17,6 +17,7 @@ class Layout():
         self.bottom_of_pattern = False
 
     def get_next_row(self):
+        """gets the next row"""
         if (self.current_row < len(self.rows)):
             self.current_row += 1
             return self.rows[self.current_row - 1]
@@ -24,13 +25,13 @@ class Layout():
             return []
 
     def parse_layout_file(self):
+        """parsing layout file"""
         if not os.path.isfile(self.layout_file_path):
             return False
         else:
             layout_file = open(self.layout_file_path)
             formatting_line = layout_file.readline()
             while (formatting_line != ""):
-
                 if formatting_line == "dimensions:\n":
                     dimension_line = layout_file.readline()
                     while not dimension_line == "$end\n":
@@ -51,7 +52,8 @@ class Layout():
                         for word in layout_line.split():
                             current_row_layout = []
                             for i in range(len(word)):
-                                current_row_layout.append(self.tile_map[word[i]])
+                                current_row_layout.append( \
+                                  self.tile_map[word[i]])
                             self.rows.append(current_row_layout)
                         layout_line = layout_file.readline()
 
