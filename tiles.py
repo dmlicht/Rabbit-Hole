@@ -79,7 +79,6 @@ class Background():
 
             highest_y_tile_position = \
             highest_current_row[0].convert_offset((0, 0))[1]
-            print highest_y_tile_position
             self.tile_rows.append( self.build_independent_row( \
             highest_y_tile_position + 100, self.tile_layout.get_next_row()))
             self.ticks_during_last_add = current_time

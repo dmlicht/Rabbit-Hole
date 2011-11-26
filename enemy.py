@@ -7,6 +7,8 @@ import pygame
 import rabbyt
 import settings
 import game_object
+import random
+import chronos
 
 class Enemy(rabbyt.Sprite, game_object.GameObject):
     """Enemy class"""
@@ -27,6 +29,7 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
         self.time_last = pygame.time.get_ticks() 
         self.x = patternx(startx)
         self.y = patterny(starty)
+        self.drop_rate = 10
 
         #self.offset = 74
    
@@ -57,6 +60,17 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
     def render(self):
         """rabbyt render method"""
         rabbyt.Sprite.render(self)
+
+    def die(self, level):
+        """Method to handle item drops, generate death images and sounds
+        and end the level with the boss"""
+
+        ran = random.randint(0, self.drop_rate)
+        if ran == 0:
+            bob = chronos.Spark(level.game.screen, self.attrgetter("x"), self.attrgetter("y"))
+            level.items.append(bob)
+        return self.point_value
+
         
     def isOffMap(self):
         """checks if off method"""
@@ -112,6 +126,13 @@ class Boss1(Enemy):
         self.health = 25
         self.damage = 1
         self.point_value = 5000
+
+    def die(self, level):
+        """Method to handle item drops, generate death images and sounds
+        and end the level with the boss"""
+
+        level.boss_dead = True
+        return self.point_value
 
 class BossHands(Enemy):
     """Boss Hands"""

@@ -13,6 +13,6 @@ class GameObject():
         """defines hit function"""
         self.health -= damage
 
-    def die(self):
+    def die(self, level):
         """Death"""
         return self.point_value

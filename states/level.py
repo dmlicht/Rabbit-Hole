@@ -1,5 +1,5 @@
 """
-Handles ALL the levels
+Handles gameplay in levels
 """
 
 from __future__ import division
@@ -13,7 +13,6 @@ import wave_handler
 from settings import FontSprite
 import states.menu
 import states.highscore
-
 import random
 
 SCREEN_HEIGHT   = 600
@@ -35,8 +34,8 @@ class Level():
         self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, \
                           self.wave_builder.layout_file_path, game)
 
-        self.state_stack = game.game_states
-        self.game = game
+        self.state_stack        = game.game_states
+        self.game               = game
 
         self.state_after        = state_after
 
@@ -48,7 +47,7 @@ class Level():
         self.f_xy               = []   
         self.bullets            = []
         self.enemies            = []
-        self.sparks             = []
+        self.items              = []
 
         #set UI
         self.text_score         = FontSprite(game.font, "Score: " + \
@@ -69,10 +68,11 @@ class Level():
         self.text_chronos.xy    = (200, -260)
 
         #health bar
-        self.healthbar                = healthbar.HealthBar()
+        self.healthbar          = healthbar.HealthBar()
 
         #finished?
-        self.done = False
+        self.done               = False
+        self.boss_dead          = False
     
     def run(self, game, state_stack):
         """runs the game"""
@@ -88,7 +88,7 @@ class Level():
             self.continue_level()
             all_enemies_defeated = (self.wave_builder.all_waves_called() and \
             len(self.enemies) == 0)
-            if all_enemies_defeated:
+            if all_enemies_defeated or self.boss_dead:
                 self.victory_end()
             if self.ship.health <= 0:
                 self.failure_end()
@@ -111,14 +111,9 @@ class Level():
         self.update_game_objects()
         self.handle_collisions_between(self.ship, self.enemies)
         self.handle_collisions_between(self.bullets, self.enemies)
+        self.handle_item_pickups_between(self.ship, self.items)
 
-        gems = rabbyt.collisions.collide_single(self.ship, self.sparks)
-        for gem in gems:
-            if gem in self.sparks:
-                self.sparks.remove(gem)
-                self.energy += 100
-                self.game.gem_pickup_sound.play()
-                self.text_chronos.text = "Chronos: " + str(self.energy)
+
 
         #Render
         self.render_game_objects()
@@ -191,8 +186,8 @@ class Level():
         self.ship.update()
         self.remove_offmap(self.bullets)
 
-        for gem in self.sparks:
-            gem.update()
+        #for gem in self.sparks:
+        #    gem.update()
 
         for enemy in self.enemies:
             enemy.animate()
@@ -200,6 +195,7 @@ class Level():
                 self.game.user.score += 25"""
                 
         self.remove_offmap(self.enemies)
+        self.remove_offmap(self.items)
 
     def render_game_objects(self):
         """rabbyt render methods"""
@@ -208,7 +204,7 @@ class Level():
 
         rabbyt.render_unsorted(self.bullets)
         rabbyt.render_unsorted(self.enemies)
-        rabbyt.render_unsorted(self.sparks)
+        rabbyt.render_unsorted(self.items)
 
         self.text_score.render()
         self.text_boost.render()
@@ -265,22 +261,19 @@ class Level():
                 #to add damage uncomment line below and comment out line above
                 #objects_that_were_hit[0].hit(objects_that_were_hit[1].damage)
                 if objects_that_were_hit[0].health <= 0:
-                    self.game.user.score += objects_that_were_hit[0].die()
+                    self.game.user.score += objects_that_were_hit[0].die(self)
                     if set1.count(objects_that_were_hit[0]) > 0:
                         set1.remove(objects_that_were_hit[0])
 
                 objects_that_were_hit[1].hit()
                 xy = objects_that_were_hit[1].xy
 
-                ran = random.randint(0, 5)
-                if ran == 0:
-                    bob = chronos.Spark(self.game.screen, xy)
-                    self.sparks.append(bob)
+
 
                 #to add damage uncomment line below and comment out line above
                 #objects_that_were_hit[1].hit(objects_that_were_hit[0].damage)
                 if objects_that_were_hit[1].health <= 0:
-                    self.game.user.score += objects_that_were_hit[1].die()
+                    self.game.user.score += objects_that_were_hit[1].die(self)
                     set2.remove(objects_that_were_hit[1])
 
         else:
@@ -292,6 +285,15 @@ class Level():
             return True
         else:
             return False
+
+    def handle_item_pickups_between(self, ship, items):
+        touched_items = rabbyt.collisions.collide_single(ship, items)
+        for item in touched_items:
+            if item in self.items:
+                self.items.remove(item)
+                self.energy += 100
+                self.game.gem_pickup_sound.play()
+                self.text_chronos.text = "Chronos: " + str(self.energy)
 
     def set_scheduler_waves(self):
         """set scheduler for waves"""
