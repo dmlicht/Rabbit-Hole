@@ -44,6 +44,7 @@ class Level():
 
         #player
         self.ship               = player.Ship("3ship1", game.screen)
+        self.past_selves        = []
         self.f_xy               = []   
         self.bullets            = []
         self.enemies            = []
@@ -73,6 +74,8 @@ class Level():
         #finished?
         self.done               = False
         self.boss_dead          = False
+
+        self.saving             = False
     
     def run(self, game, state_stack):
         """runs the game"""
@@ -100,6 +103,9 @@ class Level():
             self.game.fps = self.game.get_ticks()
 
         self.handle_user_events()
+
+        if self.saving:
+            self.handle_save()
 
         #Timing
         rabbyt.set_time(self.game.get_ticks()/1000.0)
@@ -156,6 +162,7 @@ class Level():
         #Vertical Movement
         self.ship.acceleration_y = pressed[pygame.K_UP] - pressed[pygame.K_DOWN]
         self.ship.check_vertical_bounds()
+
         #Horizontal Movement
         self.ship.acceleration_x = pressed[pygame.K_RIGHT] - \
                                    pressed[pygame.K_LEFT]
@@ -168,6 +175,15 @@ class Level():
                 self.bullets.append(new_bullet)
         #tilt
         self.ship.tilt = pressed[pygame.K_z] - pressed[pygame.K_x]
+       
+        #save ship movements
+        if pressed[pygame.K_t]:
+            self.saving = True
+        if pressed[pygame.K_y]:
+            self.saving = False
+            new_past_self = player.PastSelf("3ship1", self.game.screen, self.ship.saved_xy)
+            self.ship.saved_xy = []
+            self.past_selves.append(new_past_self)
 
     def update_UI(self):
         """updates UI"""
@@ -191,8 +207,11 @@ class Level():
 
         for enemy in self.enemies:
             enemy.animate()
-            """if enemy.checkBounds():
-                self.game.user.score += 25"""
+
+        for past_self in self.past_selves:
+            if not past_self.update():
+                self.past_selves.remove(past_self)
+
                 
         self.remove_offmap(self.enemies)
         self.remove_offmap(self.items)
@@ -205,6 +224,7 @@ class Level():
         rabbyt.render_unsorted(self.bullets)
         rabbyt.render_unsorted(self.enemies)
         rabbyt.render_unsorted(self.items)
+        rabbyt.render_unsorted(self.past_selves)
 
         self.text_score.render()
         self.text_boost.render()
@@ -268,8 +288,6 @@ class Level():
                 objects_that_were_hit[1].hit()
                 xy = objects_that_were_hit[1].xy
 
-
-
                 #to add damage uncomment line below and comment out line above
                 #objects_that_were_hit[1].hit(objects_that_were_hit[0].damage)
                 if objects_that_were_hit[1].health <= 0:
@@ -309,6 +327,9 @@ class Level():
                 new_enemy = element.enemy_type(self.game.screen, element.startx,
                 element.starty, element.patternx, element.patterny)
                 self.enemies.append(new_enemy)    
+
+    def handle_save(self):
+        self.ship.save()
 
     def victory_end(self):
         """yay we win"""

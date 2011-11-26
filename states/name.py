@@ -48,7 +48,7 @@ class Name(state.State):
                             self.game.winner_name = enter_name.text
                         self.game.done = True
                         state_stack.append(states.level.Level(self.game, \
-                        "level1.txt", states.cuttwo.CutTwo()))
+                        "timetravel.txt", states.cuttwo.CutTwo()))
 
                     elif event.key == pygame.K_BACKSPACE:
                         enter_name.text = enter_name.text[:-1]

@@ -1,0 +1,56 @@
+dimensions:
+WIDTH           100
+HEIGHT          100
+SCROLL_TIME     4
+$end
+
+tiles:
+1               1placeholder1.png
+2               1placeholder2.png
+3               1placeholder3.png
+4               1placeholder4.png
+5               1placeholder5.png
+6               1placeholder6.png
+7               1placeholder7.png
+8               1placeholder8.png
+9               1placeholder9.png
+$end
+
+layout:
+99999999
+88888888
+77777777
+66666666
+55555555
+44444444
+33333333
+22222222
+11111111
+99999999
+88888888
+77777777
+66666666
+55555555
+44444444
+33333333
+22222222
+11111111
+99999999
+88888888
+77777777
+66666666
+55555555
+44444444
+33333333
+22222222
+11111111
+99999999
+88888888
+77777777
+66666666
+55555555
+44444444
+33333333
+22222222
+11111111
+$end

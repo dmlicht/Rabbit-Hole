@@ -57,6 +57,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.rot = 0
         self.health = STARTING_HEALTH
         self.bounding_radius = 30
+        self.saved_xy = []
 
     def update(self):
         """Update method"""
@@ -72,7 +73,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.x += self.velocity_x
         self.y += self.velocity_y
         self.rot = rabbyt.lerp(self.rot, (self.tilt * TILT_MAGNITUDE), \
-                               dt=TILT_SPEED)
+                                dt=TILT_SPEED)
 
     def animate(self):
         """animates the ship"""
@@ -132,3 +133,27 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         new_bullet = bullet.Bullet(self.xy, self.rot, BULLET_VELOCITY)
         self.has_fired = True
         return new_bullet
+
+    def save(self):
+        self.saved_xy.append(self.xy)
+
+class PastSelf(rabbyt.Sprite, game_object.GameObject):
+    """class to handle past self ship"""
+    def __init__(self, name, screen, all_xy):
+        game_object.GameObject.__init__(self)
+        rabbyt.Sprite.__init__(self, name+'.png', (-244/6.0, 51, 244/6.0, -51))
+        self.screen = screen
+        self.time_last = pygame.time.get_ticks() 
+        self.position_index = 0
+        self.all_xy = all_xy
+
+    def update(self):
+        if (self.position_index < len(self.all_xy)):
+            self.xy = self.all_xy[self.position_index]
+            self.position_index += 1
+            return True
+        else: return False
+
+    def render(self):
+        """Render method for rabbyt"""
+        rabbyt.Sprite.render(self)
