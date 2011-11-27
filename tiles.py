@@ -34,6 +34,8 @@ class Background():
                          "1dirt_patch_tile2.png", "1dirt_patch_tile3.png", \
                          "1dirt_patch_tile4.png"]
 
+        self.saving = False
+
         self.game = game
 
     def initialize(self):
@@ -83,7 +85,8 @@ class Background():
             highest_y_tile_position + 100, self.tile_layout.get_next_row()))
             self.ticks_during_last_add = current_time
             print "number of rows: ", len(self.tile_rows)
-            del self.tile_rows[0]
+            if not self.saving:
+                del self.tile_rows[0]
 
     def render(self):
         """rabbyt render method"""

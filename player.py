@@ -8,6 +8,7 @@ import rabbyt
 import settings
 import bullet
 import game_object
+import actions
 
 ## BOOST CONSTANTS ##
 BOOST_FUEL_COST = 1
@@ -43,21 +44,40 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.offsetx = -51
         self.offsety = -244/6.0
 
-        self.teleport_position_x = -1
-        self.teleport_position_y = -1
-        self.teleport_location_set = False
-
         self.has_fired = False
 
         self.frame = 0
         self.tex_shapes = settings.get_tex_shapes(self.tex_shape, int(name[:1]))
 
-        #self.xy = (0,self.offsety*7)
-        #self.velocity = [0,0]
         self.rot = 0
         self.health = STARTING_HEALTH
         self.bounding_radius = 30
-        self.saved_xy = []
+
+    def handle_actions(self, actions, level):
+        if actions.boost:
+            self.boosting = True
+        else: self.boosting = False
+
+        #ship animation
+        if actions.up != 0 or actions.down != 0 or actions.left != 0 or actions != 0:
+            self.animate()
+
+        #Vertical Movement
+        self.acceleration_y = actions.up - actions.down
+        self.check_vertical_bounds()
+
+        #Horizontal Movement
+        self.acceleration_x = actions.right - actions.left
+        self.check_horizontal_bounds()
+
+        #Firing
+        if actions.fire:
+            new_bullet = self.attemptfire()
+            if new_bullet:
+                level.bullets.append(new_bullet)
+        #tilt
+        self.tilt = actions.tilt_left - actions.tilt_right
+        
 
     def update(self):
         """Update method"""
@@ -134,26 +154,38 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.has_fired = True
         return new_bullet
 
+class User(Ship):
+    def __init__(self, name, screen):
+        Ship.__init__(self, name, screen)
+        #TIME TRAVEL
+        self.saved_xy = 0
+        self.saved_rot = 0
+        self.saved_actions = []
+
     def save(self):
-        self.saved_xy.append(self.xy)
+        self.saved_xy = self.xy
+        self.saved_rot = self.rot
 
-class PastSelf(rabbyt.Sprite, game_object.GameObject):
+    def save_actions(self, ticks, actions):
+        actions.ticks = ticks
+        self.saved_actions.append(actions)
+
+class PastSelf(Ship):
     """class to handle past self ship"""
-    def __init__(self, name, screen, all_xy):
-        game_object.GameObject.__init__(self)
-        rabbyt.Sprite.__init__(self, name+'.png', (-244/6.0, 51, 244/6.0, -51))
-        self.screen = screen
+    def __init__(self, name, screen, saved_xy, saved_rot, saved_actions, level):
+        Ship.__init__(self, name, screen)
         self.time_last = pygame.time.get_ticks() 
-        self.position_index = 0
-        self.all_xy = all_xy
+        self.index = 0
+        self.saved_actions = saved_actions
+        self.level = level
+        self.xy = saved_xy
+        self.rot = saved_rot
 
-    def update(self):
-        if (self.position_index < len(self.all_xy)):
-            self.xy = self.all_xy[self.position_index]
-            self.position_index += 1
+    def get_actions(self, ticks):
+        while (self.index < len(self.saved_actions)) and self.saved_actions[self.index].ticks < ticks:
+            self.handle_actions(self.saved_actions[self.index], self.level)
+            self.index += 1
+
+        if (self.index < len(self.saved_actions)):
             return True
         else: return False
-
-    def render(self):
-        """Render method for rabbyt"""
-        rabbyt.Sprite.render(self)

@@ -14,6 +14,7 @@ from settings import FontSprite
 import states.menu
 import states.highscore
 import random
+import actions
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -22,6 +23,8 @@ MAX_FUEL        = 100.0
 FUEL_DRAIN      = 10.0
 MIN_FUEL        = 0	
 FUEL_REGAIN     = .1
+
+TIME_TRAVEL_CHRONOS_DRAIN = .5
 
 class Level():
     """level class"""
@@ -43,7 +46,7 @@ class Level():
         self.fuel               = MAX_FUEL
 
         #player
-        self.ship               = player.Ship("3ship1", game.screen)
+        self.ship               = player.User("3ship1", game.screen)
         self.past_selves        = []
         self.f_xy               = []   
         self.bullets            = []
@@ -76,10 +79,13 @@ class Level():
         self.boss_dead          = False
 
         self.saving             = False
+        self.can_store          = True
+        self.stored_offset      = 0
+        self.current_offset     = 0
     
     def run(self, game, state_stack):
         """runs the game"""
-        rabbyt.set_time(self.game.get_ticks()/1000.0)
+        rabbyt.set_time(self.get_ticks()/1000.0)
         self.done = False
         self.game = game
         #rabbyt.scheduler.add((game.get_ticks() + \ 
@@ -106,9 +112,8 @@ class Level():
 
         if self.saving:
             self.handle_save()
-
         #Timing
-        rabbyt.set_time(self.game.get_ticks()/1000.0)
+        rabbyt.set_time(self.get_ticks()/1000.0)
         rabbyt.scheduler.pump()
         rabbyt.clear()
 
@@ -118,7 +123,6 @@ class Level():
         self.handle_collisions_between(self.ship, self.enemies)
         self.handle_collisions_between(self.bullets, self.enemies)
         self.handle_item_pickups_between(self.ship, self.items)
-
 
 
         #Render
@@ -145,50 +149,41 @@ class Level():
                     self.done = True
                     self.state_stack.append(self.state_after)
             elif event.type == pygame.KEYUP and event.key == pygame.K_SPACE:
-                self.ship.has_fired = False    
+                self.ship.has_fired = False
+        
+        #check for key presses
         pressed = pygame.key.get_pressed()
+        user_actions = self.input_to_actions(pressed)
+        self.ship.handle_actions(user_actions, self)
 
-        #ship boost
-        if pressed[pygame.K_d]:
-            self.ship.boosting = True
-        else: self.ship.boosting = False
-        self.text_boost.text = "Boost Fuel: " + str(self.ship.boost_fuel)
-
-        #ship animation
-        if pressed[pygame.K_UP] != 0 or pressed[pygame.K_DOWN] != 0 or \
-        pressed[pygame.K_LEFT] != 0 or pressed[pygame.K_RIGHT] != 0:
-            self.ship.animate()
-
-        #Vertical Movement
-        self.ship.acceleration_y = pressed[pygame.K_UP] - pressed[pygame.K_DOWN]
-        self.ship.check_vertical_bounds()
-
-        #Horizontal Movement
-        self.ship.acceleration_x = pressed[pygame.K_RIGHT] - \
-                                   pressed[pygame.K_LEFT]
-        self.ship.check_horizontal_bounds()
-
-        #Firing
-        if pressed[pygame.K_SPACE]:
-            new_bullet = self.ship.attemptfire()
-            if new_bullet:
-                self.bullets.append(new_bullet)
-        #tilt
-        self.ship.tilt = pressed[pygame.K_z] - pressed[pygame.K_x]
-       
         #save ship movements
         if pressed[pygame.K_t]:
-            self.saving = True
+            self.set_travel_point()
+
         if pressed[pygame.K_y]:
-            self.saving = False
-            new_past_self = player.PastSelf("3ship1", self.game.screen, self.ship.saved_xy)
-            self.ship.saved_xy = []
-            self.past_selves.append(new_past_self)
+            self.return_travel_point()
+
+        if self.saving:
+            self.ship.save_actions(self.get_ticks(), user_actions)
+
+    def input_to_actions(self, pressed):
+        user_actions = actions.Actions()
+        if pressed[pygame.K_UP]: user_actions.up = True
+        if pressed[pygame.K_DOWN]: user_actions.down = True
+        if pressed[pygame.K_LEFT]:  user_actions.left = True
+        if pressed[pygame.K_RIGHT]: user_actions.right = True
+        if pressed[pygame.K_SPACE]: user_actions.fire = True
+        if pressed[pygame.K_d]: user_actions.boost = True
+        if pressed[pygame.K_z]: user_actions.tilt_left = True
+        if pressed[pygame.K_x]: user_actions.tilt_right = True
+        return user_actions
 
     def update_UI(self):
         """updates UI"""
         self.text_health.text = "Health: " + str(self.ship.health)
         self.text_score.text = "Score: " + str(self.game.user.score)
+        self.text_boost.text = "Boost Fuel: " + str(self.ship.boost_fuel)
+        self.text_chronos.text = "Chronos: " + str(self.energy)
         if self.fuel < MAX_FUEL:
             self.fuel += FUEL_REGAIN
             self.text_boost.text = "Boost Fuel: " + str(self.fuel)
@@ -209,8 +204,9 @@ class Level():
             enemy.animate()
 
         for past_self in self.past_selves:
-            if not past_self.update():
+            if not past_self.get_actions(self.get_ticks()):
                 self.past_selves.remove(past_self)
+            else: past_self.update()
 
                 
         self.remove_offmap(self.enemies)
@@ -329,7 +325,9 @@ class Level():
                 self.enemies.append(new_enemy)    
 
     def handle_save(self):
-        self.ship.save()
+        self.energy -= TIME_TRAVEL_CHRONOS_DRAIN
+        if self.energy <= 0:
+            self.return_travel_point()
 
     def victory_end(self):
         """yay we win"""
@@ -343,10 +341,24 @@ class Level():
         self.game.update_scores()
         self.state_stack.append(states.highscore.High())
         self.done = True
+    
+    def get_ticks(self):
+        return self.game.get_ticks() - self.current_offset
 
-    """
-    def update_tiles_loop(self):
-        print 'called update_tiles_loop'
-        self.background.maintain_tile_rows()
-        rabbyt.scheduler.add((self.game.get_ticks() + self.background.row_update_time)/1000.0, self.update_tiles_loop)
-    """
+    def set_travel_point(self):
+        self.saving = True
+        self.background.saving = True
+        if self.can_store:
+            self.stored_offset = self.get_ticks()
+            self.ship.save()
+            self.can_store = False
+
+    def return_travel_point(self):
+        self.saving = False
+        self.background.saving = False
+        if not self.can_store:
+            self.current_offset = self.game.get_ticks() - self.stored_offset
+            new_past_self = player.PastSelf("3ship1", self.game.screen, self.ship.saved_xy, self.ship.saved_rot, self.ship.saved_actions, self)
+            self.can_store = True
+            self.ship.saved_actions = []
+            self.past_selves.append(new_past_self)
