@@ -227,5 +227,5 @@ Dragon      200    	350    do_nothing  straight_down9
 $end
 
 38
-Boss2           0    	350     movpattern_circx     movpatterny2
+Boss2           0    	350     boss2_patx     boss2_paty
 $end
