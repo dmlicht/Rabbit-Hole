@@ -75,6 +75,8 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
             new_bullet = self.attemptfire()
             if new_bullet:
                 level.bullets.append(new_bullet)
+        else:
+            self.has_fired = False
         #tilt
         self.tilt = actions.tilt_left - actions.tilt_right
         

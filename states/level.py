@@ -42,7 +42,7 @@ class Level():
 
         self.state_after        = state_after
 
-        self.energy             = 100
+        self.energy             = 1000
         self.fuel               = MAX_FUEL
 
         #player
@@ -148,8 +148,8 @@ class Level():
                 elif event.key == pygame.K_n:
                     self.done = True
                     self.state_stack.append(self.state_after)
-            elif event.type == pygame.KEYUP and event.key == pygame.K_SPACE:
-                self.ship.has_fired = False
+            #elif event.type == pygame.KEYUP and event.key == pygame.K_SPACE:
+                #self.ship.has_fired = False
         
         #check for key presses
         pressed = pygame.key.get_pressed()
@@ -362,3 +362,7 @@ class Level():
             self.can_store = True
             self.ship.saved_actions = []
             self.past_selves.append(new_past_self)
+            self.delete_bullets()
+
+    def delete_bullets(self):
+        self.bullets = []
