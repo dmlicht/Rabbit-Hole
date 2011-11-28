@@ -15,6 +15,7 @@ import states.menu
 import states.highscore
 import random
 import actions
+import copy
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -25,6 +26,7 @@ MIN_FUEL        = 0
 FUEL_REGAIN     = .1
 
 TIME_TRAVEL_CHRONOS_DRAIN = .5
+STARTING_CHRONOS = 100
 
 class Level():
     """level class"""
@@ -42,7 +44,7 @@ class Level():
 
         self.state_after        = state_after
 
-        self.energy             = 1000
+        self.energy             = STARTING_CHRONOS
         self.fuel               = MAX_FUEL
 
         #player
@@ -157,10 +159,10 @@ class Level():
         self.ship.handle_actions(user_actions, self)
 
         #save ship movements
-        if pressed[pygame.K_t]:
+        if pressed[pygame.K_t] and self.can_store:
             self.set_travel_point()
 
-        if pressed[pygame.K_y]:
+        if pressed[pygame.K_y] and not self.can_store:
             self.return_travel_point()
 
         if self.saving:
@@ -348,21 +350,33 @@ class Level():
     def set_travel_point(self):
         self.saving = True
         self.background.saving = True
-        if self.can_store:
-            self.stored_offset = self.get_ticks()
-            self.ship.save()
-            self.can_store = False
+        self.stored_offset = self.get_ticks()
+        self.ship.save()
+        self.save_enemies()
+        self.can_store = False
+
+    def save_enemies(self):
+        self.saved_enemies = []
+        for enemy in self.enemies:
+            enemy_save = copy.deepcopy(enemy)
+            enemy_save.x = enemy.attrgetter("x")
+            enemy_save.y = enemy.attrgetter("y")
+            enemy_save.rot = enemy.attrgetter("rot")
+            self.saved_enemies.append(enemy_save)
 
     def return_travel_point(self):
         self.saving = False
         self.background.saving = False
-        if not self.can_store:
-            self.current_offset = self.game.get_ticks() - self.stored_offset
-            new_past_self = player.PastSelf("3ship1", self.game.screen, self.ship.saved_xy, self.ship.saved_rot, self.ship.saved_actions, self)
-            self.can_store = True
-            self.ship.saved_actions = []
-            self.past_selves.append(new_past_self)
-            self.delete_bullets()
+        self.current_offset = self.game.get_ticks() - self.stored_offset
+        new_past_self = player.PastSelf("3ship1", self.game.screen, self.ship.saved_xy, \
+                        self.ship.saved_rot, self.ship.saved_actions, self)
+        self.can_store = True
+        self.ship.saved_actions = []
+        self.past_selves.append(new_past_self)
+        self.delete_bullets()
+        self.return_enemies()
 
     def delete_bullets(self):
         self.bullets = []
+    def return_enemies(self):
+        self.enemies = self.saved_enemies
