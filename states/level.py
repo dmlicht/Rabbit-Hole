@@ -366,12 +366,18 @@ class Level():
         self.stored_offset = self.get_ticks()
         self.ship.save()
         self.save_enemies()
+        self.save_bullets()
         self.can_store = False
 
     def save_enemies(self):
         self.stored_enemies = []
         for enemy in self.enemies:
             self.stored_enemies.append(enemy)
+
+    def save_bullets(self):
+        self.stored_bullets = []
+        for bullet in self.bullets:
+            self.stored_bullets.append(bullet)
 
     def return_travel_point(self):
         self.saving = False
@@ -382,11 +388,12 @@ class Level():
         self.can_store = True
         self.ship.saved_actions = []
         self.past_selves.append(new_past_self)
-        self.delete_bullets()
+        self.return_bullets()
         self.return_enemies()
 
-    def delete_bullets(self):
-        self.bullets = []
+    def return_bullets(self):
+        self.bullets = self.stored_bullets
+        self.stored_bullets = []
         
     def return_enemies(self):
         self.enemies = self.stored_enemies

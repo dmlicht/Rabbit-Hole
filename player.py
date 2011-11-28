@@ -24,6 +24,9 @@ BULLET_VELOCITY = 2
 
 STARTING_HEALTH = 5
 
+TIME_INVINCIBLE_AFTER_HIT = 2
+INVINCIBLE_DECAY_RATE = .05
+
 
 class Ship(rabbyt.Sprite, game_object.GameObject):
     """Ship Class"""
@@ -52,6 +55,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.rot = 0
         self.health = STARTING_HEALTH
         self.bounding_radius = 30
+        self.invincible_time = 0
 
     def handle_actions(self, actions, level):
         if actions.boost:
@@ -94,6 +98,11 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.velocity_y *= .9
         self.x += self.velocity_x
         self.y += self.velocity_y
+        if (self.invincible_time > 0):
+            self.invincible_time -= INVINCIBLE_DECAY_RATE
+        else:
+            self.steady()
+
         self.rot = rabbyt.lerp(self.rot, (self.tilt * TILT_MAGNITUDE), \
                                 dt=TILT_SPEED)
 
@@ -155,6 +164,18 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         new_bullet = bullet.Bullet(self.xy, self.rot, BULLET_VELOCITY)
         self.has_fired = True
         return new_bullet
+
+    def hit(self, damage=1):
+        if (self.invincible_time <= 0):
+            self.health -= damage
+            self.invincible_time += TIME_INVINCIBLE_AFTER_HIT
+            self.flash()
+
+    def flash(self):
+        self.alpha = rabbyt.lerp(1, 0, dt=.2, extend="repeat")
+    def steady(self):
+        self.alpha = 1
+
 
 class User(Ship):
     def __init__(self, name, screen):

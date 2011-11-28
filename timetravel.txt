@@ -5,7 +5,7 @@ timetravel_layout.txt
 Dragon			-300		100		back_and_forth1		do_nothing
 $end
 
-37
+5
 BossHands      -100   	350     boss_hand1_patx  boss1_pat
 Boss1           0    	350     do_nothing       boss1_pat
 BossHands      100    	350     boss_hand2_patx  boss1_pat

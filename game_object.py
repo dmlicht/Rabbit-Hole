@@ -8,6 +8,7 @@ class GameObject():
         self.health = 0
         self.damage = 0
         self.point_value = 0
+        self.invincible = 0
 
     def hit(self, damage=1):
         """defines hit function"""
