@@ -1,166 +1,136 @@
-"""
-list of patterns
-"""
 ## beginning of import
 from __future__ import division
 import rabbyt
 
 def straight_down(start, time=4):
-    """pattern"""
     return rabbyt.ease(start, start-800, dt=time)
 
 def straight_down1(start):
-    """pattern"""
     return straight_down(start, 3.5)
 
 def straight_down2(start):
-    """pattern"""
     return straight_down(start, 3.0)
 
 def straight_down3(start):
-    """pattern"""
     return straight_down(start, 2.75)
 
 def straight_down4(start):
-    """pattern"""
     return straight_down(start, 2.5)
 
 def straight_down5(start):
-    """pattern"""
     return straight_down(start, 2.25)
 
 def straight_down6(start):
-    """pattern"""
     return straight_down(start, 2.0)
 
 def straight_down7(start):
-    """pattern"""
     return straight_down(start, 1.75)
 
 def straight_down8(start):
-    """pattern"""
     return straight_down(start, 1.5)
 
 def straight_down9(start):
-    """pattern"""
     return straight_down(start, 1.25)
 
 def straight_across(start, time=4):
-    """pattern"""
     return rabbyt.ease(start, start+800, dt=time)
 
 def straight_across1(start):
-    """pattern"""
     return straight_across(start, 3.5)
 
 def straight_across2(start):
-    """pattern"""
     return straight_across(start, 3.0)
 
 def straight_across3(start):
-    """pattern"""
     return straight_across(start, 2.75)
 
 def straight_across4(start):
-    """pattern"""
     return straight_across(start, 2.5)
 
 def straight_across5(start):
-    """pattern"""
     return straight_across(start, 2.25)
 
 def straight_across6(start):
-    """pattern"""
     return straight_across(start, 2.0)
 
 def straight_across7(start):
-    """pattern"""
     return straight_across(start, 1.75)
 
 def straight_across8(start):
-    """pattern"""
     return straight_across(start, 1.5)
 
 def straight_across9(start):
-    """pattern"""
     return straight_across(start, 1.25)
 
+def back_and_forth(start, time=4):
+    return rabbyt.lerp(start, start+600, dt=time, extend="reverse")
+
+def back_and_forth1(start):
+    return back_and_forth(start, 8)
+
 def do_nothing(start):
-    """pattern"""
     return rabbyt.lerp(start, start, dt=1)
 
 def movpatternx(startx):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(startx, startx+50, dt=1),
                          rabbyt.lerp(startx+50, startx, dt=1),
                          rabbyt.lerp(startx, startx-200, dt=1, 
                          extend="reverse"),)
 
 def movpatterny(start):
-    """pattern"""
     return rabbyt.chain( rabbyt.ease(start, start-400, dt=1),
                          rabbyt.ease(start-400, start-200, dt=2),
                          rabbyt.ease(start-200, start-400, dt=1, 
                          extend="reverse"),)
 def movpatternx1(startx):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(startx, startx+50, dt=1),
                          rabbyt.lerp(startx+50, startx-50, dt=1),
                          rabbyt.lerp(startx-50, startx, dt=1, 
                          extend="reverse"),)
 
 def movpatterny1(start):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(start, start-600, dt=2),
                          rabbyt.lerp(start-600, start-500, dt=1),
                          rabbyt.lerp(start-500, start-800, dt=2, 
                          extend="reverse"),)
 
 def movpatternx2(startx):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(startx, startx+100, dt=1.5),
                          rabbyt.lerp(startx+100, startx-100, dt=3),
                          rabbyt.lerp(startx-100, startx, dt=1.5, 
                          extend="reverse"),)
 
 def movpatterny2(start):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(start, start-400, dt=4),
                          rabbyt.lerp(start-400, start, dt=4, 
                          extend="reverse"),)
 
 def movpattern_circx(startx):
-    """pattern"""
     return startx+rabbyt.chain( rabbyt.lerp(0, 100, dt=1),
                          rabbyt.lerp(100, -100, dt=2),
                          rabbyt.lerp(-100, 0, dt=1, extend="reverse"),)
 
 def movpattern_circy(start):
-    """pattern"""
     return start+rabbyt.chain( rabbyt.lerp(-100, 0, dt=1),
                          rabbyt.lerp(0, 100, dt=1),
                          rabbyt.lerp(100, -100, dt=2, extend="reverse"),)
 
 def boss1_pat(start):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(start, start-600, dt=3),
                          rabbyt.lerp(start-600, start, dt=3,
                          extend="reverse"),)
 
 def boss_hand1_patx(startx):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(startx, startx-200, dt=0.5),
                          rabbyt.lerp(startx-200, startx, dt=0.5, 
                          extend="reverse"),)
 
 def boss_hand2_patx(startx):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(startx, startx+200, dt=0.5),
                          rabbyt.lerp(startx+200, startx, dt=0.5, 
                          extend="reverse"),)
 
 def boss2_patx(startx):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(startx, startx+250, dt = 1),
                          rabbyt.lerp(startx+250, startx-250, dt = 2),
                          rabbyt.lerp(startx+250, startx, dt = 1),
@@ -170,7 +140,6 @@ def boss2_patx(startx):
                          extend="reverse"),)
 
 def boss2_paty(starty):
-    """pattern"""
     return rabbyt.chain( rabbyt.lerp(starty, starty-600, dt=1),
                          rabbyt.lerp(starty-600, starty-300, dt=0.5),
                          rabbyt.lerp(starty-300, starty-600, dt = 0.5),

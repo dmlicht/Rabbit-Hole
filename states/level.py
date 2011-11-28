@@ -16,6 +16,7 @@ import states.highscore
 import random
 import actions
 import copy
+import movement_pattern
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -54,6 +55,7 @@ class Level():
         self.bullets            = []
         self.enemies            = []
         self.items              = []
+        self.stored_enemies     = []
 
         #set UI
         self.text_score         = FontSprite(game.font, "Score: " + \
@@ -165,8 +167,19 @@ class Level():
         if pressed[pygame.K_y] and not self.can_store:
             self.return_travel_point()
 
+        if pressed[pygame.K_m]:
+            self.test_save()
+
         if self.saving:
             self.ship.save_actions(self.get_ticks(), user_actions)
+
+    def test_save(self):
+        enemy = self.enemies[0]
+        new_enemy = type(enemy)(self.game.screen, enemy.x, enemy.y, movement_pattern.do_nothing, movement_pattern.do_nothing)
+        new_enemy.x = enemy.attrgetter("x") - 100
+        new_enemy.y = enemy.attrgetter("y")
+        self.enemies.append(new_enemy)
+        #test_enemy.y = self.enemies[0].y + 100
 
     def input_to_actions(self, pressed):
         user_actions = actions.Actions()
@@ -356,13 +369,9 @@ class Level():
         self.can_store = False
 
     def save_enemies(self):
-        self.saved_enemies = []
+        self.stored_enemies = []
         for enemy in self.enemies:
-            enemy_save = copy.deepcopy(enemy)
-            enemy_save.x = enemy.attrgetter("x")
-            enemy_save.y = enemy.attrgetter("y")
-            enemy_save.rot = enemy.attrgetter("rot")
-            self.saved_enemies.append(enemy_save)
+            self.stored_enemies.append(enemy)
 
     def return_travel_point(self):
         self.saving = False
@@ -378,5 +387,7 @@ class Level():
 
     def delete_bullets(self):
         self.bullets = []
+        
     def return_enemies(self):
-        self.enemies = self.saved_enemies
+        self.enemies = self.stored_enemies
+        self.stored_enemies = []
