@@ -1,6 +1,9 @@
 layout:
 level1_layout.txt
 
+music:
+game_song2.mp3
+
 1
 Dragon      0      310      movpatternx2     movpatterny2
 Dragon      -300   310      movpatternx2     movpatterny2

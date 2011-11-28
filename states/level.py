@@ -17,6 +17,7 @@ import random
 import actions
 import copy
 import movement_pattern
+import os
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -35,6 +36,7 @@ class Level():
         self.wave_builder = wave_handler.WaveHandler(level)
         self.wave_builder.parse_level_file()
         self.set_scheduler_waves()
+        self.set_up_music()
 
         game.set_state_time()
         self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, \
@@ -56,6 +58,7 @@ class Level():
         self.enemies            = []
         self.items              = []
         self.stored_enemies     = []
+        self.stored_bullets     = []
 
         #set UI
         self.text_score         = FontSprite(game.font, "Score: " + \
@@ -86,6 +89,14 @@ class Level():
         self.can_store          = True
         self.stored_offset      = 0
         self.current_offset     = 0
+    
+    def set_up_music(self):
+        song = self.wave_builder.music_file_path
+        print song
+        if song and os.path.exists(song):
+            print song, " exists"
+            pygame.mixer.music.load(song)
+            pygame.mixer.music.play(-1, 0.0)
     
     def run(self, game, state_stack):
         """runs the game"""
@@ -367,6 +378,7 @@ class Level():
         self.ship.save()
         self.save_enemies()
         self.save_bullets()
+        self.save_items()
         self.can_store = False
 
     def save_enemies(self):
@@ -379,6 +391,11 @@ class Level():
         for bullet in self.bullets:
             self.stored_bullets.append(bullet)
 
+    def save_items(self):
+        self.stored_items = []
+        for item in self.items:
+            self.stored_items.append(item)
+
     def return_travel_point(self):
         self.saving = False
         self.background.saving = False
@@ -390,6 +407,7 @@ class Level():
         self.past_selves.append(new_past_self)
         self.return_bullets()
         self.return_enemies()
+        self.return_items()
 
     def return_bullets(self):
         self.bullets = self.stored_bullets
@@ -398,3 +416,7 @@ class Level():
     def return_enemies(self):
         self.enemies = self.stored_enemies
         self.stored_enemies = []
+
+    def return_items(self):
+        self.items = self.stored_items
+        self.stored_items = []

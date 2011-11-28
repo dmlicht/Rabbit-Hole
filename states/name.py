@@ -9,6 +9,8 @@ from settings import FontSprite
 import state
 import states.menu
 
+LEVEL_TO_RUN = "level1.txt"
+
 class Name(state.State):
     """Name State"""
     def run(self, game, state_stack):
@@ -61,4 +63,4 @@ class Name(state.State):
             pygame.display.flip()
 
     def set_next_level(self, state_stack):                        
-        state_stack.append(states.level.Level(self.game, "timetravel.txt", states.cuttwo.CutTwo()))
+        state_stack.append(states.level.Level(self.game, LEVEL_TO_RUN, states.cuttwo.CutTwo()))

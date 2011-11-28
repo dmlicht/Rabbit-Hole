@@ -18,6 +18,7 @@ class WaveHandler():
         self.level_file_path = level_file_path
         self.wave_index = 0
         self.layout_file_path = ""
+        self.music_file_path = ""
         self.err_line = 0
 
     def parse_level_file(self):
@@ -34,6 +35,11 @@ class WaveHandler():
                 elif outer_line.split()[0] == "layout:":
                     inner_line = self.readline_with_debug(level_file)
                     self.layout_file_path = inner_line.split()[0]
+                    outer_line = self.readline_with_debug(level_file)
+
+                elif outer_line.split()[0] == "music:":
+                    inner_line = self.readline_with_debug(level_file)
+                    self.music_file_path = inner_line.split()[0]
                     outer_line = self.readline_with_debug(level_file)
 
                 #if a number is read in
