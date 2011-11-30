@@ -1,5 +1,5 @@
 """
-The Third Cutscene
+The Second Cutscene
 """
 from __future__ import division
 import pygame
@@ -7,11 +7,11 @@ import rabbyt
 from pygame.locals import QUIT, KEYDOWN, K_RETURN, K_ESCAPE
 
 import state, states.level
-import states.cutfour
+import states.highscore
 from settings import FontSprite
 
 #def CutTwo(game, state_stack):
-class CutThree(state.State):
+class CutFour(state.State):
     """The Second Cutscene"""
     def run(self, game, state_stack):
         """Starts the cutscene"""
@@ -30,7 +30,7 @@ class CutThree(state.State):
         rabbit.scale = 0.5
         #rabbit.xy = (60,-60)
 
-        words = FontSprite(game.font, "Dimensional Rabbit: ZzZzz ...")
+        words = FontSprite(game.font, "Dimensional Rabbit: Oh ...")
         words.alpha = rabbyt.lerp(0.0, 1.0, startt=3, endt=5)
         words.y = -250
         words.x = -180
@@ -47,36 +47,40 @@ class CutThree(state.State):
                 rabbit.render()
             if ticks >= 5 and ticks < 7:
                 words.x = -200
-                words.text = "Dimensional Rabbit: Hello Again!"
+                words.text = "Dimensional Rabbit: It's you again ..."
             elif ticks >= 7 and ticks < 9:
-                words.text = "Dimensional Rabbit: How are you doing?"
+                words.text = "Scientist: THAT WAS THE WRONG TIME"
                 words.x = -160
             elif ticks >= 9 and ticks < 11:
-                words.text = "Dimensional Rabbit: Do you need help"
+                words.text = "Scientist: WHY'D you lead me to WW2?!"
                 words.x = -260
             elif ticks >= 11 and ticks < 13:
-                words.text = "Dimensional Rabbit: ..." + \
-                             " Navigating this place?"
+                words.text = "Dimensional Rabbit: So I was off" + \
+                             " by like 500 years."
                 words.x = -330
             elif ticks >= 13 and ticks < 17:
-                words.text = "Scientist: Well... do you know where"
-                words.x = -270
-            elif ticks >= 17 and ticks < 21:
-                words.text = "Scientist: The year 2444 is?."
-                words.x = -250
-            elif ticks >= 21 and ticks < 25:
-                words.text = "Dimensional Rabbit: Oh it's right around " + \
-                             "here I think..."
-                words.x = -385
-            elif ticks >= 25 and ticks < 29:
-                words.text = "Scientist: Really? That doesn't look..."
-                words.x = -160
-                rabbit.alpha = rabbyt.lerp(1.0, 0.0, startt=25, endt=29)
-            elif ticks >= 29:
-                words.text = "Scientist: WHOA!!"
+                words.text = "Dimensional Rabbit: Do you know how many " + \
+                             "portals there are"
+                words.x = -380
+            elif ticks>=17 and ticks < 21:
+                words.text = "Dimensional Rabbit: in this place?"
                 words.x = -100
+            elif ticks >= 21 and ticks < 25:
+                words.text = "Scientist: Well can you tell me where now?"
+                words.x = -250
+            elif ticks >= 25 and ticks < 29:
+                words.text = "Dimensional Rabbit: Yeah it's this one " + \
+                             "for sure."
+                words.x = -315
+            elif ticks >= 29 and ticks < 33:
+                words.text = "Dimensional Rabbit: Sorry about the mix up. Good luck!"
+                words.x = -300
+                rabbit.alpha = rabbyt.lerp(1.0, 0.0, startt=25, endt=29)
+            elif ticks >= 33:
+                words.text = "Scientist: I hope you're right this time!"
+                words.x = -200
                 scene.alpha = rabbyt.lerp(1.0, 0.0, startt=29, endt=33)
-            if ticks >= 33:
+            if ticks >= 37:
                 game.done = True
                 self.set_next_state()
 
@@ -96,6 +100,4 @@ class CutThree(state.State):
     def set_next_state(self):
         """Makes Next State"""
         self.state_stack.append(states.level.Level( \
-          self.game, "level3.txt", states.cutfour.CutFour()))
-
-
+          self.game, "level4.txt", states.highscore.High()))

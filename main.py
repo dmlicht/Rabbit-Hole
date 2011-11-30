@@ -104,8 +104,8 @@ class Game:
             if self.high_scores[0] <= self.user.score:
                 self.high_scores.insert(0, self.user.score)
                 self.high_score_names.insert(0, self.winner_name)
-            del self.high_scores[5]
-            del self.high_score_names[5]
+                del self.high_scores[5]
+                del self.high_score_names[5]
         else:
             self.high_scores.insert(index+1, self.user.score)
             self.high_score_names.insert(index+1, self.winner_name)

@@ -33,7 +33,7 @@ def straight_down9(start):
     return straight_down(start, 1.25)
 
 def straight_across(start, time=4):
-    return rabbyt.ease(start, start+800, dt=time)
+    return rabbyt.ease(start, start+1000, dt=time)
 
 def straight_across1(start):
     return straight_across(start, 3.5)
@@ -147,14 +147,14 @@ def movpatterny2(start):
                          extend="reverse"),)
 
 def movpattern_circx(startx):
-    return startx+rabbyt.chain( rabbyt.lerp(0, 100, dt=1),
-                         rabbyt.lerp(100, -100, dt=2),
-                         rabbyt.lerp(-100, 0, dt=1, extend="reverse"),)
+    return startx+rabbyt.chain( rabbyt.lerp(0, 100, dt=0.5),
+                         rabbyt.lerp(100, -100, dt=1),
+                         rabbyt.lerp(-100, 0, dt=0.5, extend="reverse"),)
 
 def movpattern_circy(start):
-    return start+rabbyt.chain( rabbyt.lerp(-100, 0, dt=1),
-                         rabbyt.lerp(0, 100, dt=1),
-                         rabbyt.lerp(100, -100, dt=2, extend="reverse"),)
+    return start+rabbyt.chain( rabbyt.lerp(-50, 0, dt=0.5),
+                         rabbyt.lerp(0, 50, dt=0.5),
+                         rabbyt.lerp(100, -50, dt=1, extend="reverse"),)
 
 def boss1_pat(start):
     return rabbyt.chain( rabbyt.lerp(start, start-600, dt=3),
@@ -173,27 +173,23 @@ def boss_hand2_patx(startx):
                          extend="reverse"),)
 
 def boss2_patx(startx):
-    return rabbyt.chain( rabbyt.lerp(startx, startx+250, dt = 1),
-                         rabbyt.lerp(startx+250, startx-250, dt = 2),
-                         rabbyt.lerp(startx+250, startx, dt = 1),
-                         rabbyt.lerp(startx+250, startx, dt = 1),
-                         rabbyt.lerp(startx+250, startx-250, dt = 2),
-                         rabbyt.lerp(startx, startx+250, dt = 1,
+    return rabbyt.chain( rabbyt.lerp(startx, startx+700, dt = 3),
+                         rabbyt.lerp(startx+700, startx, dt = 3,
                          extend="reverse"),)
 
 def boss2_paty(starty):
-    return rabbyt.chain( rabbyt.lerp(starty, starty-600, dt=1),
-                         rabbyt.lerp(starty-600, starty-300, dt=0.5),
-                         rabbyt.lerp(starty-300, starty-600, dt = 0.5),
-                         rabbyt.lerp(starty-600, starty, dt = 1),
-                         rabbyt.lerp(starty, starty-600, dt = 1),
-                         rabbyt.lerp(starty-600, starty-300, dt = 0.5),
-                         rabbyt.lerp(starty-300, starty-600, dt=0.5),
-                         rabbyt.lerp(starty-600, starty, dt=1),
-                         rabbyt.lerp(starty, starty-600, dt=1),
-                         rabbyt.lerp(starty-600, starty-600, dt = 3.5),
-                         rabbyt.lerp(starty-600, starty-350, dt = 0.5),
-                         rabbyt.lerp(starty-350, starty-350, dt = 3.5),
+    return rabbyt.chain( rabbyt.lerp(starty-300, starty-550, dt=1),
+                         rabbyt.lerp(starty-550, starty-300, dt=0.5),
+                         rabbyt.lerp(starty-300, starty-550, dt = 0.5),
+                         rabbyt.lerp(starty-550, starty-300, dt = 1),
+                         rabbyt.lerp(starty-300, starty-550, dt = 1),
+                         rabbyt.lerp(starty-550, starty-300, dt = 0.5),
+                         rabbyt.lerp(starty-300, starty-550, dt=0.5),
+                         rabbyt.lerp(starty-550, starty-300, dt=1),
+                         rabbyt.lerp(starty-300, starty-550, dt=1),
+                         rabbyt.lerp(starty-550, starty-550, dt = 2),
+                         rabbyt.lerp(starty-550, starty-350, dt = 0.5),
+                         rabbyt.lerp(starty-350, starty-350, dt = 2),
                          rabbyt.lerp(starty-350, starty, dt = 0.5,
                          extend="reverse"),)
 
@@ -208,9 +204,30 @@ def boss3_patx(startx):
 def boss3_paty(starty):
     """pattern"""
     return rabbyt.chain( rabbyt.lerp(starty, starty, dt=2),
-                         rabbyt.lerp(starty, starty+300, dt=3),
-                         rabbyt.lerp(starty+300, starty+300, dt=2),
-                         rabbyt.lerp(starty+300, starty, dt=2,
+                         rabbyt.lerp(starty, starty+500, dt=3),
+                         rabbyt.lerp(starty+500, starty+500, dt=2),
+                         rabbyt.lerp(starty+500, starty, dt=2,
+                         extend="reverse"),)
+
+def boss4_patx(startx):
+    return rabbyt.chain( rabbyt.lerp(startx, startx, dt=1),
+                         rabbyt.lerp(startx-320, startx-320, dt=1),
+                         rabbyt.lerp(startx, startx, dt=1),
+                         rabbyt.lerp(startx+320, startx+320, dt=1),
+                         rabbyt.lerp(startx-320, startx-320, dt=2),
+                         rabbyt.lerp(startx+320, startx+320, dt=2),
+                         rabbyt.lerp(startx, startx, dt=2,
+                         extend="reverse"),)
+
+def boss4_paty(starty):
+    return rabbyt.chain( rabbyt.lerp(starty, starty, dt=1),
+                         rabbyt.lerp(starty-220, starty-220, dt=1),
+                         rabbyt.lerp(starty-480, starty-480, dt=1),
+                         rabbyt.lerp(starty-220, starty-220, dt=1),
+                         rabbyt.lerp(starty, starty, dt=1),
+                         rabbyt.lerp(starty-480, starty-480, dt=2),
+                         rabbyt.lerp(starty, starty, dt=1),
+                         rabbyt.lerp(starty-220, starty-220, dt=2,
                          extend="reverse"),)
 
 """def pattern3(startx, starty):
