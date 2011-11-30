@@ -9,6 +9,7 @@ import settings
 import game_object
 import random
 import chronos
+import bullet
 
 class Enemy(rabbyt.Sprite, game_object.GameObject):
     """Enemy class"""
@@ -90,6 +91,16 @@ class Dragon(Enemy):
         self.health = 1
         self.damage = 1
         self.point_value = 50
+        self.fire_wait = 200
+        self.wait = 0
+        self.bullet_velocity = 2
+
+    def fire(self, level):
+        if self.wait == self.fire_wait:
+            new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet)
+            self.wait = 0
+        else: self.wait += 1
 
 class Dinosaur(Enemy):
     """Dinosaurs"""

@@ -31,7 +31,6 @@ class Bullet(rabbyt.Sprite, game_object.GameObject):
         y_end_position = sin(radians(self.rot+90))* 1000 + start[1]
         self.xy = rabbyt.lerp(start, (x_end_position, y_end_position), dt=speed)
 
-
     def update(self): 
         """update method"""
         self.x += cos(radians(self.rot+90))*self.speed

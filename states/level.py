@@ -51,14 +51,19 @@ class Level():
         self.fuel               = MAX_FUEL
 
         #player
-        self.ship               = player.User("3ship1", game.screen)
-        self.past_selves        = []
-        self.f_xy               = []   
-        self.bullets            = []
-        self.enemies            = []
-        self.items              = []
-        self.stored_enemies     = []
-        self.stored_bullets     = []
+        self.ship                   = player.User("3ship1", game.screen)
+        self.past_selves            = []
+        self.f_xy                   = []   
+
+        self.bullets                = []
+        self.enemies                = []
+        self.enemy_bullets          = []
+        self.items                  = []
+
+        self.stored_enemies         = []
+        self.stored_bullets         = []
+        self.stored_enemy_bullets   = []
+        self.stored_items           = []
 
         #set UI
         self.text_score         = FontSprite(game.font, "Score: " + \
@@ -222,6 +227,7 @@ class Level():
         self.background.maintain_tile_rows()
         self.ship.update()
         self.remove_offmap(self.bullets)
+        self.handle_enemy_fire()
 
         #for gem in self.sparks:
         #    gem.update()
@@ -238,6 +244,10 @@ class Level():
         self.remove_offmap(self.enemies)
         self.remove_offmap(self.items)
 
+    def handle_enemy_fire(self):
+        for enemy in self.enemies:
+            enemy_bullet = enemy.fire(self)
+
     def render_game_objects(self):
         """rabbyt render methods"""
         self.background.render()
@@ -247,6 +257,7 @@ class Level():
         rabbyt.render_unsorted(self.enemies)
         rabbyt.render_unsorted(self.items)
         rabbyt.render_unsorted(self.past_selves)
+        rabbyt.render_unsorted(self.enemy_bullets)
 
         self.text_score.render()
         self.text_boost.render()
@@ -378,6 +389,7 @@ class Level():
         self.ship.save()
         self.save_enemies()
         self.save_bullets()
+        self.save_enemy_bullets()
         self.save_items()
         self.can_store = False
 
@@ -390,6 +402,11 @@ class Level():
         self.stored_bullets = []
         for bullet in self.bullets:
             self.stored_bullets.append(bullet)
+
+    def save_enemy_bullets(self):
+        self.stored_enemy_bullets = []
+        for enemy_bullet in self.enemy_bullets:
+            self.stored_enemy_bullets.append(enemy_bullet)
 
     def save_items(self):
         self.stored_items = []
@@ -406,12 +423,17 @@ class Level():
         self.ship.saved_actions = []
         self.past_selves.append(new_past_self)
         self.return_bullets()
+        self.return_enemy_bullets()
         self.return_enemies()
         self.return_items()
 
     def return_bullets(self):
         self.bullets = self.stored_bullets
         self.stored_bullets = []
+
+    def return_enemy_bullets(self):
+        self.enemy_bullets = self.stored_enemy_bullets
+        self.stored_enemy_bullets = []
         
     def return_enemies(self):
         self.enemies = self.stored_enemies
