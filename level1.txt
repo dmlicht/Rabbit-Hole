@@ -2,7 +2,7 @@ layout:
 level1_layout.txt
 
 music:
-game_song2.mp3
+game_song1.mp3
 
 1
 Dinosaur      0      310      movpatternx2     movpatterny2

@@ -66,6 +66,7 @@ class Game:
         self.win_sound = pygame.mixer.Sound('winning.wav')
         self.lose_sound = pygame.mixer.Sound('losing.wav')
         self.gem_pickup_sound = pygame.mixer.Sound('gem.wav')
+        self.bullet_sound = pygame.mixer.Sound('bullet.wav')
 
         pygame.mixer.music.load('game-motif-sad.mp3')
         pygame.mixer.music.play(-1, 0.0)
