@@ -93,7 +93,7 @@ class Dragon(Enemy):
         self.point_value = 50
         self.fire_wait = 200
         self.wait = 0
-        self.bullet_velocity = 4
+        self.bullet_velocity = 2
 
     def fire(self, level):
         if self.wait == self.fire_wait:
