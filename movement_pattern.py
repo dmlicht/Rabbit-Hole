@@ -147,14 +147,14 @@ def movpatterny2(start):
                          extend="reverse"),)
 
 def movpattern_circx(startx):
-    return startx+rabbyt.chain( rabbyt.lerp(0, 100, dt=1),
-                         rabbyt.lerp(100, -100, dt=2),
-                         rabbyt.lerp(-100, 0, dt=1, extend="reverse"),)
+    return startx+rabbyt.chain( rabbyt.lerp(0, 100, dt=0.5),
+                         rabbyt.lerp(100, -100, dt=1),
+                         rabbyt.lerp(-100, 0, dt=0.5, extend="reverse"),)
 
 def movpattern_circy(start):
-    return start+rabbyt.chain( rabbyt.lerp(-100, 0, dt=1),
-                         rabbyt.lerp(0, 100, dt=1),
-                         rabbyt.lerp(100, -100, dt=2, extend="reverse"),)
+    return start+rabbyt.chain( rabbyt.lerp(-50, 0, dt=0.5),
+                         rabbyt.lerp(0, 50, dt=0.5),
+                         rabbyt.lerp(100, -50, dt=1, extend="reverse"),)
 
 def boss1_pat(start):
     return rabbyt.chain( rabbyt.lerp(start, start-600, dt=3),
@@ -178,15 +178,15 @@ def boss2_patx(startx):
                          extend="reverse"),)
 
 def boss2_paty(starty):
-    return rabbyt.chain( rabbyt.lerp(starty, starty-550, dt=1, extend="reverse"),
+    return rabbyt.chain( rabbyt.lerp(starty-300, starty-550, dt=1),
                          rabbyt.lerp(starty-550, starty-300, dt=0.5),
                          rabbyt.lerp(starty-300, starty-550, dt = 0.5),
-                         rabbyt.lerp(starty-550, starty, dt = 1),
-                         rabbyt.lerp(starty, starty-550, dt = 1),
+                         rabbyt.lerp(starty-550, starty-300, dt = 1),
+                         rabbyt.lerp(starty-300, starty-550, dt = 1),
                          rabbyt.lerp(starty-550, starty-300, dt = 0.5),
                          rabbyt.lerp(starty-300, starty-550, dt=0.5),
-                         rabbyt.lerp(starty-550, starty, dt=1),
-                         rabbyt.lerp(starty, starty-550, dt=1),
+                         rabbyt.lerp(starty-550, starty-300, dt=1),
+                         rabbyt.lerp(starty-300, starty-550, dt=1),
                          rabbyt.lerp(starty-550, starty-550, dt = 2),
                          rabbyt.lerp(starty-550, starty-350, dt = 0.5),
                          rabbyt.lerp(starty-350, starty-350, dt = 2),

@@ -261,6 +261,6 @@ Plane      -410    	250    straight_across7  straight_down8
 Plane      -410    	150    straight_across6  straight_down9 
 $end
 
-42
+47
 Boss3           -400    -300     boss3_patx     boss3_paty
 $end

@@ -229,6 +229,6 @@ Dragon      100    	350    do_nothing  straight_down7
 Dragon      200    	350    do_nothing  straight_down8 
 $end
 
-38
+42
 Boss2       -350    300     boss2_patx     boss2_paty
 $end

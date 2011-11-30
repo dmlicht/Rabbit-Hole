@@ -177,6 +177,6 @@ SpaceShip    410    150     bstraight_across1    do_nothing
 SpaceShip    410    250     bstraight_across7    do_nothing
 $end
 
-45
-Boss4       0       250    boss4_patx         boss4_paty
+40
+Boss4       0       220    boss4_patx         boss4_paty
 $end

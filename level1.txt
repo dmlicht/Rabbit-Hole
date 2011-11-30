@@ -220,7 +220,7 @@ Dinosaur      100    	350    do_nothing  straight_down6
 Dinosaur      200    	350    do_nothing  straight_down5 
 $end
 
-37
+42
 BossHands      -100   	350     boss_hand1_patx  boss1_pat
 Boss1           0    	350     do_nothing       boss1_pat
 BossHands      100    	350     boss_hand2_patx   boss1_pat
