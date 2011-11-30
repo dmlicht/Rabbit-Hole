@@ -141,7 +141,10 @@ class Level():
         self.update_UI()
         self.update_game_objects()
         self.handle_collisions_between(self.ship, self.enemies)
+        self.handle_collisions_between(self.ship, self.enemy_bullets)
         self.handle_collisions_between(self.bullets, self.enemies)
+        self.handle_collisions_between(self.past_selves, self.enemies)
+        self.handle_collisions_between(self.past_selves, self.enemy_bullets)
         self.handle_item_pickups_between(self.ship, self.items)
 
 
