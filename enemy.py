@@ -99,7 +99,7 @@ class Dinosaur(Enemy):
 
         #data individual to an enemy
         self.bounding_radius = 30
-        self.health = 3
+        self.health = 1
         self.damage = 1
         self.point_value = 5000
 
@@ -111,10 +111,46 @@ class Plane(Enemy):
 
         #data individual to an enemy
         self.bounding_radius = 30
-        self.health = 4
+        self.health = 1
         self.damage = 1
         self.point_value = 150
 
+class HDragon(Enemy):
+    """Dragons"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "7dragon.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 3
+        self.damage = 1
+        self.point_value = 50
+
+class HDinosaur(Enemy):
+    """Dinosaurs"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "5dino.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 2
+        self.damage = 1
+        self.point_value = 5000
+
+class HPlane(Enemy):
+    """Planes"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "3ww2.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 3
+        self.damage = 1
+        self.point_value = 150
+        
 class Boss1(Enemy):
     """First Boss"""
     def __init__(self, screen, startx, starty, patternx, patterny):
@@ -166,6 +202,18 @@ class Boss3(Enemy):
 
         #data individual to an enemy
         self.bounding_radius = 30
-        self.health = 100
+        self.health = 50
         self.damage = 1
         self.point_value = 5000
+
+class Boss4(Enemy):
+    """Fourth Boss"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image =
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        self.bounding_radius = 30
+        self.health = 75
+        self.damage = 1
+        self.point_value = 8000
+        

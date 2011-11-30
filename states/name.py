@@ -17,6 +17,34 @@ class Name(state.State):
         backg = rabbyt.Sprite('1Menu_Screen1.png') 
         textbox = rabbyt.Sprite('1textbox.png')
         enter_name = FontSprite(game.font, "")
+        inst = FontSprite(game.font, "Instructions:")
+        inst.rgb = (0, 0, 0)
+        inst.y = -50
+        inst.x = -90
+        movement = FontSprite(game.font, "Move with the arrow keys")
+        movement.x = -150
+        movement.y = -100
+        movement.rgb = (0, 0, 0)
+        fire = FontSprite(game.font, "Press the Space Bar to fire")
+        fire.x = -150
+        fire.y = -150
+        fire.rgb = (0, 0, 0)
+        save = FontSprite(game.font, "Press the t key to save a time to")
+        save.x = -400
+        save.y = -200
+        save.rgb = (10, 10, 10)
+        save2 = FontSprite(game.font, "go back to and help yourself")
+        save2.x = -400
+        save2.y = -250
+        save2.rgb = (150, 150, 150)
+        revert = FontSprite(game.font, "Press the y key to go back ")
+        revert.x = 50
+        revert.y = -200
+        revert.rgb = (100, 100, 100)
+        revert2 = FontSprite(game.font, "to the time you saved before.")
+        revert2.x = 25
+        revert2.y = -250
+        revert2.rgb = (150, 150, 150)
         enter_name.rgb = (0, 0, 0)
         textbox.y = -10
         self.game = game
@@ -27,6 +55,13 @@ class Name(state.State):
             backg.render()
             textbox.render()
             enter_name.render()
+            inst.render()
+            movement.render()
+            fire.render()
+            save.render()
+            save2.render()
+            revert.render()
+            revert2.render()
 
             self.game.clock.tick(40)
 
