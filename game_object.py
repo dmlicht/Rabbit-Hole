@@ -1,9 +1,4 @@
-"""
-Game Object
-"""
-
 class GameObject():
-    """Game object"""
     def __init__(self):
         self.health = 0
         self.damage = 0
@@ -11,9 +6,10 @@ class GameObject():
         self.invincible = 0
 
     def hit(self, damage=1):
-        """defines hit function"""
         self.health -= damage
 
     def die(self, level):
-        """Death"""
         return self.point_value
+
+    def attempt_fire(self, level):
+        return false
