@@ -68,9 +68,10 @@ class Enemy(rabbyt.Sprite, game_object.GameObject):
         and end the level with the boss"""
 
         ran = random.randint(0, self.drop_rate)
-        if ran == 0:
-            bob = chronos.Spark(level.game.screen, self.attrgetter("x"), self.attrgetter("y"))
-            level.items.append(bob)
+        drop = random.randint(0, self.drop_rate)
+        if drop == 0:
+            new_item = chronos.Spark(level.game.screen, self.x, self.y)
+            level.items.append(new_item)
         return self.point_value
 
         
