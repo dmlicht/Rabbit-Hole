@@ -52,8 +52,7 @@ class Layout():
                         for word in layout_line.split():
                             current_row_layout = []
                             for i in range(len(word)):
-                                current_row_layout.append( \
-                                  self.tile_map[word[i]])
+                                current_row_layout.append(self.tile_map[word[i]])
                             self.rows.append(current_row_layout)
                         layout_line = layout_file.readline()
 
