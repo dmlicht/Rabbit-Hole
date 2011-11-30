@@ -63,8 +63,8 @@ class Game:
         #music
         pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
         #self.crash = pygame.mixer.Sound('Crash1.wav')
-        self.win_sound = pygame.mixer.Sound('winning16bit.wav')
-        self.lose_sound = pygame.mixer.Sound('losing16bit.wav')
+        self.win_sound = pygame.mixer.Sound('winning.wav')
+        self.lose_sound = pygame.mixer.Sound('losing.wav')
         self.gem_pickup_sound = pygame.mixer.Sound('gem.wav')
 
         pygame.mixer.music.load('game-motif-sad.mp3')
