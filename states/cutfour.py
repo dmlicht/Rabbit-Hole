@@ -7,7 +7,7 @@ import rabbyt
 from pygame.locals import QUIT, KEYDOWN, K_RETURN, K_ESCAPE
 
 import state, states.level
-import states.highscore
+import states.cutfive
 from settings import FontSprite
 
 #def CutTwo(game, state_stack):
@@ -100,4 +100,4 @@ class CutFour(state.State):
     def set_next_state(self):
         """Makes Next State"""
         self.state_stack.append(states.level.Level( \
-          self.game, "level4.txt", states.highscore.High()))
+          self.game, "level4.txt", states.cutfive.CutFive()))

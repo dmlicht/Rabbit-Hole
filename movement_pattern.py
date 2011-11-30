@@ -190,7 +190,7 @@ def boss2_paty(starty):
                          rabbyt.lerp(starty-550, starty-550, dt = 2),
                          rabbyt.lerp(starty-550, starty-350, dt = 0.5),
                          rabbyt.lerp(starty-350, starty-350, dt = 2),
-                         rabbyt.lerp(starty-350, starty, dt = 0.5,
+                         rabbyt.lerp(starty-350, starty-550, dt = 0.5,
                          extend="reverse"),)
 
 def boss3_patx(startx):
