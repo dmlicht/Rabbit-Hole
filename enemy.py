@@ -95,13 +95,6 @@ class Dragon(Enemy):
         self.wait = 0
         self.bullet_velocity = 2
 
-    def fire(self, level):
-        if self.wait == self.fire_wait:
-            new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
-            level.enemy_bullets.append(new_enemy_bullet)
-            self.wait = 0
-        else: self.wait += 1
-
 class Dinosaur(Enemy):
     """Dinosaurs"""
     def __init__(self, screen, startx, starty, patternx, patterny):
@@ -125,7 +118,76 @@ class Plane(Enemy):
         self.health = 1
         self.damage = 1
         self.point_value = 150
+        
+class FDragon(Enemy):
+    """Dragons"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "7dragon.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
 
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 1
+        self.damage = 1
+        self.point_value = 50
+        self.fire_wait = 200
+        self.wait = 0
+        self.bullet_velocity = 2
+
+    def fire(self, level):
+        if self.wait == self.fire_wait:
+            new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 135), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet)
+            new_enemy_bullet1 = bullet.Bullet(self.xy, (self.rot + 225), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet1)
+            self.wait = 0
+        else: self.wait += 1
+
+class FDinosaur(Enemy):
+    """Dinosaurs"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "5dino.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.fire_wait = 200
+        self.health = 1
+        self.damage = 1
+        self.point_value = 5000
+
+    def fire(self, level):
+        if self.wait == self.fire_wait:
+            new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet)
+            self.wait = 0
+        else: self.wait += 1
+    
+
+class FPlane(Enemy):
+    """Planes"""
+    def __init__(self, screen, startx, starty, patternx, patterny):
+        image = "3ww2.png"
+        Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
+
+        #data individual to an enemy
+        self.bounding_radius = 30
+        self.health = 1
+        self.damage = 1
+        self.point_value = 150
+        self.fire_wait = 150
+
+    def fire(self, level):
+        if self.wait == self.fire_wait:
+            new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 135), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet)
+            new_enemy_bullet1 = bullet.Bullet(self.xy, (self.rot + 225), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet1)
+            new_enemy_bullet2 = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet2)
+            self.wait = 0
+        else: self.wait += 1    
+        
 class HDragon(Enemy):
     """Dragons"""
     def __init__(self, screen, startx, starty, patternx, patterny):
@@ -216,15 +278,52 @@ class Boss3(Enemy):
         self.health = 50
         self.damage = 1
         self.point_value = 5000
+        self.fire_wait = 40
+
+        def fire(self, level):
+            if self.wait == self.fire_wait:
+                new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet)
+                new_enemy_bullet1 = bullet.Bullet(self.xy, self.rot, self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet1)
+                new_enemy_bullet2 = bullet.Bullet(self.xy, (self.rot + 90), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet2)
+                new_enemy_bullet3 = bullet.Bullet(self.xy, (self.rot + 270), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet3)
+                self.wait = 0
+            else: self.wait += 1
+
 
 class Boss4(Enemy):
     """Fourth Boss"""
     def __init__(self, screen, startx, starty, patternx, patterny):
-        image =
+        image = "2boss3.png"
         Enemy.__init__(self, screen, image, startx, starty, patternx, patterny)
 
         self.bounding_radius = 30
         self.health = 75
         self.damage = 1
         self.point_value = 8000
+        self.fire_wait = 40
+
+        def fire(self, level):
+            if self.wait == self.fire_wait:
+                new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet)
+                new_enemy_bullet1 = bullet.Bullet(self.xy, self.rot, self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet1)
+                new_enemy_bullet2 = bullet.Bullet(self.xy, (self.rot + 90), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet2)
+                new_enemy_bullet3 = bullet.Bullet(self.xy, (self.rot + 270), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet3)
+                new_enemy_bullet4 = bullet.Bullet(self.xy, (self.rot + 225), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet4)
+                new_enemy_bullet5 = bullet.Bullet(self.xy, (self.rot + 45), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet5)
+                new_enemy_bullet6 = bullet.Bullet(self.xy, (self.rot + 135), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet6)
+                new_enemy_bullet7 = bullet.Bullet(self.xy, (self.rot + 315), self.bullet_velocity)
+                level.enemy_bullets.append(new_enemy_bullet7)
+                self.wait = 0
+            else: self.wait += 1
         
