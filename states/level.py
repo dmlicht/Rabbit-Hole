@@ -64,6 +64,7 @@ class Level():
         self.stored_bullets         = []
         self.stored_enemy_bullets   = []
         self.stored_items           = []
+        self.stored_past_selves     = []
 
         #set UI
         self.text_score         = FontSprite(game.font, "Score: " + \
@@ -186,19 +187,8 @@ class Level():
         if pressed[pygame.K_y] and not self.can_store:
             self.return_travel_point()
 
-        if pressed[pygame.K_m]:
-            self.test_save()
-
         if self.saving:
             self.ship.save_actions(self.get_ticks(), user_actions)
-
-    def test_save(self):
-        enemy = self.enemies[0]
-        new_enemy = type(enemy)(self.game.screen, enemy.x, enemy.y, movement_pattern.do_nothing, movement_pattern.do_nothing)
-        new_enemy.x = enemy.attrgetter("x") - 100
-        new_enemy.y = enemy.attrgetter("y")
-        self.enemies.append(new_enemy)
-        #test_enemy.y = self.enemies[0].y + 100
 
     def input_to_actions(self, pressed):
         user_actions = actions.Actions()
@@ -394,6 +384,7 @@ class Level():
         self.save_bullets()
         self.save_enemy_bullets()
         self.save_items()
+        self.save_past_selves()
         self.can_store = False
 
     def save_enemies(self):
@@ -416,6 +407,11 @@ class Level():
         for item in self.items:
             self.stored_items.append(item)
 
+    def save_past_selves(self):
+        self.stored_past_selves = []
+        for past_self in self.past_selves:
+            self.stored_past_selves.append(past_self)
+
     def return_travel_point(self):
         self.saving = False
         self.background.saving = False
@@ -424,6 +420,7 @@ class Level():
                         self.ship.saved_rot, self.ship.saved_actions, self)
         self.can_store = True
         self.ship.saved_actions = []
+        self.return_past_selves()
         self.past_selves.append(new_past_self)
         self.return_bullets()
         self.return_enemy_bullets()
@@ -445,3 +442,6 @@ class Level():
     def return_items(self):
         self.items = self.stored_items
         self.stored_items = []
+    
+    def return_past_selves(self):
+        self.past_selves = self.stored_past_selves

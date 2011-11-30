@@ -392,4 +392,4 @@ class Boss4(Enemy):
                 level.enemy_bullets.append(new_enemy_bullet7)
                 self.wait = 0
             else: self.wait += 1
-        
+
