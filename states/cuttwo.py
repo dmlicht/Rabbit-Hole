@@ -96,4 +96,5 @@ class CutTwo(state.State):
         """Makes Next State"""
         self.state_stack.append(states.level.Level( \
           self.game, "level2.txt", states.level.Level( \
-              self.game, "level3.txt", states.highscore.High())))
+              self.game, "level3.txt", states.level.Level( \
+                  self.game, "level4.txt", states.highscore.High()))))

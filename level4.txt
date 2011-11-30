@@ -57,7 +57,7 @@ FSpaceShip      200    	350    bstraight_across7  straight_down7
 $end
 
 15
-SpaceShip    -410    -250    straight_across7    movpattern_circy
+SpaceShip    -410    -250    straight_across7    mov_pattern_circy
 SpaceShip    -410    -150    straight_across1    movpattern_circy
 SpaceShip    -410    0       straight_across7    movpattern_circy
 SpaceShip    -410    150     straight_across1    movpattern_circy
@@ -85,19 +85,30 @@ SpaceShip    300     350     do_nothing          straight_down9
 $end
 
 21
-HSpaceShip    -410    -250    straight_across1    movpattern_circy
-SpaceShip    -410    -150    straight_across7    movpattern_circy
-HSpaceShip    -410    0       straight_across1    movpattern_circy
-SpaceShip    -410    150     straight_across7    movpattern_circy
-HSpaceShip    -410    250     straight_across1    movpattern_circy
+HSpaceShip    -410    -250    straight_across1    do_nothing
+SpaceShip     -410    -150    straight_across7    do_nothing
+HSpaceShip    -410    0       straight_across1    do_nothing
+SpaceShip     -410    150     straight_across7    do_nothing
+HSpaceShip    -410    250     straight_across1    do_nothing
 $end
 
+23
+FSpaceShip    -300    350     do_nothing          straight_down9
+FSpaceShip    -200    350     do_nothing          straight_down8
+HSpaceShip    -100    350     do_nothing          straight_down7
+HSpaceShip    0       350     do_nothing          straight_down6
+HSpaceShip    100     350     do_nothing          straight_down7
+FSpaceShip    200     350     do_nothing          straight_down8
+FSpaceShip    300     350     do_nothing          straight_down9
+$end
+
+
 25
-SpaceShip    -410    -250    straight_across7    movpattern_circy
+SpaceShip     -410    -250    straight_across7    movpattern_circy
 HSpaceShip    -410    -150    straight_across1    movpattern_circy
-SpaceShip    -410    0       straight_across7    movpattern_circy
+SpaceShip     -410    0       straight_across7    movpattern_circy
 HSpaceShip    -410    150     straight_across1    movpattern_circy
-SpaceShip    -410    250     straight_across7    movpattern_circy
+SpaceShip     -410    250     straight_across7    movpattern_circy
 $end
 
 27
@@ -117,36 +128,36 @@ $end
 32
 FSpaceShip    -300    350     mov_patternx1       mov_patterny1
 HSpaceShip    -200    350     mov_patternx1       mov_patterny1
-SpaceShip    -100    350     mov_patternx1       mov_patterny1
+SpaceShip     -100    350     mov_patternx1       mov_patterny1
 FSpaceShip    0       350     mov_patternx1       mov_patterny1
-SpaceShip    100     350     mov_patternx1       mov_patterny1
+SpaceShip     100     350     mov_patternx1       mov_patterny1
 HSpaceShip    200     350     mov_patternx1       mov_patterny1
 FSpaceShip    300     350     mov_patternx1       mov_patterny1
 $end
 
 34
 FSpaceShip      -400    150    straight_across7  straight_down7 
-FSpaceShip    -400    250    straight_across8  straight_down8
+FSpaceShip      -400    250    straight_across8  straight_down8
 FSpaceShip      -400    350    straight_across9  straight_down9 
-FSpaceShip    -300    350    straight_across8  straight_down8 
+FSpaceShip      -300    350    straight_across8  straight_down8 
 FSpaceShip      -200    350    straight_across7  straight_down7 
 $end
 
 36
 FSpaceShip      400     150    bstraight_across7  straight_down7
-FSpaceShip    400   	 250    bstraight_across8 straight_down8
+FSpaceShip      400   	250    bstraight_across8  straight_down8
 FSpaceShip      400     350    bstraight_across9  straight_down9 
-FSpaceShip    300     350    bstraight_across8  straight_down8 
+FSpaceShip      300     350    bstraight_across8  straight_down8 
 FSpaceShip      200     350    bstraight_across7  straight_down7
 $end
 
 38
 HSpaceShip    -300    350     do_nothing          straight_down6
-SpaceShip    -200    350     do_nothing          straight_down7
-SpaceShip    -100    350     do_nothing          straight_down8
-SpaceShip    0       350     do_nothing          straight_down9
-SpaceShip    100     350     do_nothing          straight_down8
-SpaceShip    200     350     do_nothing          straight_down7
+SpaceShip     -200    350     do_nothing          straight_down7
+SpaceShip     -100    350     do_nothing          straight_down8
+SpaceShip     0       350     do_nothing          straight_down9
+SpaceShip     100     350     do_nothing          straight_down8
+SpaceShip     200     350     do_nothing          straight_down7
 HSpaceShip    300     350     do_nothing          straight_down6
 $end
 
@@ -159,11 +170,11 @@ SpaceShip    -410    250     straight_across7    movpattern_circy
 $end
 
 43
-SpaceShip    410    -250    bstraight_across7    movpattern_circy
-SpaceShip    410    -150    bstraight_across1    movpattern_circy
-SpaceShip    410    0       bstraight_across7    movpattern_circy
-SpaceShip    410    150     bstraight_across1    movpattern_circy
-SpaceShip    410    250     bstraight_across7    movpattern_circy
+SpaceShip    410    -250    bstraight_across7    do_nothing
+SpaceShip    410    -150    bstraight_across1    do_nothing
+SpaceShip    410    0       bstraight_across7    do_nothing
+SpaceShip    410    150     bstraight_across1    do_nothing
+SpaceShip    410    250     bstraight_across7    do_nothing
 $end
 
 45

@@ -343,18 +343,18 @@ class Boss3(Enemy):
         self.wait = 0
         self.bullet_velocity = 6
 
-        def fire(self, level):
-            if self.wait == self.fire_wait:
-                new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet)
-                new_enemy_bullet1 = bullet.Bullet(self.xy, self.rot, self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet1)
-                new_enemy_bullet2 = bullet.Bullet(self.xy, (self.rot + 90), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet2)
-                new_enemy_bullet3 = bullet.Bullet(self.xy, (self.rot + 270), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet3)
-                self.wait = 0
-            else: self.wait += 1
+    def fire(self, level):
+        if self.wait == self.fire_wait:
+            new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet)
+            new_enemy_bullet1 = bullet.Bullet(self.xy, self.rot, self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet1)
+            new_enemy_bullet2 = bullet.Bullet(self.xy, (self.rot + 90), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet2)
+            new_enemy_bullet3 = bullet.Bullet(self.xy, (self.rot + 270), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet3)
+            self.wait = 0
+        else: self.wait += 1
 
 
 class Boss4(Enemy):
@@ -371,25 +371,24 @@ class Boss4(Enemy):
         self.wait = 40
         self.bullet_velocity = 6
 
-        def fire(self, level):
-            print "Happy Hell Day"
-            if self.wait == self.fire_wait:
-                new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet)
-                new_enemy_bullet1 = bullet.Bullet(self.xy, self.rot, self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet1)
-                new_enemy_bullet2 = bullet.Bullet(self.xy, (self.rot + 90), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet2)
-                new_enemy_bullet3 = bullet.Bullet(self.xy, (self.rot + 270), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet3)
-                new_enemy_bullet4 = bullet.Bullet(self.xy, (self.rot + 225), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet4)
-                new_enemy_bullet5 = bullet.Bullet(self.xy, (self.rot + 45), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet5)
-                new_enemy_bullet6 = bullet.Bullet(self.xy, (self.rot + 135), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet6)
-                new_enemy_bullet7 = bullet.Bullet(self.xy, (self.rot + 315), self.bullet_velocity)
-                level.enemy_bullets.append(new_enemy_bullet7)
-                self.wait = 0
-            else: self.wait += 1
+    def fire(self, level):
+        if self.wait == self.fire_wait:
+            new_enemy_bullet = bullet.Bullet(self.xy, (self.rot + 180), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet)
+            new_enemy_bullet1 = bullet.Bullet(self.xy, self.rot, self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet1)
+            new_enemy_bullet2 = bullet.Bullet(self.xy, (self.rot + 90), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet2)
+            new_enemy_bullet3 = bullet.Bullet(self.xy, (self.rot + 270), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet3)
+            new_enemy_bullet4 = bullet.Bullet(self.xy, (self.rot + 225), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet4)
+            new_enemy_bullet5 = bullet.Bullet(self.xy, (self.rot + 45), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet5)
+            new_enemy_bullet6 = bullet.Bullet(self.xy, (self.rot + 135), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet6)
+            new_enemy_bullet7 = bullet.Bullet(self.xy, (self.rot + 315), self.bullet_velocity)
+            level.enemy_bullets.append(new_enemy_bullet7)
+            self.wait = 0
+        else: self.wait += 1
 
