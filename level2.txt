@@ -32,27 +32,27 @@ FDragon      400    	350    movpattern_circx  straight_down4
 $end
 
 6
-Dragon      -200    350    do_nothing  straight_down7 
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down9 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down7 
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
 $end
 
 7
-Dragon      -200    350    do_nothing  straight_down9
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down7 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down9 
+Dragon      -200    350    do_nothing  straight_down8
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down6 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down8 
 $end
 
 8
-Dragon      -200    350    do_nothing  straight_down7 
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down9 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down7 
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
 $end
 
 
@@ -93,27 +93,27 @@ Dragon      400    	350    do_nothing  straight_down4
 $end
 
 16
-HDragon      -200    350    do_nothing  straight_down7 
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down9 
-Dragon      100    	350    do_nothing  straight_down8 
-HDragon      200    	350    do_nothing  straight_down7 
+HDragon      -200    350    do_nothing  straight_down6 
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down7 
+HDragon      200    	350    do_nothing  straight_down6 
 $end
 
 17
-Dragon      -200    350    do_nothing  straight_down9
-HDragon     -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down7 
-HDragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down9 
+Dragon      -200    350    do_nothing  straight_down8
+HDragon     -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down6
+HDragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down8 
 $end
 
 18
-Dragon      -200    350    do_nothing  straight_down7 
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down9 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down7 
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
 $end
 
 
@@ -154,27 +154,27 @@ Dragon      400    	350    do_nothing  straight_down4
 $end
 
 26
-Dragon      -200    350    do_nothing  straight_down7 
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down9 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down7 
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
 $end
 
 27
-Dragon      -200    350    do_nothing  straight_down9
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down7 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down9 
+Dragon      -200    350    do_nothing  straight_down8
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down6 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down8 
 $end
 
 28
-Dragon      -200    350    do_nothing  straight_down7 
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down9 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down7 
+Dragon      -200    350    do_nothing  straight_down6 
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down6 
 $end
 
 30
@@ -214,21 +214,21 @@ Dragon      400    	350    do_nothing  straight_down4
 $end
 
 36
-HDragon      -200    350    do_nothing  straight_down7 
-Dragon      -100   	350    do_nothing  straight_down8
-Dragon      0    	350    do_nothing  straight_down9 
-Dragon      100    	350    do_nothing  straight_down8 
-HDragon      200    	350    do_nothing  straight_down7 
+HDragon      -200    350    do_nothing  straight_down6 
+Dragon      -100   	350    do_nothing  straight_down7
+Dragon      0    	350    do_nothing  straight_down8 
+Dragon      100    	350    do_nothing  straight_down7
+HDragon      200    	350    do_nothing  straight_down6 
 $end
 
 37
-Dragon      -200    350    do_nothing  straight_down9
-Dragon      -100   	350    do_nothing  straight_down8
-HDragon      0    	350    do_nothing  straight_down7 
-Dragon      100    	350    do_nothing  straight_down8 
-Dragon      200    	350    do_nothing  straight_down9 
+Dragon      -200    350    do_nothing  straight_down8
+Dragon      -100   	350    do_nothing  straight_down7
+HDragon      0    	350    do_nothing  straight_down6 
+Dragon      100    	350    do_nothing  straight_down7 
+Dragon      200    	350    do_nothing  straight_down8 
 $end
 
 38
-Boss2       -350    0     boss2_patx     boss2_paty
+Boss2       -350    300     boss2_patx     boss2_paty
 $end

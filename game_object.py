@@ -11,5 +11,5 @@ class GameObject():
     def die(self, level):
         return self.point_value
 
-    def attempt_fire(self, level):
-        return false
+    def fire(self, level):
+        return False

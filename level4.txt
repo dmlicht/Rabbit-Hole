@@ -1,169 +1,171 @@
 layout:
-level4_layout.txt
+level2_layout.txt
 
 music:
-game_song5.mp3
+game_song2.mp3
 
 1
-FDragon    -410    -250    straight_across7    do_nothing
-FDragon    -410    -150    straight_across1    do_nothing
-FDragon    -410    0       straight_across7    do_nothing
-FDragon    -410    150     straight_across1    do_nothing
-FDragon    -410    250     straight_across7    do_nothing
+FSpaceShip    -410    -250    straight_across7    do_nothing
+FSpaceShip    -410    -150    straight_across1    do_nothing
+FSpaceShip    -410    0       straight_across7    do_nothing
+FSpaceShip    -410    150     straight_across1    do_nothing
+FSpaceShip    -410    250     straight_across7    do_nothing
 $end
 
 4
-HDragon    -300    350     mov_patternx1       straight_down7
-Dragon    -200    350     mov_patternx1       straight_down7
-Dragon    -100    350     mov_patternx1       straight_down7
-FDragon    0       350     mov_patternx1       straight_down7
-Dragon    100     350     mov_patternx1       straight_down7
-Dragon    200     350     mov_patternx1       straight_down7
-HDragon    300     350     mov_patternx1       straight_down7
+HSpaceShip    -300    350     mov_patternx1       straight_down7
+SpaceShip    -200    350     mov_patternx1       straight_down7
+SpaceShip    -100    350     mov_patternx1       straight_down7
+FSpaceShip    0       350     mov_patternx1       straight_down7
+SpaceShip    100     350     mov_patternx1       straight_down7
+SpaceShip    200     350     mov_patternx1       straight_down7
+HSpaceShip    300     350     mov_patternx1       straight_down7
 $end
 
 6
-Dragon    -410    -250    bstraight_across1   do_nothing
-Dragon    -410    -150    bstraight_across7   do_nothing
-FDragon    -410    0       bstraight_across1   do_nothing
-Dragon    -410    150     bstraight_across7   do_nothing
-FDragon    -410    250     bstraight_across1   do_nothing
+SpaceShip    410    -250    bstraight_across1   do_nothing
+SpaceShip    410    -150    bstraight_across7   do_nothing
+FSpaceShip   410    0       bstraight_across1   do_nothing
+SpaceShip    410    150     bstraight_across7   do_nothing
+FSpaceShip   410    250     bstraight_across1   do_nothing
 $end
 
 9
-HDragon    -300    350     mov_patternx1       mov_patterny1
-Dragon    -200    350     mov_patternx1       mov_patterny1
-FDragon    -100    350     mov_patternx1       mov_patterny1
-FDragon    0       350     mov_patternx1       mov_patterny1
-FDragon    100     350     mov_patternx1       mov_patterny1
-Dragon    200     350     mov_patternx1       mov_patterny1
-HDragon    300     350     mov_patternx1       mov_patterny1
+HSpaceShip    -300    350     mov_patternx1       mov_patterny1
+SpaceShip    -200    350     mov_patternx1       mov_patterny1
+FSpaceShip    -100    350     mov_patternx1       mov_patterny1
+FSpaceShip    0       350     mov_patternx1       mov_patterny1
+FSpaceShip    100     350     mov_patternx1       mov_patterny1
+SpaceShip    200     350     mov_patternx1       mov_patterny1
+HSpaceShip    300     350     mov_patternx1       mov_patterny1
 $end
 
 11
-FDragon      -400    150    straight_across7  straight_down7 
-FDinosaur    -400    250    straight_across8  straight_down8
-FDragon      -400    350    straight_across9  straight_down9 
-FDinosaur    -300    350    straight_across8  straight_down8 
-FDragon      -200    350    straight_across7  straight_down7 
+FSpaceShip      -400    150    straight_across7  straight_down7 
+FSpaceShip    -400    250    straight_across8  straight_down8
+FSpaceShip      -400    350    straight_across9  straight_down9 
+FSpaceShip    -300    350    straight_across8  straight_down8 
+FSpaceShip      -200    350    straight_across7  straight_down7 
 $end
 
 12
-FDragon      400     150    bstraight_across7  straight_down7
-FDinosaur    400   	250    bstraight_across8 straight_down8
-FDragon      400    	350    bstraight_across9  straight_down9 
-FDinosaur    300    	350    bstraight_across8  straight_down8 
-FDragon      200    	350    bstraight_across7  straight_down7 
+FSpaceShip      400     150    bstraight_across7  straight_down7
+FSpaceShip    400   	250    bstraight_across8 straight_down8
+FSpaceShip      400    	350    bstraight_across9  straight_down9 
+FSpaceShip    300    	350    bstraight_across8  straight_down8 
+FSpaceShip      200    	350    bstraight_across7  straight_down7 
 $end
 
 15
-Dragon    -410    -250    straight_across7    movpattern_circy
-Dragon    -410    -150    straight_across1    movpattern_circy
-Dragon    -410    0       straight_across7    movpattern_circy
-Dragon    -410    150     straight_across1    movpattern_circy
-Dragon    -410    250     straight_across7    movpattern_circy
+SpaceShip    -410    -250    straight_across7    movpattern_circy
+SpaceShip    -410    -150    straight_across1    movpattern_circy
+SpaceShip    -410    0       straight_across7    movpattern_circy
+SpaceShip    -410    150     straight_across1    movpattern_circy
+SpaceShip    -410    250     straight_across7    movpattern_circy
 $end
 
 17
-HDragon    -300    350     do_nothing          straight_down6
-Dragon    -200    350     do_nothing          straight_down7
-Dragon    -100    350     do_nothing          straight_down8
-Dragon    0       350     do_nothing          straight_down9
-Dragon    100     350     do_nothing          straight_down8
-Dragon    200     350     do_nothing          straight_down7
-HDragon    300     350     do_nothing          straight_down6
+HSpaceShip    -300    350     do_nothing          straight_down6
+SpaceShip    -200    350     do_nothing          straight_down7
+SpaceShip    -100    350     do_nothing          straight_down8
+SpaceShip    0       350     do_nothing          straight_down9
+SpaceShip    100     350     do_nothing          straight_down8
+SpaceShip    200     350     do_nothing          straight_down7
+HSpaceShip    300     350     do_nothing          straight_down6
 $end
 
 18
-Dragon    -300    350     do_nothing          straight_down9
-Dragon    -200    350     do_nothing          straight_down8
-FDragon    -100    350     do_nothing          straight_down7
-FDragon    0       350     do_nothing          straight_down6
-FDragon    100     350     do_nothing          straight_down7
-Dragon    200     350     do_nothing          straight_down8
-Dragon    300     350     do_nothing          straight_down9
+SpaceShip    -300    350     do_nothing          straight_down9
+SpaceShip    -200    350     do_nothing          straight_down8
+FSpaceShip    -100    350     do_nothing          straight_down7
+FSpaceShip    0       350     do_nothing          straight_down6
+FSpaceShip    100     350     do_nothing          straight_down7
+SpaceShip    200     350     do_nothing          straight_down8
+SpaceShip    300     350     do_nothing          straight_down9
 $end
 
 21
-HDragon    -410    -250    straight_across1    movpattern_circy
-Dragon    -410    -150    straight_across7    movpattern_circy
-HDragon    -410    0       straight_across1    movpattern_circy
-Dragon    -410    150     straight_across7    movpattern_circy
-HDragon    -410    250     straight_across1    movpattern_circy
+HSpaceShip    -410    -250    straight_across1    movpattern_circy
+SpaceShip    -410    -150    straight_across7    movpattern_circy
+HSpaceShip    -410    0       straight_across1    movpattern_circy
+SpaceShip    -410    150     straight_across7    movpattern_circy
+HSpaceShip    -410    250     straight_across1    movpattern_circy
 $end
 
 25
-Dragon    -410    -250    straight_across7    movpattern_circy
-HDragon    -410    -150    straight_across1    movpattern_circy
-Dragon    -410    0       straight_across7    movpattern_circy
-HDragon    -410    150     straight_across1    movpattern_circy
-Dragon    -410    250     straight_across7    movpattern_circy
+SpaceShip    -410    -250    straight_across7    movpattern_circy
+HSpaceShip    -410    -150    straight_across1    movpattern_circy
+SpaceShip    -410    0       straight_across7    movpattern_circy
+HSpaceShip    -410    150     straight_across1    movpattern_circy
+SpaceShip    -410    250     straight_across7    movpattern_circy
 $end
 
 27
-FDragon    -200    350     movpattern_circx   straight_down5
-FDragon    0       350     movpattern_circx   straight_down5
-FDragon    200     350     movpattern_circx   straight_down5
+FSpaceShip    -200    350     movpattern_circx   straight_down5
+FSpaceShip    0       350     movpattern_circx   straight_down5
+FSpaceShip    200     350     movpattern_circx   straight_down5
 $end
 
 30
-FDragon    -200    350     movpattern_circx   straight_down3
-FDragon    -100    350     movpattern_circx   straight_down3
-FDragon    0       350     movpattern_circx   straight_down3
-FDragon    100     350     movpattern_circx   straight_down3
-FDragon    200     350     movpattern_circx   straight_down3
+FSpaceShip    -200    350     movpattern_circx   straight_down3
+FSpaceShip    -100    350     movpattern_circx   straight_down3
+FSpaceShip    0       350     movpattern_circx   straight_down3
+FSpaceShip    100     350     movpattern_circx   straight_down3
+FSpaceShip    200     350     movpattern_circx   straight_down3
 $end
 
 32
-FDragon    -300    350     mov_patternx1       mov_patterny1
-HDragon    -200    350     mov_patternx1       mov_patterny1
-Dragon    -100    350     mov_patternx1       mov_patterny1
-FDragon    0       350     mov_patternx1       mov_patterny1
-Dragon    100     350     mov_patternx1       mov_patterny1
-HDragon    200     350     mov_patternx1       mov_patterny1
-FDragon    300     350     mov_patternx1       mov_patterny1
+FSpaceShip    -300    350     mov_patternx1       mov_patterny1
+HSpaceShip    -200    350     mov_patternx1       mov_patterny1
+SpaceShip    -100    350     mov_patternx1       mov_patterny1
+FSpaceShip    0       350     mov_patternx1       mov_patterny1
+SpaceShip    100     350     mov_patternx1       mov_patterny1
+HSpaceShip    200     350     mov_patternx1       mov_patterny1
+FSpaceShip    300     350     mov_patternx1       mov_patterny1
 $end
 
 34
-FDragon      -400    150    straight_across7  straight_down7 
-FDinosaur    -400    250    straight_across8  straight_down8
-FDragon      -400    350    straight_across9  straight_down9 
-FDinosaur    -300    350    straight_across8  straight_down8 
-FDragon      -200    350    straight_across7  straight_down7 
+FSpaceShip      -400    150    straight_across7  straight_down7 
+FSpaceShip    -400    250    straight_across8  straight_down8
+FSpaceShip      -400    350    straight_across9  straight_down9 
+FSpaceShip    -300    350    straight_across8  straight_down8 
+FSpaceShip      -200    350    straight_across7  straight_down7 
 $end
 
 36
-FDragon      400     150    bstraight_across7  straight_down7
-FDinosaur    400   	 250    bstraight_across8 straight_down8
-FDragon      400     350    bstraight_across9  straight_down9 
-FDinosaur    300     350    bstraight_across8  straight_down8 
-FDragon      200     350    bstraight_across7  straight_down7
+FSpaceShip      400     150    bstraight_across7  straight_down7
+FSpaceShip    400   	 250    bstraight_across8 straight_down8
+FSpaceShip      400     350    bstraight_across9  straight_down9 
+FSpaceShip    300     350    bstraight_across8  straight_down8 
+FSpaceShip      200     350    bstraight_across7  straight_down7
+$end
 
 38
-HDragon    -300    350     do_nothing          straight_down6
-Dragon    -200    350     do_nothing          straight_down7
-Dragon    -100    350     do_nothing          straight_down8
-Dragon    0       350     do_nothing          straight_down9
-Dragon    100     350     do_nothing          straight_down8
-Dragon    200     350     do_nothing          straight_down7
-HDragon    300     350     do_nothing          straight_down6
+HSpaceShip    -300    350     do_nothing          straight_down6
+SpaceShip    -200    350     do_nothing          straight_down7
+SpaceShip    -100    350     do_nothing          straight_down8
+SpaceShip    0       350     do_nothing          straight_down9
+SpaceShip    100     350     do_nothing          straight_down8
+SpaceShip    200     350     do_nothing          straight_down7
+HSpaceShip    300     350     do_nothing          straight_down6
 $end
 
 40
-Dragon    -410    -250    straight_across7    movpattern_circy
-Dragon    -410    -150    straight_across1    movpattern_circy
-Dragon    -410    0       straight_across7    movpattern_circy
-Dragon    -410    150     straight_across1    movpattern_circy
-Dragon    -410    250     straight_across7    movpattern_circy
+SpaceShip    -410    -250    straight_across7    movpattern_circy
+SpaceShip    -410    -150    straight_across1    movpattern_circy
+SpaceShip    -410    0       straight_across7    movpattern_circy
+SpaceShip    -410    150     straight_across1    movpattern_circy
+SpaceShip    -410    250     straight_across7    movpattern_circy
 $end
 
 43
-Dragon    410    -250    bstraight_across7    movpattern_circy
-Dragon    410    -150    bstraight_across1    movpattern_circy
-Dragon    410    0       bstraight_across7    movpattern_circy
-Dragon    410    150     bstraight_across1    movpattern_circy
-Dragon    410    250     bstraight_across7    movpattern_circy
+SpaceShip    410    -250    bstraight_across7    movpattern_circy
+SpaceShip    410    -150    bstraight_across1    movpattern_circy
+SpaceShip    410    0       bstraight_across7    movpattern_circy
+SpaceShip    410    150     bstraight_across1    movpattern_circy
+SpaceShip    410    250     bstraight_across7    movpattern_circy
 $end
 
 45
 Boss4       0       250    boss4_patx         boss4_paty
+$end

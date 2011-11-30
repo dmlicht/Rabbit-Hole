@@ -2,7 +2,7 @@ layout:
 level2_layout.txt
 
 music:
-game_song4.mp3
+game_song2.mp3
 
 1
 Plane      -210   310      straight_across4     straight_down5

@@ -33,7 +33,7 @@ def straight_down9(start):
     return straight_down(start, 1.25)
 
 def straight_across(start, time=4):
-    return rabbyt.ease(start, start+800, dt=time)
+    return rabbyt.ease(start, start+1000, dt=time)
 
 def straight_across1(start):
     return straight_across(start, 3.5)
@@ -175,7 +175,7 @@ def boss_hand2_patx(startx):
 def boss2_patx(startx):
     return rabbyt.chain( rabbyt.lerp(startx, startx+700, dt = 3),
                          rabbyt.lerp(startx+700, startx, dt = 3,
-                         extend="repeat"),)
+                         extend="reverse"),)
 
 def boss2_paty(starty):
     return rabbyt.chain( rabbyt.lerp(starty, starty-600, dt=1),
@@ -191,7 +191,7 @@ def boss2_paty(starty):
                          rabbyt.lerp(starty-600, starty-350, dt = 0.5),
                          rabbyt.lerp(starty-350, starty-350, dt = 2),
                          rabbyt.lerp(starty-350, starty, dt = 0.5,
-                         extend="repeat"),)
+                         extend="reverse"),)
 
 def boss3_patx(startx):
     """pattern"""
@@ -229,6 +229,7 @@ def boss4_paty(starty):
                          rabbyt.lerp(starty, starty, dt=1),
                          rabbyt.lerp(starty-250, starty-250, dt=3,
                          extend="reverse"),)
+
 """def pattern3(startx, starty):
     return (rabbyt.chain( rabbyt.lerp(startx, startx+50, dt=3/2),
                            rabbyt.lerp(startx+50, startx, dt=3/2),
