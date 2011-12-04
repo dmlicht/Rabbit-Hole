@@ -33,6 +33,7 @@ class Bullet(rabbyt.Sprite, game_object.GameObject):
 
     def update(self): 
         """update method"""
+        print cos(radians(self.rot+90))*self.speed
         self.x += cos(radians(self.rot+90))*self.speed
         self.y += sin(radians(self.rot+90))*self.speed
 
