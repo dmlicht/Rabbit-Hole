@@ -278,8 +278,9 @@ class Level():
             collision_occured = self.check_collisions_using( \
                                 rabbyt.collisions.collide_single, set1, set2)
             if collision_occured: 
-                set1.hit()
-                self.healthbar.hit()    
+                var = set1.hit()
+	        if set1.__class__.__name__ == "User" and var:
+                   self.healthbar.hit()    
 
         elif set_one_is_list:
             collision_occured = self.check_collisions_using( \
