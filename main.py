@@ -46,9 +46,7 @@ class Game:
         self.winner_name = ""
         self.high_scores = []
         self.high_score_names = []
-
         self.user = user_data.User()
-
         if not os.path.isfile("RabbitHighScores"):
             self.high_scores = ['0', '0', '0', '0', '0']
             self.high_score_names = ["OKW", "KRW", "ON", "DL", "AAA"] 
