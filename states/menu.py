@@ -56,11 +56,13 @@ class Menu(state.State):
                     #self.quit()
                 elif event.type == KEYDOWN:
                     self.key_press(event.key)
+                elif event.type == pygame.JOYBUTTONDOWN:
+                    self.handle_joy()
 
             rabbyt.clear()
             backg.render()
             text_start.render()
-	    text_instruct.render()
+            text_instruct.render()
             text_score.render()
             text_quit.render()
 
@@ -74,6 +76,14 @@ class Menu(state.State):
         for i in range(5):
             fdata.write(self.game.high_score_names[i] + " " + \
                     str(self.game.high_scores[i]) + "\n")
+
+    def handle_joy(self):
+        joy = self.game.joystick
+        if joy.get_button(13): self.esc_press()
+        elif joy.get_button(14): self.space_press()
+        elif joy.get_button(6): self.down_press()
+        elif joy.get_button(4): self.up_press()
+        self.highlight()
 
     def key_press(self, key_pressed):
         """delegates key presses to specific key functions

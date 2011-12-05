@@ -20,11 +20,6 @@ import movement_pattern
 import sys
 import os
 
-old_stdout, old_stderr = sys.stdout, sys.stderr
-
-sys.stdout = open('/dev/null', 'w')
-sys.stderr = open('/dev/null', 'w')
-
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
 
@@ -188,13 +183,26 @@ class Level():
                 elif event.key == pygame.K_n:
                     self.done = True
                     self.state_stack.append(self.state_after)
+            elif event.type == pygame.JOYBUTTONDOWN:
+                if self.game.joystick.get_button(12):
+                    self.done = True
+                    self.state_stack.append(states.menu.Menu())
+                elif self.game.joystick.get_button(9):
+                    self.done = True
+                    self.state_stack.append(self.state_after)
             #elif event.type == pygame.KEYUP and event.key == pygame.K_SPACE:
                 #self.ship.has_fired = False
         
-        #check for key presses
-        #pressed = pygame.key.get_pressed()
-        #user_actions = self.keyboard_to_actions(pressed)
-        user_actions = self.joystick_to_actions()
+        #check for key pressed
+        user_actions = actions.Actions()
+        try:
+            user_actions = self.joystick_to_actions()
+            self.ship.handle_actions(user_actions, self)
+        except pygame.error:
+            boolean = False
+        
+        pressed = pygame.key.get_pressed()
+        user_actions = self.keyboard_to_actions(pressed)
         self.ship.handle_actions(user_actions, self)
 
         #save ship movements
@@ -224,14 +232,10 @@ class Level():
     def joystick_to_actions(self):
         user_actions = actions.Actions()
         joy = self.game.joystick
-        f = open('null', 'w')
-        f2 = open('null1', 'w')
-        sys.stdout = f
-        sys.stderr = f2
         #print joy 4, 6, 7, 10
         if joy.get_button(4): user_actions.up = True
         if joy.get_button(6): user_actions.down = True
-        if joy.get_button(7):  user_actions.left = True
+        if joy.get_button(7): user_actions.left = True
         if joy.get_button(5): user_actions.right = True
         if joy.get_button(14): user_actions.fire = True
         if joy.get_button(13): user_actions.boost = True

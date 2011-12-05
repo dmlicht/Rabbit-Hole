@@ -47,11 +47,12 @@ class Instruct(state.State):
                     for i in range(5):
                         fdata.write(game.high_score_names[i] + " " + \
                         str(game.high_scores[i]) + "\n")
-
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        game.done = True
-                        state_stack.append(states.menu.Menu())
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    game.done = True
+                    state_stack.append(states.menu.Menu())
+                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(12):
+                    game.done = True
+                    state_stack.append(states.menu.Menu())
 
             backg.render()
             arrows.render()
@@ -64,6 +65,13 @@ class Instruct(state.State):
             pressed = pygame.key.get_pressed()
             user_actions = self.keyboard_to_actions(pressed)
             self.ship.handle_actions(user_actions, self)
+
+            try:
+                user_actions = self.joystick_to_actions(game)
+                self.ship.handle_actions(user_actions, self)
+            except pygame.error:
+                boolean = False
+                
             for bullet in self.bullets:
                 if bullet.isOffMap():
                     self.bullets.remove(bullet)
@@ -84,4 +92,21 @@ class Instruct(state.State):
         if pressed[pygame.K_d]: user_actions.boost = True
         if pressed[pygame.K_z]: user_actions.tilt_left = True
         if pressed[pygame.K_x]: user_actions.tilt_right = True
+        return user_actions
+
+    def joystick_to_actions(self, game):
+        user_actions = actions.Actions()
+        joy = game.joystick
+        #print joy 4, 6, 7, 10
+        if joy.get_button(4): user_actions.up = True
+        if joy.get_button(6): user_actions.down = True
+        if joy.get_button(7):  user_actions.left = True
+        if joy.get_button(5): user_actions.right = True
+        if joy.get_button(14): user_actions.fire = True
+        if joy.get_button(13): user_actions.boost = True
+        if joy.get_button(10): user_actions.tilt_left = True
+        if joy.get_button(11): user_actions.tilt_right = True
+        if joy.get_button(13): 
+            print "true" 
+            user_actions.toggle_time_travel = True
         return user_actions

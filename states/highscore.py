@@ -49,6 +49,9 @@ class High(state.State):
                         pygame.K_RETURN:
                         game.done = True
                         state_stack.append(states.menu.Menu())
+                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(12):
+                    game.done = True
+                    state_stack.append(states.menu.Menu())
 
             game.clock.tick(40)
 
