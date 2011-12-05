@@ -20,6 +20,7 @@ class WaveHandler():
         self.wave_index = 0
         self.layout_file_path = ""
         self.music_file_path = ""
+        self.mask_file_path = ""
         self.err_line = 0
 
     def parse_level_file(self):
@@ -42,7 +43,11 @@ class WaveHandler():
                     inner_line = self.readline_with_debug(level_file)
                     self.music_file_path = inner_line.split()[0]
                     outer_line = self.readline_with_debug(level_file)
-
+                    
+                elif outer_line.split()[0] == "mask:":
+                    inner_line = self.readline_with_debug(level_file)
+                    self.mask_file_path = inner_line.split()[0]
+                    outer_line = self.readline_with_debug(level_file)
                 #if a number is read in
                 else: 
                     wave_call_time = outer_line.split()[0]

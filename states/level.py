@@ -42,6 +42,7 @@ class Level():
         self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, \
                           self.wave_builder.layout_file_path, game)
 
+
         self.state_stack        = game.game_states
         self.game               = game
 
@@ -87,6 +88,8 @@ class Level():
         #health bar
         self.healthbar          = healthbar.HealthBar()
 
+        self.masks = []
+
         #finished?
         self.done               = False
         self.boss_dead          = False
@@ -95,7 +98,15 @@ class Level():
         self.can_store          = True
         self.stored_offset      = 0
         self.current_offset     = 0
+
+        self.travel_toggle      = False
+        self.let_go_of_travel   = True
     
+
+        if self.wave_builder.mask_file_path:
+            self.masks.append(rabbyt.Sprite("1level_shadings.png"))
+            self.masks[0].x = rabbyt.lerp(400, -400, dt=1, extend="reverse")
+            
     def set_up_music(self):
         song = self.wave_builder.music_file_path
         print song
@@ -181,11 +192,12 @@ class Level():
         self.ship.handle_actions(user_actions, self)
 
         #save ship movements
-        if pressed[pygame.K_t] and self.can_store:
-            self.set_travel_point()
-
-        if pressed[pygame.K_y] and not self.can_store:
-            self.return_travel_point()
+        if user_actions.toggle_time_travel:
+            if self.let_go_of_travel:
+                self.get_set_travel()
+            self.let_go_of_travel = False
+        else:
+            self.let_go_of_travel = True
 
         if self.saving:
             self.ship.save_actions(self.get_ticks(), user_actions)
@@ -200,7 +212,14 @@ class Level():
         if pressed[pygame.K_d]: user_actions.boost = True
         if pressed[pygame.K_z]: user_actions.tilt_left = True
         if pressed[pygame.K_x]: user_actions.tilt_right = True
+        if pressed[pygame.K_c]: user_actions.toggle_time_travel = True
         return user_actions
+
+    def get_set_travel(self):
+        if self.travel_toggle == False and self.can_store:
+            self.set_travel_point()
+        else:
+            self.return_travel_point()
 
     def update_UI(self):
         """updates UI"""
@@ -243,6 +262,7 @@ class Level():
     def render_game_objects(self):
         """rabbyt render methods"""
         self.background.render()
+        rabbyt.render_unsorted(self.masks)
         self.ship.render()
 
         rabbyt.render_unsorted(self.bullets)
@@ -250,6 +270,7 @@ class Level():
         rabbyt.render_unsorted(self.items)
         rabbyt.render_unsorted(self.past_selves)
         rabbyt.render_unsorted(self.enemy_bullets)
+
 
         self.text_score.render()
         self.text_boost.render()
@@ -466,6 +487,7 @@ class Level():
         saved_y = self.ship.y
         self.ship.y = -500
         self.background.render()
+        rabbyt.render_unsorted(self.masks)
         while self.ship.y < saved_y - 100:
             self.ship.y += 1
             self.ship.render()
