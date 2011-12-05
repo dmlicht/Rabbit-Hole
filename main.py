@@ -42,6 +42,14 @@ class Game:
         self.backg = pygame.Surface(self.screen.get_size()).convert()
         #self.numCalled = 0
 
+        self.joystick = self.setup_joystick()
+        """
+        if isnone(self.joystick):
+            print "joystick detected"
+        else:
+            print "no joystick detected"
+        """
+
         #high scores
         self.winner_name = ""
         self.high_scores = []
@@ -59,7 +67,7 @@ class Game:
                 self.high_scores.append(int(temp[1]))
                 self.high_score_names.append(temp[0])
         #music
-        pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
+        pygame.mixer.init(frequency=22050,size=-16, channels=2, buffer=4096)
         #self.crash = pygame.mixer.Sound('Crash1.wav')
         self.win_sound = pygame.mixer.Sound('winning.wav')
         self.lose_sound = pygame.mixer.Sound('losing.wav')
@@ -76,6 +84,17 @@ class Game:
         #time
         self.time_offset = 0.0
 
+    def setup_joystick(self):
+        pygame.joystick.init() # main joystick device system
+        try:
+            j = pygame.joystick.Joystick(0) # create a joystick instance
+            j.init() # init instance
+            print 'Enabled joystick: ' + j.get_name()
+            return j
+        except pygame.error:
+            print "oops"
+            #print 'no joystick found.'
+            #print pygame.joystick.get_init()
 
     def start(self):
         """ Starts the game """

@@ -17,7 +17,13 @@ import random
 import actions
 import copy
 import movement_pattern
+import sys
 import os
+
+old_stdout, old_stderr = sys.stdout, sys.stderr
+
+sys.stdout = open('/dev/null', 'w')
+sys.stderr = open('/dev/null', 'w')
 
 SCREEN_HEIGHT   = 600
 SCREEN_WIDTH    = 800
@@ -159,7 +165,6 @@ class Level():
         self.handle_collisions_between(self.past_selves, self.enemy_bullets)
         self.handle_item_pickups_between(self.ship, self.items)
 
-
         #Render
         self.render_game_objects()
 
@@ -187,8 +192,9 @@ class Level():
                 #self.ship.has_fired = False
         
         #check for key presses
-        pressed = pygame.key.get_pressed()
-        user_actions = self.keyboard_to_actions(pressed)
+        #pressed = pygame.key.get_pressed()
+        #user_actions = self.keyboard_to_actions(pressed)
+        user_actions = self.joystick_to_actions()
         self.ship.handle_actions(user_actions, self)
 
         #save ship movements
@@ -214,6 +220,28 @@ class Level():
         if pressed[pygame.K_x]: user_actions.tilt_right = True
         if pressed[pygame.K_c]: user_actions.toggle_time_travel = True
         return user_actions
+
+    def joystick_to_actions(self):
+        user_actions = actions.Actions()
+        joy = self.game.joystick
+        f = open('null', 'w')
+        f2 = open('null1', 'w')
+        sys.stdout = f
+        sys.stderr = f2
+        #print joy 4, 6, 7, 10
+        if joy.get_button(4): user_actions.up = True
+        if joy.get_button(6): user_actions.down = True
+        if joy.get_button(7):  user_actions.left = True
+        if joy.get_button(5): user_actions.right = True
+        if joy.get_button(14): user_actions.fire = True
+        if joy.get_button(13): user_actions.boost = True
+        if joy.get_button(10): user_actions.tilt_left = True
+        if joy.get_button(11): user_actions.tilt_right = True
+        if joy.get_button(13): 
+            print "true" 
+            user_actions.toggle_time_travel = True
+        return user_actions
+
 
     def get_set_travel(self):
         if self.travel_toggle == False and self.can_store:
