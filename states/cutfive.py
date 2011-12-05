@@ -77,5 +77,8 @@ class CutFive(state.State):
                     if event.key == K_ESCAPE or event.key == K_RETURN:
                         game.done = True
                         state_stack.append(states.highscore.High())
+                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(12):
+                    game.done = True
+                    state_stack.append(states.highscore.High())
             pygame.display.flip()
 

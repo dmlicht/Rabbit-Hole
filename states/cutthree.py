@@ -99,6 +99,9 @@ class CutThree(state.State):
                     if event.key == K_ESCAPE or event.key == K_RETURN:
                         game.done = True
                         self.set_next_state()
+                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(12):
+                    game.done = True
+                    self.set_next_state()
             pygame.display.flip()
 
     def set_next_state(self):
