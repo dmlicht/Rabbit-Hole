@@ -15,6 +15,7 @@ class WaveHandler():
     """Handles the waves of enemies"""
     def __init__(self, level_file_path):
         self.waves = [] 
+        self.waves_to_readd = []
         self.level_file_path = level_file_path
         self.wave_index = 0
         self.layout_file_path = ""
@@ -119,6 +120,25 @@ class WaveHandler():
         """Debugging method"""
         self.err_line += 1
         return level_file.readline()
+
+    def set_waves_to_readd(start_ticks, end_ticks):
+        self.waves_to_readd = []
+        for wave in self.waves:
+            if wave.time > start_ticks and wave.time < end_ticks:
+                self.waves_to_readd.append(wave)
+    
+    def get_next_readd_wave(self):
+        if not self.all_past_waves_called():
+            self.readd_wave_index += 1
+            return self.wave[self.readd_wave_index -1]
+        else:
+            return False
+
+    def all_readd_waves_called(self):
+        if self.readd_wave_index < len(self.waves):
+            return False
+        else:
+            return True
     
 def is_convertable_to_integer(number):
     """Method to find out if is convertable to int"""

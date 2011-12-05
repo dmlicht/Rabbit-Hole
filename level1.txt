@@ -1,5 +1,5 @@
 layout:
-level1_layout.txt
+grass_sample_layout.txt
 
 music:
 game_song1.mp3
