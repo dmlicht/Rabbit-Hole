@@ -1,7 +1,0 @@
-#!/Library/Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python
-import sys
-try:
-    from pylint import gui 
-    gui.Run(sys.argv[1:])
-except ImportError:
-    sys.exit('tkinter is not available')
