@@ -5,7 +5,7 @@ music:
 game_song1.mp3
 
 mask:
-1level_shadings.png
+1fog_mask.png
 
 1
 Dinosaur      0      310      movpatternx2     movpatterny2
