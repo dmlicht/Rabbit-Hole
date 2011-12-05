@@ -104,9 +104,9 @@ class Level():
     
 
         if self.wave_builder.mask_file_path:
-            self.masks.append(rabbyt.Sprite("1level_shadings.png"))
+            self.masks.append(rabbyt.Sprite(self.wave_builder.mask_file_path))
             self.masks[0].x = rabbyt.lerp(400, -400, dt=1, extend="reverse")
-            
+
     def set_up_music(self):
         song = self.wave_builder.music_file_path
         print song
