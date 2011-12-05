@@ -5,16 +5,15 @@ import pygame, rabbyt
 from pygame.locals import K_SPACE, K_ESCAPE, K_RETURN, \
                             K_UP, K_DOWN, KEYDOWN, QUIT
 from settings import FontSprite
-import state, states.cut
+import state, states.cut, states.instructions, states.highscore
 
-RGB_UNSELECTED  = (255, 255, 255)
+RGB_UNSELECTED  = (120, 0, 0)
 RGB_SELECTED    = (0, 0, 0)
 
 START           = 0
-SOUND           = 1
-BRIGHTNESS      = 2
-SCORE           = 3
-QUIT            = 4
+INSTRUCT        = 1
+SCORE           = 2
+QUIT            = 3
 
 #def MenuScreen(game, state_stack):
 class Menu(state.State):
@@ -30,23 +29,21 @@ class Menu(state.State):
 
         self.game.user.score = 0
         text_start = FontSprite(game.font, "Start Game")
-        text_sound = FontSprite(game.font, "Adjust Sound")
-        text_brightness = FontSprite(game.font, "Adjust Brightness")
+        text_instruct = FontSprite(game.font, "Instructions")
         text_score = FontSprite(game.font, "High Scores")
         text_quit = FontSprite(game.font, "Quit")
 
         #set menu item positions
         text_start.xy = (-65, 100)
-        text_sound.xy = (-80, 50)
-        text_brightness.xy = (-110, 0)
-        text_score.xy = (-77, -50)
-        text_quit.xy = (-22, -100)        
+        text_instruct.xy = (-70, 50)
+        text_score.xy = (-70, 0)  
+        text_quit.xy = (-19, -50) 
 
         self.menu_items = [ text_start, \
-                            text_sound, \
-                            text_brightness, \
+			    text_instruct, \
                             text_score, \
                             text_quit]
+
         self.highlight()        
 
         game.done = False
@@ -63,8 +60,7 @@ class Menu(state.State):
             rabbyt.clear()
             backg.render()
             text_start.render()
-            text_sound.render()
-            text_brightness.render()
+	    text_instruct.render()
             text_score.render()
             text_quit.render()
 
@@ -105,10 +101,9 @@ class Menu(state.State):
         if self.menu_option == START:
             self.game.done = True
             self.state_stack.append(states.cut.Cut())
-        elif self.menu_option == SOUND:
-            self.game.done = False
-        elif self.menu_option == BRIGHTNESS:
-            self.game.done = False
+        elif self.menu_option == INSTRUCT:
+            self.game.done = True
+            self.state_stack.append(states.instructions.Instruct())
         elif self.menu_option == SCORE:
             self.game.done = True
             self.state_stack.append(states.highscore.High())
@@ -117,7 +112,7 @@ class Menu(state.State):
     
     def down_press(self):
         """handles presssing down key"""
-        if self.menu_option < 4:
+        if self.menu_option < 3:
             self.menu_option += 1
         else:
             self.menu_option = 0
@@ -127,7 +122,7 @@ class Menu(state.State):
         if self.menu_option > 0:
             self.menu_option -= 1
         else:
-            self.menu_option = 4
+            self.menu_option = 3
 
     def highlight(self):
         """colors currently selected menu item"""

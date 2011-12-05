@@ -48,35 +48,35 @@ class CutFour(state.State):
             if ticks >= 5 and ticks < 7:
                 words.x = -200
                 words.text = "Dimensional Rabbit: It's you again ..."
-            elif ticks >= 7 and ticks < 9:
+            elif ticks >= 7 and ticks < 11:
                 words.text = "Scientist: THAT WAS THE WRONG TIME"
-                words.x = -160
-            elif ticks >= 9 and ticks < 11:
+                words.x = -240
+            elif ticks >= 11 and ticks < 15:
                 words.text = "Scientist: WHY'D you lead me to WW2?!"
-                words.x = -260
-            elif ticks >= 11 and ticks < 13:
+                words.x = -250
+            elif ticks >= 15 and ticks < 19:
                 words.text = "Dimensional Rabbit: So I was off" + \
                              " by like 500 years."
-                words.x = -330
-            elif ticks >= 13 and ticks < 17:
+                words.x = -315
+            elif ticks >= 19 and ticks < 23:
                 words.text = "Dimensional Rabbit: Do you know how many " + \
                              "portals there are"
                 words.x = -380
-            elif ticks>=17 and ticks < 21:
+            elif ticks >= 23 and ticks < 27:
                 words.text = "Dimensional Rabbit: in this place?"
-                words.x = -100
-            elif ticks >= 21 and ticks < 25:
+                words.x = -200
+            elif ticks >= 27 and ticks < 31:
                 words.text = "Scientist: Well can you tell me where now?"
                 words.x = -250
-            elif ticks >= 25 and ticks < 29:
+            elif ticks >= 31 and ticks < 35:
                 words.text = "Dimensional Rabbit: Yeah it's this one " + \
                              "for sure."
-                words.x = -315
-            elif ticks >= 29 and ticks < 33:
+                words.x = -305
+            elif ticks >= 35 and ticks < 39:
                 words.text = "Dimensional Rabbit: Sorry about the mix up. Good luck!"
-                words.x = -300
+                words.x = -350
                 rabbit.alpha = rabbyt.lerp(1.0, 0.0, startt=25, endt=29)
-            elif ticks >= 33:
+            elif ticks >= 40:
                 words.text = "Scientist: I hope you're right this time!"
                 words.x = -200
                 scene.alpha = rabbyt.lerp(1.0, 0.0, startt=29, endt=33)

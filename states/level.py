@@ -224,7 +224,6 @@ class Level():
 
         #for gem in self.sparks:
         #    gem.update()
-
         for enemy in self.enemies:
             enemy.animate()
 
@@ -278,8 +277,9 @@ class Level():
             collision_occured = self.check_collisions_using( \
                                 rabbyt.collisions.collide_single, set1, set2)
             if collision_occured: 
-                set1.hit()
-                self.healthbar.hit()    
+                var = set1.hit()
+	        if set1.__class__.__name__ == "User" and var:
+                   self.healthbar.hit()    
 
         elif set_one_is_list:
             collision_occured = self.check_collisions_using( \
@@ -352,7 +352,7 @@ class Level():
             for element in current_wave.elements:
                 new_enemy = element.enemy_type(self.game.screen, element.startx,
                 element.starty, element.patternx, element.patterny)
-                self.enemies.append(new_enemy)    
+                self.enemies.append(new_enemy)
 
     def handle_save(self):
         self.energy -= TIME_TRAVEL_CHRONOS_DRAIN
