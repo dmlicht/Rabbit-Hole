@@ -35,6 +35,11 @@ class CutFour(state.State):
         words.y = -250
         words.x = -180
 
+        #set music
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('scene4.mp3')
+        pygame.mixer.music.play()
+        
         game.done = False
         while not game.done:
             clock.tick(40)

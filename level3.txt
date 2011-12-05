@@ -109,19 +109,19 @@ Plane      -200    350    straight_across7  straight_down7
 $end
 
 17
-Plane      400     150    bstraight_across7  straight_down7
-Plane    400   	250    bstraight_across8 straight_down8
-Plane      400    	350    bstraight_across9  straight_down9 
-Plane    300    	350    bstraight_across8  straight_down8 
-Plane      200    	350    bstraight_across7  straight_down7 
+Plane      440     150    bstraight_across7  straight_down7
+Plane    440   	250    bstraight_across8 straight_down8
+Plane      440    	350    bstraight_across9  straight_down9 
+Plane    340    	350    bstraight_across8  straight_down8 
+Plane      240    	350    bstraight_across7  straight_down7 
 $end
 
 18
-FPlane      400     250    bstraight_across1  do_nothing 
-FPlane      400   	150    bstraight_across1  do_nothing
-FPlane      400    	0      bstraight_across1  do_nothing 
-Plane      400    	-150   bstraight_across7  do_nothing 
-Plane      400    	-250   bstraight_across8  do_nothing 
+FPlane      440     250    bstraight_across1  do_nothing 
+FPlane      440   	150    bstraight_across1  do_nothing
+FPlane      440    	0      bstraight_across1  do_nothing 
+Plane      440    	-150   bstraight_across7  do_nothing 
+Plane      440    	-250   bstraight_across8  do_nothing 
 $end
 
 
@@ -162,11 +162,11 @@ FPlane      -100    	350    movpattern_circx  straight_down9
 $end
 
 25
-Plane      -200    350    straight_across6  straight_down9 
-Plane      -300    350    straight_across6  straight_down8
-Plane      -400    350    straight_across6  straight_down7 
-Plane      -400    250    straight_across6  straight_down6 
-Plane      -400    150    straight_across6  straight_down5 
+Plane      -220    350    straight_across6  straight_down9 
+Plane      -320    350    straight_across6  straight_down8
+Plane      -420    350    straight_across6  straight_down7 
+Plane      -420    250    straight_across6  straight_down6 
+Plane      -420    150    straight_across6  straight_down5 
 $end
 
 26
@@ -246,21 +246,21 @@ Plane      -410    -250    straight_across7  do_nothing
 $end
 
 38
-Plane      210      350    bstraight_across6  straight_down9
-Plane      310   	350    bstraight_across7  straight_down8
-Plane      410    	350    bstraight_across8  straight_down7 
-Plane      410    	250    bstraight_across7  straight_down8 
-Plane      410    	150    bstraight_across6  straight_down9 
+Plane      220      350    bstraight_across6  straight_down9
+Plane      320   	350    bstraight_across7  straight_down8
+Plane      420    	350    bstraight_across8  straight_down7 
+Plane      420    	250    bstraight_across7  straight_down8 
+Plane      420    	150    bstraight_across6  straight_down9 
 $end
 
 39
-Plane      -210     350    straight_across6  straight_down9
-Plane      -310   	350    straight_across7  straight_down8
-Plane      -410    	350    straight_across8  straight_down7 
-Plane      -410    	250    straight_across7  straight_down8 
-Plane      -410    	150    straight_across6  straight_down9 
+Plane      -220     350    straight_across6  straight_down9
+Plane      -320   	350    straight_across7  straight_down8
+Plane      -420    	350    straight_across8  straight_down7 
+Plane      -420    	250    straight_across7  straight_down8 
+Plane      -420    	150    straight_across6  straight_down9 
 $end
 
 47
-Boss3           -400    -300     boss3_patx     boss3_paty
+Boss3      -410    -300     boss3_patx     boss3_paty
 $end
