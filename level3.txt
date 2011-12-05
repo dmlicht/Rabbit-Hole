@@ -1,5 +1,5 @@
 layout:
-level2_layout.txt
+level3_layout.txt
 
 music:
 game_song3.mp3
