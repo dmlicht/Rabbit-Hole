@@ -10,11 +10,15 @@ from settings import FontSprite
 import state
 import states.name
 
+if not pygame.mixer: 
+    print 'Warning, sound disabled'
+
 #def CutScreen(game, state_stack):
 class Cut(state.State):
     """The Cutscene Class"""
     def run(self, game, state_stack):
         """Makes the Cutscene run"""
+
         game.set_state_time()
         scene = rabbyt.Sprite("1cutscene.png")
         scene.scale = 0.95
@@ -27,8 +31,8 @@ class Cut(state.State):
         scene2.scale = 0.95
         scene2.xy = (60, -60)
 
-        words = FontSprite(game.font, "Scientist: I'll nom for you forever.")
-        words.xy = (-200, -250)
+        words = FontSprite(game.font, "Scientist: I'll be back soon.")
+        words.xy = (-195, -250)
 
         game.done = False
         while not game.done:

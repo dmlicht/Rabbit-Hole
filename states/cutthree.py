@@ -50,31 +50,31 @@ class CutThree(state.State):
                 words.text = "Dimensional Rabbit: Hello Again!"
             elif ticks >= 7 and ticks < 9:
                 words.text = "Dimensional Rabbit: How are you doing?"
-                words.x = -160
+                words.x = -220
             elif ticks >= 9 and ticks < 11:
                 words.text = "Dimensional Rabbit: Do you need help"
-                words.x = -260
+                words.x = -220
             elif ticks >= 11 and ticks < 13:
                 words.text = "Dimensional Rabbit: ..." + \
                              " Navigating this place?"
-                words.x = -330
+                words.x = -260
             elif ticks >= 13 and ticks < 17:
                 words.text = "Scientist: Well... do you know where"
-                words.x = -270
+                words.x = -220
             elif ticks >= 17 and ticks < 21:
                 words.text = "Scientist: The year 2444 is?."
-                words.x = -250
+                words.x = -175
             elif ticks >= 21 and ticks < 25:
                 words.text = "Dimensional Rabbit: Oh it's right around " + \
                              "here I think..."
-                words.x = -385
+                words.x = -350
             elif ticks >= 25 and ticks < 29:
                 words.text = "Scientist: Really? That doesn't look..."
-                words.x = -160
+                words.x = -210
                 rabbit.alpha = rabbyt.lerp(1.0, 0.0, startt=25, endt=29)
             elif ticks >= 29:
                 words.text = "Scientist: WHOA!!"
-                words.x = -100
+                words.x = -110
                 scene.alpha = rabbyt.lerp(1.0, 0.0, startt=29, endt=33)
             if ticks >= 33:
                 game.done = True

@@ -53,7 +53,7 @@ class CutTwo(state.State):
                 words.x = -160
             elif ticks >= 9 and ticks < 11:
                 words.text = "Dimensional Rabbit: I didn't think ..."
-                words.x = -260
+                words.x = -240
             elif ticks >= 11 and ticks < 13:
                 words.text = "Dimensional Rabbit: ..." + \
                              " anybody would make it this far"
