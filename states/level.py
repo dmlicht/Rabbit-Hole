@@ -224,7 +224,6 @@ class Level():
 
         #for gem in self.sparks:
         #    gem.update()
-
         for enemy in self.enemies:
             enemy.animate()
 
@@ -352,7 +351,7 @@ class Level():
             for element in current_wave.elements:
                 new_enemy = element.enemy_type(self.game.screen, element.startx,
                 element.starty, element.patternx, element.patterny)
-                self.enemies.append(new_enemy)    
+                self.enemies.append(new_enemy)
 
     def handle_save(self):
         self.energy -= TIME_TRAVEL_CHRONOS_DRAIN
