@@ -418,6 +418,7 @@ class Level():
     def return_travel_point(self):
         self.saving = False
         self.background.saving = False
+        self.readd_waves()
         self.current_offset = self.game.get_ticks() - self.stored_offset
         new_past_self = player.PastSelf("3ship1", self.game.screen, self.ship.saved_xy, \
                         self.ship.saved_rot, self.ship.saved_actions, self)
@@ -429,6 +430,12 @@ class Level():
         self.return_enemy_bullets()
         self.return_enemies()
         self.return_items()
+        self.time_travel_animation()
+
+    def readd_waves(self):
+        for time in self.wave_builder.readd_waves(self.stored_offset, self.get_ticks()):
+            print time
+            rabbyt.scheduler.add(time, self.build_wave)
 
     def return_bullets(self):
         self.bullets = self.stored_bullets
@@ -448,3 +455,19 @@ class Level():
     
     def return_past_selves(self):
         self.past_selves = self.stored_past_selves
+    
+    def time_travel_animation(self):
+        warp_speed = 20
+        while self.ship.y < 500:
+            self.ship.y += warp_speed
+            self.ship.render()
+            pygame.display.flip()
+        self.ship.xy = self.ship.saved_xy
+        saved_y = self.ship.y
+        self.ship.y = -500
+        self.background.render()
+        while self.ship.y < saved_y - 100:
+            self.ship.y += 1
+            self.ship.render()
+            pygame.display.flip()
+

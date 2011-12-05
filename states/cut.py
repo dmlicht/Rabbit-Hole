@@ -34,6 +34,11 @@ class Cut(state.State):
         words = FontSprite(game.font, "Scientist: I'll be back soon.")
         words.xy = (-195, -250)
 
+        #set music
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('scene1.mp3')
+        pygame.mixer.music.play()
+
         game.done = False
         while not game.done:
             rabbyt.clear()

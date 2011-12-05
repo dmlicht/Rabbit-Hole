@@ -104,6 +104,7 @@ class WaveHandler():
 
     def get_wave_times(self):
         """When to start/stop"""
+        self.sort_waves_by_time()
         wave_times = []
         for wave_ in self.waves:
             wave_times.append(wave_.time)
@@ -121,24 +122,30 @@ class WaveHandler():
         self.err_line += 1
         return level_file.readline()
 
-    def set_waves_to_readd(start_ticks, end_ticks):
-        self.waves_to_readd = []
-        for wave in self.waves:
-            if wave.time > start_ticks and wave.time < end_ticks:
-                self.waves_to_readd.append(wave)
-    
-    def get_next_readd_wave(self):
-        if not self.all_past_waves_called():
-            self.readd_wave_index += 1
-            return self.wave[self.readd_wave_index -1]
-        else:
-            return False
+    def readd_waves(self, start_ticks, end_ticks):
 
-    def all_readd_waves_called(self):
-        if self.readd_wave_index < len(self.waves):
-            return False
-        else:
-            return True
+        start_time = start_ticks / 1000.0
+        end_time = end_ticks / 1000.0
+        wave_times = []
+        waves_to_readd = []
+
+        for wave in self.waves:
+            print "wave: ", wave.time
+            print "start_time:", start_time
+            print "end_time: ", end_time
+            if wave.time > start_time and wave.time < end_time:
+                wave_times.append(wave.time)
+        self.set_index(start_ticks)
+        return wave_times
+
+    def set_index(self, ticks):
+        for wave in self.waves:
+            if wave.time > ticks:
+                self.wave_index = self.waves.index(wave)
+                return ""
+
+    def sort_waves_by_time(self):
+        self.waves = sorted(self.waves, key = lambda wave: wave.time)
     
 def is_convertable_to_integer(number):
     """Method to find out if is convertable to int"""
