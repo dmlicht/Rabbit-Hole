@@ -9,4 +9,7 @@ $end
 BossHands      -100   	350     boss_hand1_patx  boss1_pat
 Boss1           0    	350     do_nothing       boss1_pat
 BossHands      100    	350     boss_hand2_patx  boss1_pat
+
+20
+Boss1          0        250     boss4_patx       boss4_paty
 $end

@@ -22,6 +22,8 @@ class Instruct(state.State):
 
         self.bullets = []
 
+        self.joystick = 0
+
     def run(self, game, state_stack):
         backg = rabbyt.Sprite('1Menu_Screen1.png') 
         arrows = rabbyt.Sprite('1arrows.png') 
@@ -47,12 +49,16 @@ class Instruct(state.State):
                     for i in range(5):
                         fdata.write(game.high_score_names[i] + " " + \
                         str(game.high_scores[i]) + "\n")
-                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    game.done = True
-                    state_stack.append(states.menu.Menu())
-                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(12):
-                    game.done = True
-                    state_stack.append(states.menu.Menu())
+                elif event.type == pygame.KEYDOWN:
+                    self.joystick = 0
+                    if event.key == pygame.K_ESCAPE:
+                        game.done = True
+                        state_stack.append(states.menu.Menu())
+                elif event.type == pygame.JOYBUTTONDOWN:
+                    self.joystick = 1
+                    if game.joystick.get_button(12):
+                        game.done = True
+                        state_stack.append(states.menu.Menu())
 
             backg.render()
             arrows.render()
@@ -62,15 +68,13 @@ class Instruct(state.State):
             dash.render()
             rabbyt.render_unsorted(self.bullets)
 
-            pressed = pygame.key.get_pressed()
-            user_actions = self.keyboard_to_actions(pressed)
-            self.ship.handle_actions(user_actions, self)
-
-            try:
+            if self.joystick:
                 user_actions = self.joystick_to_actions(game)
                 self.ship.handle_actions(user_actions, self)
-            except pygame.error:
-                boolean = False
+            else:
+                pressed = pygame.key.get_pressed()
+                user_actions = self.keyboard_to_actions(pressed)
+                self.ship.handle_actions(user_actions, self)
                 
             for bullet in self.bullets:
                 if bullet.isOffMap():
