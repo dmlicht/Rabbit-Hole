@@ -177,7 +177,7 @@ class Level():
         
         #check for key presses
         pressed = pygame.key.get_pressed()
-        user_actions = self.input_to_actions(pressed)
+        user_actions = self.keyboard_to_actions(pressed)
         self.ship.handle_actions(user_actions, self)
 
         #save ship movements
@@ -190,7 +190,7 @@ class Level():
         if self.saving:
             self.ship.save_actions(self.get_ticks(), user_actions)
 
-    def input_to_actions(self, pressed):
+    def keyboard_to_actions(self, pressed):
         user_actions = actions.Actions()
         if pressed[pygame.K_UP]: user_actions.up = True
         if pressed[pygame.K_DOWN]: user_actions.down = True
@@ -277,8 +277,9 @@ class Level():
             collision_occured = self.check_collisions_using( \
                                 rabbyt.collisions.collide_single, set1, set2)
             if collision_occured: 
-                set1.hit()
-                self.healthbar.hit()    
+                var = set1.hit()
+	        if set1.__class__.__name__ == "User" and var:
+                   self.healthbar.hit()    
 
         elif set_one_is_list:
             collision_occured = self.check_collisions_using( \
@@ -363,12 +364,15 @@ class Level():
         if isinstance(self.state_after, states.highscore.High):
             self.game.update_scores()
         self.state_stack.append(self.state_after)
+        pygame.mixer.music.stop()
         self.done = True
 
     def failure_end(self):
         """uh oh"""
         self.game.update_scores()
         self.state_stack.append(states.highscore.High())
+        pygame.mixer.music.stop()
+        self.game.lose_sound.play()
         self.done = True
     
     def get_ticks(self):
