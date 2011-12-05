@@ -37,8 +37,8 @@ class CutFour(state.State):
 
         #set music
         pygame.mixer.music.stop()
-        pygame.mixer.music.load('scene4.mp3')
-        pygame.mixer.music.play()
+        pygame.mixer.music.load('scene4.wav')
+	self.music_started = False
         
         game.done = False
         while not game.done:
@@ -48,6 +48,9 @@ class CutFour(state.State):
             rabbyt.set_time(game.get_ticks()/1000.0)
             ticks = game.get_ticks()/1000.0
             if ticks >= 3:
+		if not self.music_started:
+        	    pygame.mixer.music.play()
+		    self.music_started = True
                 words.render()
                 rabbit.render()
             if ticks >= 5 and ticks < 7:

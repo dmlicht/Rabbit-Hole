@@ -192,9 +192,9 @@ class Level():
                 #self.ship.has_fired = False
         
         #check for key presses
-        #pressed = pygame.key.get_pressed()
-        #user_actions = self.keyboard_to_actions(pressed)
-        user_actions = self.joystick_to_actions()
+        pressed = pygame.key.get_pressed()
+        user_actions = self.keyboard_to_actions(pressed)
+        #user_actions = self.joystick_to_actions()
         self.ship.handle_actions(user_actions, self)
 
         #save ship movements

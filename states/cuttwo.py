@@ -14,6 +14,11 @@ from settings import FontSprite
 class CutTwo(state.State):
     """The Second Cutscene"""
     def run(self, game, state_stack):
+
+        #set music
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('scene2.wav')
+
         """Starts the cutscene"""
         clock = pygame.time.Clock()
         self.game = game
@@ -34,11 +39,8 @@ class CutTwo(state.State):
         words.alpha = rabbyt.lerp(0.0, 1.0, startt=3, endt=5)
         words.y = -250
         words.x = -180
+	self.music_started = False
 
-        #set music
-        pygame.mixer.music.stop()
-        pygame.mixer.music.load('scene2.mp3')
-        pygame.mixer.music.play()
         
         game.done = False
         while not game.done:
@@ -48,6 +50,9 @@ class CutTwo(state.State):
             rabbyt.set_time(game.get_ticks()/1000.0)
             ticks = game.get_ticks()/1000.0
             if ticks >= 3:
+		if not self.music_started:
+        	    pygame.mixer.music.play()
+		    self.music_started = True
                 words.render()
                 rabbit.render()
             if ticks >= 5 and ticks < 7:

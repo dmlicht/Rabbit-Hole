@@ -21,7 +21,7 @@ class CutFive(state.State):
 
         pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
         pygame.mixer.music.stop()
-        pygame.mixer.music.load('scene5.mp3')
+        pygame.mixer.music.load('scene5.wav')
         pygame.mixer.music.play(-1, 0.0)
 
         game.set_state_time()
