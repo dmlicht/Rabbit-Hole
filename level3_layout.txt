@@ -1,0 +1,54 @@
+dimensions:
+WIDTH           100
+HEIGHT          100
+SCROLL_TIME     4
+$end
+
+tiles:
+A               1green-grass_tl.png
+B               1green-grass_tr.png
+C               1green-grass_bl.png
+D               1green-grass_br.png
+E               1yellow-grass_tl.png
+F               1yellow-grass_tr.png
+G               1yellow-grass_bl.png
+H               1yellow-grass_br.png
+I               1yellow-grass-E_tl.png
+J               1yellow-grass-E_tr.png
+K               1yellow-grass-E_bl.png
+L               1yellow-grass-E_br.png
+$end
+
+layout:
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+ABABIJEF
+CDCDKLGH
+$end
+
