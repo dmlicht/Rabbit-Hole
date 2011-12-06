@@ -36,8 +36,8 @@ class Cut(state.State):
 
         #set music
         pygame.mixer.music.stop()
-        pygame.mixer.music.load('scene1.mp3')
-        pygame.mixer.music.play()
+        pygame.mixer.music.load('scene1.wav')
+       	pygame.mixer.music.play()
 
         game.done = False
         while not game.done:

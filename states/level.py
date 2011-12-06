@@ -49,6 +49,8 @@ class Level():
 
         self.state_after            = state_after
 
+        self.joystick               = 0
+
         self.energy                 = STARTING_CHRONOS
         self.fuel                   = MAX_FUEL
 
@@ -177,6 +179,7 @@ class Level():
                     fdata.write(self.game.high_score_names[i] + " " + \
                                 str(self.game.high_scores[i]) + "\n")
             elif event.type == pygame.KEYDOWN:
+                self.joystick = 0
                 if event.key == pygame.K_ESCAPE:
                     self.done = True
                     self.state_stack.append(states.menu.Menu())
@@ -184,6 +187,7 @@ class Level():
                     self.done = True
                     self.state_stack.append(self.state_after)
             elif event.type == pygame.JOYBUTTONDOWN:
+                self.joystick = 1
                 if self.game.joystick.get_button(self.game.controls.settings["Escape"]):
                     self.done = True
                     self.state_stack.append(states.menu.Menu())
@@ -195,15 +199,13 @@ class Level():
         
         #check for key pressed
         user_actions = actions.Actions()
-        try:
+        if self.joystick:
             user_actions = self.joystick_to_actions()
             self.ship.handle_actions(user_actions, self)
-        except pygame.error:
-            boolean = False
-        
-        pressed = pygame.key.get_pressed()
-        user_actions = self.keyboard_to_actions(pressed)
-        self.ship.handle_actions(user_actions, self)
+        else:
+            pressed = pygame.key.get_pressed()
+            user_actions = self.keyboard_to_actions(pressed)
+            self.ship.handle_actions(user_actions, self)
 
         #save ship movements
         if user_actions.toggle_time_travel:

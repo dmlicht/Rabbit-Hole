@@ -73,7 +73,7 @@ class Instruct(state.State):
                 pressed = pygame.key.get_pressed()
                 user_actions = self.keyboard_to_actions(pressed)
                 self.ship.handle_actions(user_actions, self)
-
+                
             for bullet in self.bullets:
                 if bullet.isOffMap():
                     self.bullets.remove(bullet)

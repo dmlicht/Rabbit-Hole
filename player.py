@@ -43,6 +43,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         self.tilt = 0
         self.boosting = False
         self.boost_fuel = 100.0
+	#self.fire_sound = pygame.mixer.Sound("bullet4.wav")
 
         self.offsetx = -51
         self.offsety = -244/6.0
@@ -157,6 +158,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
         if self.has_fired:
             return False
         else:
+	    #self.fire_sound.play()
             return self.fire()
 
     def fire(self):

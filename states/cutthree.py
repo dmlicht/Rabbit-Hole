@@ -35,6 +35,11 @@ class CutThree(state.State):
         words.y = -250
         words.x = -180
 
+        #set music
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('scene3.wav')
+	self.music_started = False
+        
         game.done = False
         while not game.done:
             clock.tick(40)
@@ -43,6 +48,9 @@ class CutThree(state.State):
             rabbyt.set_time(game.get_ticks()/1000.0)
             ticks = game.get_ticks()/1000.0
             if ticks >= 3:
+		if not self.music_started:
+		    self.music_started = True
+		    pygame.mixer.music.play()
                 words.render()
                 rabbit.render()
             if ticks >= 5 and ticks < 7:

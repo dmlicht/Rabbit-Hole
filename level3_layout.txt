@@ -9,46 +9,112 @@ A               1green-grass_tl.png
 B               1green-grass_tr.png
 C               1green-grass_bl.png
 D               1green-grass_br.png
-E               1yellow-grass_tl.png
-F               1yellow-grass_tr.png
-G               1yellow-grass_bl.png
-H               1yellow-grass_br.png
-I               1yellow-grass-E_tl.png
-J               1yellow-grass-E_tr.png
-K               1yellow-grass-E_bl.png
-L               1yellow-grass-E_br.png
+E               1yellow-grass_bl.png
+F               1yellow-grass_br.png
+G               1yellow-grass_tl.png
+H               1yellow-grass_tr.png
+I               1yellow-grass-E_bl.png
+J               1yellow-grass-E_br.png
+K               1yellow-grass-E_tl.png
+L               1yellow-grass-E_tr.png
+M               1yellow-grass-N_tl.png
+N               1yellow-grass-N_tr.png
+O               1yellow-grass-N_bl.png
+P               1yellow-grass-N_br.png
+Q               1yellow-grass-NE_bl.png
+R               1yellow-grass-NE_br.png
+S               1yellow-grass-NE_tl.png
+T               1yellow-grass-NE_tr.png
+U               1yellow-grass-S_tl.png
+V               1yellow-grass-S_tr.png
+W               1yellow-grass-S_bl.png
+X               1yellow-grass-S_br.png
+a               1yellow-grass-NW_tl.png
+b               1yellow-grass-NW_tr.png
+c               1yellow-grass-NW_bl.png
+d               1yellow-grass-NW_br.png
+e               1yellow-grass-SW_tl.png
+f               1yellow-grass-SW_tr.png
+g               1yellow-grass-SW_bl.png
+h               1yellow-grass-SW_br.png
+i               1yellow-grass-SE_tl.png
+j               1yellow-grass-SE_tr.png
+k               1yellow-grass-SE_bl.png
+l               1yellow-grass-SE_br.png
+m               1yellow-grass-W_bl.png
+n               1yellow-grass-W_br.png
+o               1yellow-grass-W_tl.png
+p               1yellow-grass-W_tr.png
 $end
 
 layout:
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
-ABABIJEF
-CDCDKLGH
+
+MNMNMNMN
+OPOPOPOP
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+UVUVUVUV
+WXWXWXWX
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+MNMNMNMN
+OPOPOPOP
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+UVUVUVUV
+WXWXWXWX
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+MNMNMNMN
+OPOPOPOP
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+ABABABAB
+CDCDCDCD
+UVUVUVUV
+WXWXWXWX
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+EFEFEFEF
+GHGHGHGH
+
 $end
 
