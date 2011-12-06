@@ -9,6 +9,7 @@ import states.menu
 import states.cut
 import states.name
 import states.highscore
+import states.set_controls
 
 import user_data
 import os
@@ -80,6 +81,7 @@ class Game:
         self.game_states = []
         self.done = False
         self.game_states.append(states.menu.Menu())
+        self.game_states.append(states.set_controls.SetControls())
 
         #time
         self.time_offset = 0.0
