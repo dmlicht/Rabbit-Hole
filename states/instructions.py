@@ -49,14 +49,16 @@ class Instruct(state.State):
                     for i in range(5):
                         fdata.write(game.high_score_names[i] + " " + \
                         str(game.high_scores[i]) + "\n")
-                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                elif event.type == pygame.KEYDOWN:
                     self.joystick = 0
-                    game.done = True
-                    state_stack.append(states.menu.Menu())
-                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(game.controls.settings["Escape"]):
+                    if event.key == pygame.K_ESCAPE:
+                        game.done = True
+                        state_stack.append(states.menu.Menu())
+                elif event.type == pygame.JOYBUTTONDOWN:
                     self.joystick = 1
-                    game.done = True
-                    state_stack.append(states.menu.Menu())
+                    if game.joystick.get_button(game.controls.settings["Escape"]):
+                        game.done = True
+                        state_stack.append(states.menu.Menu())
 
             backg.render()
             arrows.render()
