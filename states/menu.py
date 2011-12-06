@@ -79,10 +79,10 @@ class Menu(state.State):
 
     def handle_joy(self):
         joy = self.game.joystick
-        if joy.get_button(13): self.esc_press()
-        elif joy.get_button(14): self.space_press()
-        elif joy.get_button(6): self.down_press()
-        elif joy.get_button(4): self.up_press()
+        if joy.get_button(self.game.controls.settings["Escape"]): self.esc_press()
+        elif joy.get_button(self.game.controls.settings["Fire"]): self.space_press()
+        elif joy.get_button(self.game.controls.settings["Down"]): self.down_press()
+        elif joy.get_button(self.game.controls.settings["Up"]): self.up_press()
         self.highlight()
 
     def key_press(self, key_pressed):

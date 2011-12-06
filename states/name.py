@@ -94,6 +94,18 @@ class Name(state.State):
                         len(enter_name.text) < 9:
                         enter_name.text += event.unicode
                         enter_name.x -= 6
+                    
+                elif event.type == pygame.JOYBUTTONDOWN:
+                    if self.game.joystick.get_button(self.game.controls.settings["Escape"]):
+                        self.game.done = True
+                        state_stack.append(states.menu.Menu())
+                    if self.game.joystick.get_button(self.game.controls.settings["Fire"]):
+                        if(enter_name.text == ""):
+                            self.game.winner_name = "Rabbit"
+                        else:
+                            self.game.winner_name = enter_name.text
+                        self.game.done = True
+                        self.set_next_level(state_stack)
 
             pygame.display.flip()
 

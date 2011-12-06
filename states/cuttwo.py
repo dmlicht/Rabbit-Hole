@@ -91,7 +91,7 @@ class CutTwo(state.State):
                     if event.key == K_ESCAPE or event.key == K_RETURN:
                         game.done = True
                         self.set_next_state()
-                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(12):
+                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(game.controls.settings["Escape"]):
                     game.done = True
                     self.set_next_state()
             pygame.display.flip()

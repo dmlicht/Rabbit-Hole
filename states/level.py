@@ -40,17 +40,17 @@ class Level():
         self.set_up_music()
 
         game.set_state_time()
-        self.background = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, \
-                          self.wave_builder.layout_file_path, game)
+        self.background             = tiles.Background(SCREEN_WIDTH, SCREEN_HEIGHT, \
+                                    self.wave_builder.layout_file_path, game)
 
 
-        self.state_stack        = game.game_states
-        self.game               = game
+        self.state_stack            = game.game_states
+        self.game                   = game
 
-        self.state_after        = state_after
+        self.state_after            = state_after
 
-        self.energy             = STARTING_CHRONOS
-        self.fuel               = MAX_FUEL
+        self.energy                 = STARTING_CHRONOS
+        self.fuel                   = MAX_FUEL
 
         #player
         self.ship                   = player.User("3ship1", game.screen)
@@ -88,7 +88,7 @@ class Level():
 
         #health bar
         self.healthbar          = healthbar.HealthBar()
-
+    
         self.masks = []
 
         #finished?
@@ -184,10 +184,10 @@ class Level():
                     self.done = True
                     self.state_stack.append(self.state_after)
             elif event.type == pygame.JOYBUTTONDOWN:
-                if self.game.joystick.get_button(12):
+                if self.game.joystick.get_button(self.game.controls.settings["Escape"]):
                     self.done = True
                     self.state_stack.append(states.menu.Menu())
-                elif self.game.joystick.get_button(9):
+                elif self.game.joystick.get_button(self.game.controls.settings["Skip"]):
                     self.done = True
                     self.state_stack.append(self.state_after)
             #elif event.type == pygame.KEYUP and event.key == pygame.K_SPACE:
@@ -233,15 +233,15 @@ class Level():
         user_actions = actions.Actions()
         joy = self.game.joystick
         #print joy 4, 6, 7, 10
-        if joy.get_button(4): user_actions.up = True
-        if joy.get_button(6): user_actions.down = True
-        if joy.get_button(7): user_actions.left = True
-        if joy.get_button(5): user_actions.right = True
-        if joy.get_button(14): user_actions.fire = True
-        if joy.get_button(13): user_actions.boost = True
-        if joy.get_button(10): user_actions.tilt_left = True
-        if joy.get_button(11): user_actions.tilt_right = True
-        if joy.get_button(13): 
+        if joy.get_button(self.game.controls.settings["Up"]): user_actions.up = True
+        if joy.get_button(self.game.controls.settings["Down"]): user_actions.down = True
+        if joy.get_button(self.game.controls.settings["Left"]):  user_actions.left = True
+        if joy.get_button(self.game.controls.settings["Right"]): user_actions.right = True
+        if joy.get_button(self.game.controls.settings["Fire"]): user_actions.fire = True
+        if joy.get_button(self.game.controls.settings["Boost"]): user_actions.boost = True
+        if joy.get_button(self.game.controls.settings["Tilt left"]): user_actions.tilt_left = True
+        if joy.get_button(self.game.controls.settings["Tilt right"]): user_actions.tilt_right = True
+        if joy.get_button(self.game.controls.settings["Toggle time travel"]): 
             print "true" 
             user_actions.toggle_time_travel = True
         return user_actions

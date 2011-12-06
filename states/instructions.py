@@ -22,6 +22,8 @@ class Instruct(state.State):
 
         self.bullets = []
 
+        self.joystick = 0
+
     def run(self, game, state_stack):
         backg = rabbyt.Sprite('1Menu_Screen1.png') 
         arrows = rabbyt.Sprite('1arrows.png') 
@@ -48,9 +50,11 @@ class Instruct(state.State):
                         fdata.write(game.high_score_names[i] + " " + \
                         str(game.high_scores[i]) + "\n")
                 elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.joystick = 0
                     game.done = True
                     state_stack.append(states.menu.Menu())
-                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(12):
+                elif event.type == pygame.JOYBUTTONDOWN and game.joystick.get_button(game.controls.settings["Escape"]):
+                    self.joystick = 1
                     game.done = True
                     state_stack.append(states.menu.Menu())
 
@@ -62,16 +66,14 @@ class Instruct(state.State):
             dash.render()
             rabbyt.render_unsorted(self.bullets)
 
-            pressed = pygame.key.get_pressed()
-            user_actions = self.keyboard_to_actions(pressed)
-            self.ship.handle_actions(user_actions, self)
-
-            try:
+            if self.joystick:
                 user_actions = self.joystick_to_actions(game)
                 self.ship.handle_actions(user_actions, self)
-            except pygame.error:
-                boolean = False
-                
+            else:
+                pressed = pygame.key.get_pressed()
+                user_actions = self.keyboard_to_actions(pressed)
+                self.ship.handle_actions(user_actions, self)
+
             for bullet in self.bullets:
                 if bullet.isOffMap():
                     self.bullets.remove(bullet)
@@ -98,15 +100,15 @@ class Instruct(state.State):
         user_actions = actions.Actions()
         joy = game.joystick
         #print joy 4, 6, 7, 10
-        if joy.get_button(4): user_actions.up = True
-        if joy.get_button(6): user_actions.down = True
-        if joy.get_button(7):  user_actions.left = True
-        if joy.get_button(5): user_actions.right = True
-        if joy.get_button(14): user_actions.fire = True
-        if joy.get_button(13): user_actions.boost = True
-        if joy.get_button(10): user_actions.tilt_left = True
-        if joy.get_button(11): user_actions.tilt_right = True
-        if joy.get_button(13): 
+        if joy.get_button(game.controls.settings["Up"]): user_actions.up = True
+        if joy.get_button(game.controls.settings["Down"]): user_actions.down = True
+        if joy.get_button(game.controls.settings["Left"]):  user_actions.left = True
+        if joy.get_button(game.controls.settings["Right"]): user_actions.right = True
+        if joy.get_button(game.controls.settings["Fire"]): user_actions.fire = True
+        if joy.get_button(game.controls.settings["Boost"]): user_actions.boost = True
+        if joy.get_button(game.controls.settings["Tilt left"]): user_actions.tilt_left = True
+        if joy.get_button(game.controls.settings["Tilt right"]): user_actions.tilt_right = True
+        if joy.get_button(game.controls.settings["Toggle time travel"]): 
             print "true" 
             user_actions.toggle_time_travel = True
         return user_actions
