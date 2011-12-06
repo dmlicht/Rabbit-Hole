@@ -29,7 +29,7 @@ class Name(state.State):
         fire.x = -150
         fire.y = -150
         fire.rgb = (0, 0, 0)
-        save = FontSprite(game.font, "Press the t key to save a time to")
+        save = FontSprite(game.font, "Press the C key to save a time to")
         save.x = -400
         save.y = -200
         save.rgb = (10, 10, 10)
@@ -37,7 +37,7 @@ class Name(state.State):
         save2.x = -400
         save2.y = -250
         save2.rgb = (150, 150, 150)
-        revert = FontSprite(game.font, "Press the y key to go back ")
+        revert = FontSprite(game.font, "Press the C again key to go back ")
         revert.x = 50
         revert.y = -200
         revert.rgb = (100, 100, 100)

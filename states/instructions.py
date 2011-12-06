@@ -28,7 +28,7 @@ class Instruct(state.State):
         backg = rabbyt.Sprite('1Menu_Screen1.png') 
         arrows = rabbyt.Sprite('1arrows.png') 
         tilt = rabbyt.Sprite('1zx.png') 
-        time = rabbyt.Sprite('1ty.png') 
+        time = rabbyt.Sprite('1c.png') 
         space = rabbyt.Sprite('1sp.png') 
         dash = rabbyt.Sprite('1d.png') 
         arrows.xy = (-295, 80)

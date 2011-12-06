@@ -182,7 +182,6 @@ class Level():
                 self.joystick = 0
                 if event.key == pygame.K_ESCAPE:
                     self.done = True
-                    self.state_stack.append(states.menu.Menu())
                 elif event.key == pygame.K_n:
                     self.done = True
                     self.state_stack.append(self.state_after)
@@ -260,13 +259,6 @@ class Level():
         self.text_health.text = "Health: " + str(self.ship.health)
         self.text_score.text = "Score: " + str(self.game.user.score)
         self.text_boost.text = "Boost Fuel: " + str(self.ship.boost_fuel)
-        self.text_chronos.text = "Chronos: " + str(self.energy)
-        if self.fuel < MAX_FUEL:
-            self.fuel += FUEL_REGAIN
-            self.text_boost.text = "Boost Fuel: " + str(self.fuel)
-        else:
-            self.fuel = 100.0
-            self.text_boost.text = "Boost Fuel: " + str(self.fuel)
 
     def update_game_objects(self):
         """updates objects"""
@@ -333,6 +325,8 @@ class Level():
                                 rabbyt.collisions.collide_single, set1, set2)
             if collision_occured: 
                 var = set1.hit()
+                print set1.__class__.__name__
+                print var
 	        if set1.__class__.__name__ == "User" and var:
                    self.healthbar.hit()    
 

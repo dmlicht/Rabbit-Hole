@@ -172,6 +172,7 @@ class Ship(rabbyt.Sprite, game_object.GameObject):
             self.health -= damage
             self.invincible_time += TIME_INVINCIBLE_AFTER_HIT
             self.flash()
+            return True
 
     def flash(self):
         self.alpha = rabbyt.lerp(1, 0, dt=.2, extend="repeat")
