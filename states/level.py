@@ -405,6 +405,7 @@ class Level():
 
     def handle_save(self):
         self.energy -= TIME_TRAVEL_CHRONOS_DRAIN
+        self.text_chronos.text = "Chronos: " + str(self.energy)
         if self.energy <= 0:
             self.return_travel_point()
 

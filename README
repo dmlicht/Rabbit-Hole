@@ -19,8 +19,10 @@ Press 'spacebar' to fire
 Press 'n' to skip to the second level
 Press 'ESC' or 'Enter' to quit out of certain scenes
 
-Or
-Set your own controls on a game controller
+Set your own controls on a game controller:
+- You can do that at the first screen
+- If you want, you can skip the first screen by clicking the [x] button on the window
+  - This will map the joystick to the following: X-Fire, O-Time Travel, Triangle-Escape, Square-Boost, L1-Tilt Left, L2-Tilt Right, R2-Skip cut scenes
 
 ================
 Purpose of Files
@@ -68,7 +70,7 @@ Images
 
 
 -Enemies-
-5dino.png - cute dinosaur enemy (but beware, 3 health!)
+5dino.png - cute dinosaur enemy 
 3ww2.png - WWII airplane
 2boss3.png - level III boss
 1FDino.png - Firing dinosaur
